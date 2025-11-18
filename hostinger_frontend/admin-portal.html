@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Portal | Infinium Hair & Skin Care Clinic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body class="portal-body">
+    <header class="portal-header portal-header--admin">
+      <div class="portal-header__inner">
+        <div>
+          <p class="eyebrow">Admin Console</p>
+          <h1>Welcome, Dr. Mehta</h1>
+        </div>
+        <div class="portal-header__actions">
+          <button type="button" class="primary-cta" onclick="location.href='index.html'">Back to Home</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="portal-main">
+      <section class="admin-stats">
+        <article>
+          <p>Total Users</p>
+          <strong data-admin-stat="users">18,452</strong>
+        </article>
+        <article>
+          <p>Active Plans</p>
+          <strong data-admin-stat="active">12,907</strong>
+        </article>
+        <article>
+          <p>Pending Checkups</p>
+          <strong data-admin-stat="pending">143</strong>
+        </article>
+        <article>
+          <p>Refund Requests</p>
+          <strong data-admin-stat="refunds">12</strong>
+        </article>
+      </section>
+
+      <section class="portal-card admin-table">
+        <div class="admin-table__head">
+          <h3>User Overview</h3>
+          <button type="button" class="ghost-btn">Export</button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Stage</th>
+              <th>Coach</th>
+              <th>Last Check-in</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody data-admin-table>
+            <tr>
+              <td>Anjali Sharma</td>
+              <td>Stage 3</td>
+              <td>Neha</td>
+              <td>20 Sept</td>
+              <td>Active</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="portal-card admin-activity">
+        <h3>Recent Activity</h3>
+        <ul class="timeline" data-admin-activity>
+          <li>
+            <span>New user registered</span>
+            <strong>Sana added her assessment · 2m ago</strong>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <script>
+      (function () {
+        const resolveApiBase = () => {
+          if (typeof window.__INF_OTP_API_BASE === 'string') {
+            return window.__INF_OTP_API_BASE;
+          }
+          if (window.location.hostname === 'localhost' && window.location.port !== '4000') {
+            return window.location.origin;
+          }
+          return '';
+        };
+
+        const base = resolveApiBase();
+        fetch(`${base}/api/admin/stats`)
+          .then((res) => res.json())
+          .then((data) => {
+            const map = (key, value) => {
+              const el = document.querySelector(`[data-admin-stat=\"${key}\"]`);
+              if (el && value) {
+                el.textContent = Number(value).toLocaleString();
+              }
+            };
+            map('users', data.totals?.users);
+            map('active', data.totals?.activePlans);
+            map('pending', data.totals?.pendingCheckups);
+            map('refunds', data.totals?.refundRequests);
+
+            const tableBody = document.querySelector('[data-admin-table]');
+            if (tableBody && Array.isArray(data.recentUsers)) {
+              tableBody.innerHTML = data.recentUsers
+                .map(
+                  (user) => `<tr>
+                    <td>${user.name || '-'}</td>
+                    <td>${user.stage || '-'}</td>
+                    <td>${user.coach || '-'}</td>
+                    <td>${user.lastCheckIn || '-'}</td>
+                    <td>${user.status || '-'}</td>
+                  </tr>`
+                )
+                .join('');
+            }
+
+            const activityList = document.querySelector('[data-admin-activity]');
+            if (activityList && Array.isArray(data.activities)) {
+              activityList.innerHTML = data.activities
+                .map(
+                  (entry) => `<li>
+                    <span>${entry.label}</span>
+                    <strong>${entry.value}</strong>
+                  </li>`
+                )
+                .join('');
+            }
+          })
+          .catch(() => {
+            /* keep defaults */
+          });
+      })();
+    </script>
+      <a href="https://wa.me/917621871654" class="whatsapp-fab" target="_blank" rel="noopener">
+      <img src="assets/images/whatsApp-icon.png" alt="WhatsApp" class="whatsapp-fab__icon" />
+    </a>
+</body>
+</html>

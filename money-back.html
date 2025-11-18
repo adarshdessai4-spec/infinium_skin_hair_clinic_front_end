@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Money Back Guarantee | Infinium Hair & Skin Care Clinic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body class="has-mobile-tab">
+    <nav class="nav">
+      <div class="nav__inner">
+        <a class="logo" href="index.html">Infinium Hair & Skin Care Clinic</a>
+        <div class="nav-right">
+          <button
+            class="nav-icon nav-icon--menu"
+            type="button"
+            aria-label="Toggle navigation menu"
+            aria-controls="menuOverlay"
+            aria-expanded="false"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="menu-overlay" id="menuOverlay" aria-hidden="true" tabindex="-1">
+      <button class="menu-overlay__close" type="button" aria-label="Close menu">&times;</button>
+      <div class="menu-overlay__panel">
+        <div class="menu-overlay__brand">
+          <span class="menu-overlay__logo">Infinium.</span>
+        </div>
+        <section class="menu-overlay__group menu-overlay__group--primary">
+          <p class="menu-overlay__heading">What We Do</p>
+          <p class="menu-overlay__copy">
+            We help you take control of your hair loss journey in a personalised, science-backed way.
+          </p>
+          <div class="menu-overlay__list-grid">
+            <ul class="menu-overlay__list">
+              
+              <li><a class="menu-overlay__link" href="money-back.html">Money Back Guarantee</a></li>
+              <li><a class="menu-overlay__link" href="referral.html">Referral</a></li>
+              <li><a class="menu-overlay__link" href="franchise.html">Franchise Partner</a></li>
+            </ul>
+            <ul class="menu-overlay__list">
+              <li><a class="menu-overlay__link" href="hair-test.html">Hair Test ™</a></li>
+              <li><a class="menu-overlay__link" href="combos.html">Infinium Combos</a></li>
+            </ul>
+          </div>
+        </section>
+        <div class="menu-overlay__grid menu-overlay__grid--secondary">
+          <section class="menu-overlay__group">
+            <p class="menu-overlay__heading">How We Do It</p>
+            <ul class="menu-overlay__list menu-overlay__list--single">
+              <li><a class="menu-overlay__link" href="science.html">Infinium Science</a></li>
+              
+              
+              
+            </ul>
+          </section>
+          <section class="menu-overlay__group">
+            <p class="menu-overlay__heading">Who We Are</p>
+            <ul class="menu-overlay__list menu-overlay__list--single">
+              
+              
+            </ul>
+          </section>
+        </div>
+        <section class="menu-overlay__group menu-overlay__group--contact">
+          <p class="menu-overlay__heading">Get In Touch</p>
+          <div class="menu-overlay__social">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="WhatsApp">WA</a>
+          </div>
+        </section>
+        
+      </div>
+      <div class="products-panel" id="productsPanel" aria-hidden="true">
+        <div class="products-panel__media" aria-hidden="true">
+          <img src="assets/images/regimen-supplements.jpg" alt="" />
+        </div>
+        <div class="products-panel__body">
+          <button type="button" class="products-panel__back" data-products-close>
+            &larr; Products
+          </button>
+          <div class="products-panel__columns">
+            <div>
+              <h4>Hair Care</h4>
+              <ul>
+                <li><a href="#">Hair Ras</a></li>
+                <li><a href="#">Hair Vitamin</a></li>
+                <li><a href="#">Health Tatva</a></li>
+                <li><a href="#">Defence Shampoo</a></li>
+                <li><a href="#">Defence Conditioner</a></li>
+                <li><a href="#">Anti Dandruff Lotion</a></li>
+                <li><a href="#">Cholest Vati</a></li>
+                <li><a href="#">Calm Ras</a></li>
+                <li><a href="#">Consti Clear</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Gut &amp; Wellness</h4>
+              <ul>
+                <li><a href="#">Gut Shuddhi</a></li>
+                <li><a href="#">Nasal Drops</a></li>
+                <li><a href="#">Hair Actives Serum</a></li>
+                <li><a href="#">Anti-Dandruff Shampoo</a></li>
+                <li><a href="#">Digest Boost</a></li>
+                <li><a href="#">Mom Santulan</a></li>
+                <li><a href="#">Iron Santulan</a></li>
+                <li><a href="#">Thyro Santulan</a></li>
+                <li><a href="#">Her Santulan</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Scalp Oils</h4>
+              <ul>
+                <li><a href="#">Scalp Oil</a></li>
+                <li><a href="#">Nourish Hair Oil</a></li>
+                <li><a href="#">Hair Vitamin For Her</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="login-modal" id="loginModal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="login-modal__overlay" data-login-close></div>
+      <div class="login-modal__content" data-login-content>
+        <button class="login-modal__close" type="button" aria-label="Close login" data-login-close>&times;</button>
+        <h2>Login with OTP</h2>
+        <span class="login-modal__divider" aria-hidden="true"></span>
+
+        <div class="login-step is-active" data-login-step="number">
+          <div class="login-role" role="tablist">
+            <button type="button" class="login-role__btn is-active" data-login-role="user">User</button>
+            <button type="button" class="login-role__btn" data-login-role="admin">Admin</button>
+          </div>
+          <p class="login-modal__label">Enter your mobile number</p>
+          <label class="login-modal__input" for="loginMobile">
+            <span>+91</span>
+            <input
+              id="loginMobile"
+              type="tel"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              maxlength="10"
+              placeholder="Enter mobile number"
+            />
+          </label>
+          <p class="login-modal__help">We will send you an One Time Password on this mobile number</p>
+          <button type="button" class="login-modal__cta" data-login-action="send">Send OTP</button>
+          <button type="button" class="login-modal__cta login-modal__cta--ghost" data-admin-test-login hidden>
+            Direct Admin Login (Test)
+          </button>
+          <button type="button" class="login-modal__cta login-modal__cta--ghost" data-user-test-login hidden>
+            Direct User Login (Test)
+          </button>
+          <div class="login-socials">
+            <button type="button" class="login-social login-social--google">
+              <img src="assets/images/google-logo.svg" alt="" aria-hidden="true" />
+              <span>Continue with Google</span>
+            </button>
+            <button type="button" class="login-social login-social--apple">
+              <img src="assets/images/apple-logo.svg" alt="" aria-hidden="true" />
+              <span>Continue with Apple</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="login-step" data-login-step="otp">
+          <p class="login-modal__label">Enter OTP</p>
+          <div class="otp-inputs" data-otp-inputs>
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+          </div>
+          <p class="login-modal__help">
+            Enter the OTP sent to <strong data-otp-target>+91 XXXXXXXX</strong>
+          </p>
+          <p class="login-modal__resend">
+            <button type="button" data-login-resend disabled>Resend</button>
+            <span>OTP in <span data-login-countdown>60</span> sec</span>
+          </p>
+          <button type="button" class="login-modal__cta" data-login-action="verify">Verify OTP</button>
+        </div>
+
+        <div class="login-step" data-login-step="profile">
+          <div class="login-success" data-login-success>
+            <span class="login-success__icon" aria-hidden="true">✓</span>
+            <div>
+              <h3>OTP verified</h3>
+              <p>Your number <strong data-login-success-phone>+91 XXXXXXXX</strong> is confirmed.</p>
+            </div>
+          </div>
+          <p class="login-modal__label">Tell us your name</p>
+          <label class="login-modal__input" for="loginName">
+            <input
+              id="loginName"
+              type="text"
+              placeholder="Enter full name"
+              autocomplete="name"
+            />
+          </label>
+          <p class="login-modal__help">We personalise your plan with this name.</p>
+          <button type="button" class="login-modal__cta" data-login-action="complete">Continue</button>
+        </div>
+
+        <p class="login-modal__error" data-login-error role="alert"></p>
+      </div>
+    </div>
+
+    <main>
+      <section class="money-back section" id="money-back">
+        <div class="container money-back__shell">
+          <button class="money-back__exit" type="button" aria-label="Close money back details">
+            &times;
+          </button>
+          <h1 class="money-back__title">Money Back Guarantee</h1>
+          <p class="money-back__updated"><em>Last updated: Sept 25, 2025</em></p>
+          <p class="money-back__lead">
+            If no results* are seen after using Infinium Hair &amp; Skin Care Clinic for the defined eligibility period then you can apply
+            for a refund as per steps below. Please note the number of months for refund is based on your health profile and is not 5
+            months for all users.
+            <a href="#" class="money-back__link" data-eligibility-trigger>Click here to know your eligibility period.</a>
+          </p>
+          <p class="money-back__footnote-text">
+            *Results can be defined as hair regrowth, increase in hair volume, reduction of hair fall or reduction of dandruff depending on your initial hair fall stage.
+          </p>
+
+          <div class="money-back__section">
+            <h2>Eligibility Criteria</h2>
+            <ol class="money-back__list">
+              <li>Purchased complete recommended kits from Infinium Hair &amp; Skin Care Clinic website or app.</li>
+              <li>
+                Purchased the right number of kits in the right time period. For example, if your eligibility period is 5 months,
+                usage of 5 complete kits should happen in a duration of 6 months. This tells us that you have been a regular
+                customer.
+              </li>
+              <li>Submitted at least 3-4 clear, unshaved scalp images spread across the duration of the Infinium regimen.</li>
+              <li>Completed at least 3 calls with the Infinium Hair Coach spread across the regimen.</li>
+              <li>Raised the money-back request within 30 days of purchasing the last kit (as per Infinium treatment plan).</li>
+              <li>
+                For female customers, the money-back policy applies only for those diagnosed with “medium widening” or “advanced widening”
+                hair loss stages, and who have uploaded a minimum of 3 scalp images over the course of their Infinium treatment.
+              </li>
+            </ol>
+          </div>
+
+          <div class="money-back__note-card">
+            <strong>Kindly note</strong>
+            <p>Certain health conditions, whether pre-existing or developed during the Infinium regimen, make you ineligible for the money back.</p>
+            <p class="money-back__note-link">Please check the list of conditions before applying.</p>
+          </div>
+
+          <div class="money-back__section">
+            <h2>How to apply?</h2>
+            <ul class="money-back__list money-back__list--bullets">
+              <li>Email us on <a href="mailto:customercare@infinium.health">customercare@infinium.health</a> along with your latest order number.</li>
+              <li>
+                <strong>OR</strong> raise a ticket for the Money Back Guarantee in the “Help &amp; Support” section, from the “Profile” tab in your
+                Infinium app.
+              </li>
+            </ul>
+          </div>
+
+          <div class="money-back__section">
+            <h2>How does the refund process work?</h2>
+            <ol class="money-back__list">
+              <li>Once your request is raised, we will check for all eligibility conditions listed above.</li>
+              <li>If eligibility conditions are met, we assign an unbiased and qualified dermatologist to assess your case.</li>
+              <li>The decision is taken only after you have a call with the assigned dermatologist.</li>
+            </ol>
+            <p class="money-back__small">The decision taken by the dermatologist will be final.</p>
+          </div>
+
+          <div class="money-back__footnote">
+            <p>
+              Please note that the policy applies only to results seen from the start of the Infinium regimen up to the eligibility period.
+              It does not cover future results or deterioration beyond that period. For example, if your eligibility period is 5 months, the
+              money-back guarantee is only valid for results seen within those 5 months of treatment.
+            </p>
+            <p>
+              Kindly note that certain health conditions, whether pre-existing or suffered during the Infinium regimen, make you ineligible
+              for the money back.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="eligibility-modal" id="eligibilityModal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="eligibility-modal__overlay" data-eligibility-close></div>
+        <div class="eligibility-modal__content">
+          <button class="eligibility-modal__close" type="button" aria-label="Close eligibility period" data-eligibility-close>
+            &times;
+          </button>
+          <h2 class="eligibility-modal__title">Money Back Eligibility Period</h2>
+
+          <section class="eligibility-section">
+            <h3>Male Eligibility</h3>
+            <div class="eligibility-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Hair Stage</th>
+                    <th>Age</th>
+                    <th>Special Condition</th>
+                    <th>Eligibility Period</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Stage 1,2,3</td>
+                    <td>&lt; 35</td>
+                    <td>Not present</td>
+                    <td>5 Months</td>
+                  </tr>
+                  <tr>
+                    <td>Stage 1,2,3</td>
+                    <td>&lt; 35</td>
+                    <td>Heavy Dandruff</td>
+                    <td>8 Months</td>
+                  </tr>
+                  <tr>
+                    <td>Stage 1,2,3</td>
+                    <td>&gt; 35</td>
+                    <td>Not applicable</td>
+                    <td>8 Months</td>
+                  </tr>
+                  <tr>
+                    <td>Stage 4,5</td>
+                    <td>&lt; 35</td>
+                    <td>Not present</td>
+                    <td>8 Months</td>
+                  </tr>
+                  <tr>
+                    <td>Stage 4,5</td>
+                    <td>&lt; 35</td>
+                    <td>Heavy Dandruff</td>
+                    <td>12 Months</td>
+                  </tr>
+                  <tr>
+                    <td>Stage 4,5</td>
+                    <td>&gt; 35</td>
+                    <td>Not applicable</td>
+                    <td>12 Months</td>
+                  </tr>
+                  <tr>
+                    <td>Heavy Hair Fall</td>
+                    <td>All ages</td>
+                    <td>Not present</td>
+                    <td>5 Months</td>
+                  </tr>
+                  <tr>
+                    <td>Heavy Hair Fall</td>
+                    <td>All ages</td>
+                    <td>Heavy Hair Fall</td>
+                    <td>8 Months</td>
+                  </tr>
+                  <tr>
+                    <td>Coin Size Patches</td>
+                    <td>All ages</td>
+                    <td>Not applicable</td>
+                    <td>8 Months</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="eligibility-section">
+            <h3>Female Eligibility</h3>
+            <div class="eligibility-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Hair Stage</th>
+                    <th>Age</th>
+                    <th>Special Condition</th>
+                    <th>Eligibility Period</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Hair Thinning</td>
+                    <td>Not eligible</td>
+                    <td>Not eligible</td>
+                    <td>Not eligible</td>
+                  </tr>
+                  <tr>
+                    <td>Side Thinning</td>
+                    <td>Not eligible</td>
+                    <td>Not eligible</td>
+                    <td>Not eligible</td>
+                  </tr>
+                  <tr>
+                    <td>Medium Widening</td>
+                    <td>Not applicable</td>
+                    <td>Not present</td>
+                    <td>5 Months</td>
+                  </tr>
+                  <tr>
+                    <td>Medium Widening</td>
+                    <td>Not applicable</td>
+                    <td>Anaemia / Heavy Dandruff</td>
+                    <td>8 Months</td>
+                  </tr>
+                  <tr>
+                    <td>Advanced Widening</td>
+                    <td>&le; 50 years</td>
+                    <td>Not present</td>
+                    <td>5 Months</td>
+                  </tr>
+                  <tr>
+                    <td>Advanced Widening</td>
+                    <td>&le; 50 years</td>
+                    <td>Anaemia / Heavy Dandruff / PCOS / Thyroid / Menopause</td>
+                    <td>8 Months</td>
+                  </tr>
+                    <tr>
+                    <td>Advanced Widening</td>
+                    <td>&gt; 50 years</td>
+                    <td>Not present</td>
+                    <td>8 Months</td>
+                  </tr>
+                  <tr>
+                    <td>Advanced Widening</td>
+                    <td>&gt; 50 years</td>
+                    <td>Anaemia / Heavy Dandruff / PCOS / Thyroid / Menopause</td>
+                    <td>12 Months</td>
+                  </tr>
+                  <tr>
+                    <td>Coin Size Patches</td>
+                    <td>All ages</td>
+                    <td>Not applicable</td>
+                    <td>8 Months</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-columns">
+          <div>
+            <h4>Infinium Hair & Skin Care Clinic Journey</h4>
+            <ul>
+              <li>FAQ</li>
+              <li>My Plan</li>
+              <li>Online Examination</li>
+              <li>Referral</li>
+              <li>Customer Stories</li>
+              <li>Reviews</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Company</h4>
+            <ul>
+              <li>Science</li>
+              <li>Our Story</li>
+              <li>Blog</li>
+              <li>All Products</li>
+              <li>Hair Solutions for Women</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Legal</h4>
+            <ul>
+              <li>Money Back Guarantee</li>
+              <li>Privacy Policy</li>
+              <li>Terms of Service</li>
+              <li>Return Policy</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Centres</h4>
+            <ul>
+              <li>Pune</li>
+              <li>Nagpur</li>
+              <li>Thane</li>
+              <li>Navi Mumbai</li>
+              <li>Hyderabad</li>
+            </ul>
+          </div>
+          <div class="footer-app">
+            <h4>Experience The Infinium Hair & Skin Care Clinic App</h4>
+            <div class="app-badges">
+              <span>Get it on Google Play</span>
+              <span>Download on the App Store</span>
+            </div>
+            <p>Registered Copyright 2025</p>
+            <p>
+              Tatvartha Health Pvt. Ltd.<br />
+              Unit no - 101, B wing, Building - 16, Interface, Off Link Road, Malad (West), Mumbai - 400064.
+            </p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="social">
+            <span>Catch us on:</span>
+            <div class="social-links">
+              <span>Instagram</span>
+              <span>LinkedIn</span>
+              <span>Facebook</span>
+              <span>YouTube</span>
+            </div>
+          </div>
+          <div class="footer-logo">Infinium Hair & Skin Care Clinic.</div>
+        </div>
+      </div>
+    </footer>
+
+    <a
+      class="whatsapp-fab"
+      href="https://wa.me/917621871654"
+      target="_blank"
+      rel="noopener"
+      aria-label="Chat on WhatsApp at +91 7621 871 654"
+    >
+      <img src="assets/images/whatsApp-icon.png" alt="WhatsApp" aria-hidden="true" />
+      <span>WhatsApp</span>
+    </a>
+    <nav class="mobile-tab-bar" aria-label="Quick actions">
+      <a href="franchise.html">Franchise</a>
+      <a href="hair-test.html">Take Test</a>
+      <button type="button" data-login-trigger>Log In</button>
+      <button type="button" data-menu-open>Menu</button>
+    </nav>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

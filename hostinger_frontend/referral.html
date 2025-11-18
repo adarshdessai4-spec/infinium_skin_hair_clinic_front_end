@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infinium Referral Program</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body class="referral-body has-mobile-tab">
+    <nav class="nav">
+      <div class="nav__inner">
+        <a class="logo" href="index.html">Infinium Hair & Skin Care Clinic</a>
+        <div class="nav-right">
+          <button
+            class="nav-icon nav-icon--menu"
+            type="button"
+            aria-label="Toggle navigation menu"
+            aria-controls="menuOverlay"
+            aria-expanded="false"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="menu-overlay" id="menuOverlay" aria-hidden="true" tabindex="-1">
+      <button class="menu-overlay__close" type="button" aria-label="Close menu">&times;</button>
+      <div class="menu-overlay__panel">
+        <div class="menu-overlay__brand">
+          <span class="menu-overlay__logo">Infinium.</span>
+        </div>
+        <section class="menu-overlay__group menu-overlay__group--primary">
+          <p class="menu-overlay__heading">What We Do</p>
+          <p class="menu-overlay__copy">
+            We help you take control of your hair loss journey in a personalised, science-backed way.
+          </p>
+          <div class="menu-overlay__list-grid">
+            <ul class="menu-overlay__list">
+              
+              <li><a class="menu-overlay__link" href="money-back.html">Money Back Guarantee</a></li>
+              <li><a class="menu-overlay__link" href="referral.html">Referral</a></li>
+              <li><a class="menu-overlay__link" href="franchise.html">Franchise Partner</a></li>
+            </ul>
+            <ul class="menu-overlay__list">
+              <li><a class="menu-overlay__link" href="hair-test.html">Hair Test ™</a></li>
+              <li><a class="menu-overlay__link" href="combos.html">Infinium Combos</a></li>
+            </ul>
+          </div>
+        </section>
+        <div class="menu-overlay__grid menu-overlay__grid--secondary">
+          <section class="menu-overlay__group">
+            <p class="menu-overlay__heading">How We Do It</p>
+            <ul class="menu-overlay__list menu-overlay__list--single">
+              <li><a class="menu-overlay__link" href="science.html">Infinium Science</a></li>
+              
+              
+              
+            </ul>
+          </section>
+          <section class="menu-overlay__group">
+            <p class="menu-overlay__heading">Who We Are</p>
+            <ul class="menu-overlay__list menu-overlay__list--single">
+              
+              
+            </ul>
+          </section>
+        </div>
+        <section class="menu-overlay__group menu-overlay__group--contact">
+          <p class="menu-overlay__heading">Get In Touch</p>
+          <div class="menu-overlay__social">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="WhatsApp">WA</a>
+          </div>
+        </section>
+        
+      </div>
+      <div class="products-panel" id="productsPanel" aria-hidden="true">
+        <div class="products-panel__media" aria-hidden="true">
+          <img src="assets/images/regimen-supplements.jpg" alt="" />
+        </div>
+        <div class="products-panel__body">
+          <button type="button" class="products-panel__back" data-products-close>
+            &larr; Products
+          </button>
+          <div class="products-panel__columns">
+            <div>
+              <h4>Hair Care</h4>
+              <ul>
+                <li><a href="#">Hair Ras</a></li>
+                <li><a href="#">Hair Vitamin</a></li>
+                <li><a href="#">Health Tatva</a></li>
+                <li><a href="#">Defence Shampoo</a></li>
+                <li><a href="#">Defence Conditioner</a></li>
+                <li><a href="#">Anti Dandruff Lotion</a></li>
+                <li><a href="#">Cholest Vati</a></li>
+                <li><a href="#">Calm Ras</a></li>
+                <li><a href="#">Consti Clear</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Gut &amp; Wellness</h4>
+              <ul>
+                <li><a href="#">Gut Shuddhi</a></li>
+                <li><a href="#">Nasal Drops</a></li>
+                <li><a href="#">Hair Actives Serum</a></li>
+                <li><a href="#">Anti-Dandruff Shampoo</a></li>
+                <li><a href="#">Digest Boost</a></li>
+                <li><a href="#">Mom Santulan</a></li>
+                <li><a href="#">Iron Santulan</a></li>
+                <li><a href="#">Thyro Santulan</a></li>
+                <li><a href="#">Her Santulan</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Scalp Oils</h4>
+              <ul>
+                <li><a href="#">Scalp Oil</a></li>
+                <li><a href="#">Nourish Hair Oil</a></li>
+                <li><a href="#">Hair Vitamin For Her</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="login-modal" id="loginModal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="login-modal__overlay" data-login-close></div>
+      <div class="login-modal__content" data-login-content>
+        <button class="login-modal__close" type="button" aria-label="Close login" data-login-close>&times;</button>
+        <h2>Login with OTP</h2>
+        <span class="login-modal__divider" aria-hidden="true"></span>
+
+        <div class="login-step is-active" data-login-step="number">
+          <div class="login-role" role="tablist">
+            <button type="button" class="login-role__btn is-active" data-login-role="user">User</button>
+            <button type="button" class="login-role__btn" data-login-role="admin">Admin</button>
+          </div>
+          <p class="login-modal__label">Enter your mobile number</p>
+          <label class="login-modal__input" for="loginMobile">
+            <span>+91</span>
+            <input
+              id="loginMobile"
+              type="tel"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              maxlength="10"
+              placeholder="Enter mobile number"
+            />
+          </label>
+          <p class="login-modal__help">We will send you an One Time Password on this mobile number</p>
+          <button type="button" class="login-modal__cta" data-login-action="send">Send OTP</button>
+          <button type="button" class="login-modal__cta login-modal__cta--ghost" data-admin-test-login hidden>
+            Direct Admin Login (Test)
+          </button>
+          <button type="button" class="login-modal__cta login-modal__cta--ghost" data-user-test-login hidden>
+            Direct User Login (Test)
+          </button>
+          <div class="login-socials">
+            <button type="button" class="login-social login-social--google">
+              <img src="assets/images/google-logo.svg" alt="" aria-hidden="true" />
+              <span>Continue with Google</span>
+            </button>
+            <button type="button" class="login-social login-social--apple">
+              <img src="assets/images/apple-logo.svg" alt="" aria-hidden="true" />
+              <span>Continue with Apple</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="login-step" data-login-step="otp">
+          <p class="login-modal__label">Enter OTP</p>
+          <div class="otp-inputs" data-otp-inputs>
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+          </div>
+          <p class="login-modal__help">
+            Enter the OTP sent to <strong data-otp-target>+91 XXXXXXXX</strong>
+          </p>
+          <p class="login-modal__resend">
+            <button type="button" data-login-resend disabled>Resend</button>
+            <span>OTP in <span data-login-countdown>60</span> sec</span>
+          </p>
+          <button type="button" class="login-modal__cta" data-login-action="verify">Verify OTP</button>
+        </div>
+
+        <div class="login-step" data-login-step="profile">
+          <div class="login-success" data-login-success>
+            <span class="login-success__icon" aria-hidden="true">✓</span>
+            <div>
+              <h3>OTP verified</h3>
+              <p>Your number <strong data-login-success-phone>+91 XXXXXXXX</strong> is confirmed.</p>
+            </div>
+          </div>
+          <p class="login-modal__label">Tell us your name</p>
+          <label class="login-modal__input" for="loginName">
+            <input
+              id="loginName"
+              type="text"
+              placeholder="Enter full name"
+              autocomplete="name"
+            />
+          </label>
+          <p class="login-modal__help">We personalise your plan with this name.</p>
+          <button type="button" class="login-modal__cta" data-login-action="complete">Continue</button>
+        </div>
+
+        <p class="login-modal__error" data-login-error role="alert"></p>
+      </div>
+    </div>
+
+    <main>
+      <section class="referral-hero section">
+        <div class="container referral-hero__shell">
+          <div>
+            <p class="eyebrow">Refer &amp; Win</p>
+            <h1>Give 20% OFF, Get 20% OFF</h1>
+          </div>
+          <div class="referral-hero__cards">
+            <div class="referral-pill">
+              <span>Give</span>
+              <strong>20% OFF</strong>
+            </div>
+            <div class="referral-pill">
+              <span>Get</span>
+              <strong>20% OFF</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="referral-form section">
+        <div class="container referral-form__grid">
+          <form class="referral-card" autocomplete="off">
+            <p>Love an Infinium plan? Share it with friends.</p>
+            <label>
+              Your Name
+              <input type="text" placeholder="Enter your name" required />
+            </label>
+            <label>
+              Your Email
+              <input type="email" placeholder="Enter your email" required />
+            </label>
+            <label>
+              Your Mobile
+              <input type="tel" placeholder="+91" required />
+            </label>
+            <label>
+              Friend's Name
+              <input type="text" placeholder="Friend's name" required />
+            </label>
+            <label>
+              Friend's Mobile
+              <input type="tel" placeholder="+91" required />
+            </label>
+            <button type="submit" class="primary-cta">Invite</button>
+            <small>Terms apply · Refer more to earn more</small>
+          </form>
+          <div class="referral-media">
+            <img src="assets/images/hero-couple.jpg" alt="Refer and earn" />
+            <button type="button" class="referral-play">▶</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="referral-steps section">
+        <div class="container">
+          <div class="section-heading">
+            <h2>How does this work?</h2>
+            <span class="heading-underline"></span>
+          </div>
+          <div class="referral-steps__grid">
+            <article>
+              <h3>Get on the plan</h3>
+              <p>Start your Infinium journey to unlock referral rewards.</p>
+            </article>
+            <article>
+              <h3>Invite friends</h3>
+              <p>Share your unique link via WhatsApp, email, or SMS.</p>
+            </article>
+            <article>
+              <h3>Get 20% OFF</h3>
+              <p>Every friend who joins gives both of you instant discounts.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="referral-journey section">
+        <div class="container">
+          <div class="section-heading">
+            <h2>A journey is more fun with friends</h2>
+          </div>
+          <div class="referral-journey__grid">
+            <article>
+              <h3>Stay motivated</h3>
+              <p>Friends keep each other consistent through the routine.</p>
+            </article>
+            <article>
+              <h3>Share progress</h3>
+              <p>Swap stories, track wins, and celebrate little milestones.</p>
+            </article>
+            <article>
+              <h3>Grow together</h3>
+              <p>Better scalp, better lifestyle, better hair for everyone.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="referral-terms section">
+        <div class="container referral-terms__card">
+          <h3>Terms &amp; Conditions</h3>
+          <ul>
+            <li>Only active Infinium members can refer friends.</li>
+            <li>Discount codes are valid for 30 days from issue.</li>
+            <li>Friends must purchase a recommended plan to unlock rewards.</li>
+            <li>Infinium reserves the right to modify or withdraw the program.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="referral-faq section">
+        <div class="container">
+          <div class="section-heading">
+            <h2>FAQs</h2>
+          </div>
+          <div class="referral-faq__list">
+            <details open>
+              <summary>What is the validity of the referral code?</summary>
+              <p>Each referral coupon is valid for 30 days from the day it is generated.</p>
+            </details>
+            <details>
+              <summary>How many people can I refer?</summary>
+              <p>There is no cap. Share your link with as many friends as you like.</p>
+            </details>
+            <details>
+              <summary>What benefits do I get for referring?</summary>
+              <p>You earn 20% OFF on your next purchase when a friend joins through your link.</p>
+            </details>
+            <details>
+              <summary>What benefits does the referee get?</summary>
+              <p>Your friend receives 20% OFF on their first Infinium plan.</p>
+            </details>
+            <details>
+              <summary>Can I transfer my referral coupon?</summary>
+              <p>No, referral coupons are tied to your account and can’t be transferred.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-columns">
+          <div>
+            <h4>Infinium Hair & Skin Care Clinic Journey</h4>
+            <ul>
+              <li>FAQ</li>
+              <li>My Plan</li>
+              <li>Online Examination</li>
+              <li>Referral</li>
+              <li>Customer Stories</li>
+              <li>Reviews</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Company</h4>
+            <ul>
+              <li>Science</li>
+              <li>Our Story</li>
+              <li>Blog</li>
+              <li>All Products</li>
+              <li>Hair Solutions for Women</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Legal</h4>
+            <ul>
+              <li>Money Back Guarantee</li>
+              <li>Privacy Policy</li>
+              <li>Terms of Service</li>
+              <li>Return Policy</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Centres</h4>
+            <ul>
+              <li>Pune</li>
+              <li>Nagpur</li>
+              <li>Thane</li>
+              <li>Navi Mumbai</li>
+              <li>Hyderabad</li>
+            </ul>
+          </div>
+          <div class="footer-app">
+            <h4>Experience The Infinium Hair & Skin Care Clinic App</h4>
+            <div class="app-badges">
+              <span>Get it on Google Play</span>
+              <span>Download on the App Store</span>
+            </div>
+            <p>Registered Copyright 2025</p>
+            <p>
+              Tatvartha Health Pvt. Ltd.<br />
+              Unit no - 101, B wing, Building - 16, Interface, Off Link Road, Malad (West), Mumbai - 400064.
+            </p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="social">
+            <span>Catch us on:</span>
+            <div class="social-links">
+              <span>Instagram</span>
+              <span>LinkedIn</span>
+              <span>Facebook</span>
+              <span>YouTube</span>
+            </div>
+          </div>
+          <div class="footer-logo">Infinium Hair & Skin Care Clinic.</div>
+        </div>
+      </div>
+    </footer>
+
+    <a
+      class="whatsapp-fab"
+      href="https://wa.me/917621871654"
+      target="_blank"
+      rel="noopener"
+      aria-label="Chat on WhatsApp at +91 7621 871 654"
+    >
+      <img src="assets/images/whatsApp-icon.png" alt="WhatsApp" aria-hidden="true" />
+      <span>WhatsApp</span>
+    </a>
+    <nav class="mobile-tab-bar" aria-label="Quick actions">
+      <a href="franchise.html">Franchise</a>
+      <a href="hair-test.html">Take Test</a>
+      <button type="button" data-login-trigger>Log In</button>
+      <button type="button" data-menu-open>Menu</button>
+    </nav>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Portal | Infinium Hair & Skin Care Clinic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body class="portal-body portal-body--user">
+    <header class="portal-topbar">
+      <div class="portal-topbar__brand" onclick="location.href='index.html'">Infinium</div>
+      <div class="portal-topbar__actions">
+        <button
+          type="button"
+          class="portal-topbar__link"
+          onclick="document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });"
+        >
+          Results
+        </button>
+        <button
+          type="button"
+          class="portal-profile-chip"
+          onclick="document.getElementById('profileSection').scrollIntoView({ behavior: 'smooth' });"
+        >
+          <span>Logged in as</span>
+          <strong data-portal-chip-name>Anjali</strong>
+        </button>
+        <button
+          type="button"
+          class="portal-cart-chip"
+          onclick="document.getElementById('cartSection').scrollIntoView({ behavior: 'smooth' });"
+        >
+          <span>Cart</span>
+          <strong data-portal-cart-count>0</strong>
+          <span data-portal-cart-total>₹0</span>
+        </button>
+      </div>
+    </header>
+    <header class="portal-hero">
+      <div class="portal-hero__content">
+        <div class="portal-hero__profile">
+          <div class="portal-logo">Infinium</div>
+          <p class="portal-hero__eyebrow">Personalised recovery program</p>
+          <h1 class="portal-hero__headline">
+            Welcome back, <span data-portal-name>Anjali</span>
+          </h1>
+          <p class="portal-hero__stage" data-portal-stage>Stage 3 | Active Plan</p>
+          <ul class="portal-hero__badges">
+            <li class="portal-tag" data-portal-id>INF-2483</li>
+            <li class="portal-tag" data-portal-coach>Coach Neha Patel</li>
+          </ul>
+          <div class="portal-hero__actions">
+            <button
+              type="button"
+              class="portal-pill portal-pill--accent"
+              onclick="location.href='recommended-plan.html'"
+            >
+              View Recommended Plan
+            </button>
+            <button type="button" class="portal-pill" onclick="location.href='coach-call.html'">Book Coach Call</button>
+            <button
+              type="button"
+              class="portal-icon"
+              onclick="location.href='index.html'"
+              aria-label="Back to home"
+            >
+              ⟲
+            </button>
+          </div>
+        </div>
+        <div class="portal-hero__illustration">
+          <img src="assets/images/hero-couple.jpg" alt="Care team" data-portal-avatar />
+        </div>
+      </div>
+      <div class="portal-hero__summary">
+        <article>
+          <p>Assessment Score</p>
+          <strong data-portal-score>82%</strong>
+        </article>
+        <article>
+          <p>Primary Coach</p>
+          <strong data-portal-coach-summary>Neha Patel</strong>
+        </article>
+        <article>
+          <p>Next Touchpoint</p>
+          <strong data-portal-next>Tue, 24 Sept · 5:30 PM</strong>
+        </article>
+      </div>
+    </header>
+
+    <main class="portal-main portal-main--user">
+      <section class="portal-section portal-section--profile" id="profileSection">
+        <div class="portal-section__head">
+          <div>
+            <p class="portal-section__eyebrow">Your data</p>
+            <h3>Profile &amp; Settings</h3>
+          </div>
+        </div>
+        <div class="portal-profile">
+          <div class="portal-profile__avatar">
+            <img src="assets/images/hero-couple.jpg" alt="Profile" data-profile-avatar />
+            <button type="button" data-profile-avatar-trigger>Change photo</button>
+            <input type="file" accept="image/*" data-profile-avatar-input hidden />
+          </div>
+          <form class="portal-profile__form" data-profile-form>
+            <div class="portal-form__grid">
+              <label>
+                <span>Full name</span>
+                <input type="text" name="name" placeholder="Enter your name" required />
+              </label>
+              <label>
+                <span>Email</span>
+                <input type="email" name="email" placeholder="you@email.com" required />
+              </label>
+              <label>
+                <span>Mobile</span>
+                <input type="tel" name="phone" placeholder="+91 98XXXXXXX" required />
+              </label>
+              <label>
+                <span>Date of birth</span>
+                <input type="date" name="dob" />
+              </label>
+              <label>
+                <span>Gender</span>
+                <select name="gender">
+                  <option value="">Select</option>
+                  <option value="female">Female</option>
+                  <option value="male">Male</option>
+                  <option value="nonbinary">Non-binary</option>
+                  <option value="prefer-not">Prefer not to say</option>
+                </select>
+              </label>
+              <label>
+                <span>City</span>
+                <input type="text" name="city" placeholder="Your city" />
+              </label>
+            </div>
+            <label class="portal-form__textarea">
+              <span>Goals / Notes</span>
+              <textarea name="goals" rows="3" placeholder="Share lifestyle goals or allergies"></textarea>
+            </label>
+            <div class="portal-form__actions">
+              <button type="submit" class="portal-pill portal-pill--accent">Save profile</button>
+              <span class="portal-form__status" data-profile-status></span>
+            </div>
+          </form>
+        </div>
+      </section>
+      <section class="portal-section">
+        <div class="portal-section__head">
+          <div>
+            <p class="portal-section__eyebrow">Need something?</p>
+            <h3>Quick actions</h3>
+          </div>
+        </div>
+        <div class="portal-launcher">
+          <button type="button" onclick="location.href='coach-call.html'">
+            <span data-launcher-coach>Talk to your Hair Coach</span>
+          </button>
+          <button type="button">
+            <span data-launcher-diet>My Diet Plan</span>
+          </button>
+          <button type="button">
+            <span data-launcher-prescription>My Prescription</span>
+          </button>
+          <button type="button">
+            <span data-launcher-refill>Buy Again</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="portal-section portal-root">
+        <div class="portal-section__head">
+          <div>
+            <p class="portal-section__eyebrow">Program overview</p>
+            <h3>Your root causes</h3>
+          </div>
+          <button
+            type="button"
+            class="portal-pill portal-pill--ghost"
+            onclick="location.href='recommended-plan.html'"
+          >
+            My Recommended Plan
+          </button>
+        </div>
+        <div class="root-grid" data-portal-focus>
+          <article>
+            <p>Genetics</p>
+          </article>
+          <article>
+            <p>Lifestyle</p>
+          </article>
+          <article>
+            <p>Stress</p>
+          </article>
+          <article>
+            <p>Nutrition</p>
+          </article>
+        </div>
+        <div class="root-summary">
+          <h3>Will Infinium work for me?</h3>
+          <p>
+            Absolutely, results depend on your hair loss stage and age.<br />As per your test, you will take
+            <strong>5 months</strong> to see visible results.
+          </p>
+          <div class="root-timeline">
+            <article>
+              <h4>Month 1-2</h4>
+              <p>Treat internal root causes behind your hair fall.</p>
+            </article>
+            <article>
+              <h4>Month 3-4</h4>
+              <p>Reduce hair fall and improve follicle health.</p>
+            </article>
+            <article>
+              <h4>Month 5-6</h4>
+              <p>Grow new and healthy set of baby hair.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="portal-section portal-section--split">
+        <article class="portal-card portal-card--list">
+          <div class="portal-section__head portal-section__head--compact">
+            <div>
+              <p class="portal-section__eyebrow">Daily care</p>
+              <h3>Medication schedule</h3>
+            </div>
+          </div>
+          <div class="portal-medications" data-portal-meds>
+            <article class="portal-medications__item">
+              <p class="portal-label">Morning</p>
+              <strong>Hair Ras, Defence Shampoo</strong>
+            </article>
+            <article class="portal-medications__item">
+              <p class="portal-label">Evening</p>
+              <strong>Calm Ras, Nourish Oil</strong>
+            </article>
+          </div>
+        </article>
+        <article class="portal-card portal-card--list">
+          <div class="portal-section__head portal-section__head--compact">
+            <div>
+              <p class="portal-section__eyebrow">Stay on track</p>
+              <h3>Upcoming touchpoints</h3>
+            </div>
+          </div>
+          <ul class="portal-touchpoints" data-portal-touchpoints>
+            <li>
+              <p>Coach Check-in</p>
+              <strong>Tue, 24 Sept · 5:30 PM</strong>
+            </li>
+            <li>
+              <p>Refill Reminder</p>
+              <strong>Next week</strong>
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="portal-section portal-section--cart" id="cartSection">
+        <div class="portal-section__head">
+          <div>
+            <p class="portal-section__eyebrow">Recommended for you</p>
+            <h3>Cart &amp; checkout</h3>
+          </div>
+        </div>
+        <div class="portal-cart">
+          <div class="portal-cart__items" data-portal-cart-items></div>
+          <p class="portal-cart__empty" data-portal-cart-empty hidden>
+            Your cart is empty. Add doctor prescribed products from your plan.
+          </p>
+          <aside class="portal-cart__summary">
+            <h4>Order summary</h4>
+            <dl>
+              <div>
+                <dt>Subtotal</dt>
+                <dd data-cart-subtotal>₹0</dd>
+              </div>
+              <div>
+                <dt>Shipping</dt>
+                <dd data-cart-delivery>FREE</dd>
+              </div>
+              <div class="portal-cart__total">
+                <dt>Total</dt>
+                <dd data-cart-total>₹0</dd>
+              </div>
+            </dl>
+            <button type="button" class="portal-pill portal-pill--accent portal-cart__checkout" data-cart-checkout>
+              Pay &amp; Checkout
+            </button>
+            <p class="portal-cart__note">Payments are securely processed via Razorpay.</p>
+            <p class="portal-cart__error" data-cart-error></p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="portal-section" id="resultsSection">
+        <div class="portal-section__head">
+          <div>
+            <p class="portal-section__eyebrow">Test history</p>
+            <h3>Your assessments &amp; results</h3>
+          </div>
+        </div>
+        <div class="portal-results" data-results-list></div>
+      </section>
+    </main>
+    <script>
+      (function () {
+        const nameEl = document.querySelector('[data-portal-name]');
+        const stageEl = document.querySelector('[data-portal-stage]');
+        const avatarEl = document.querySelector('[data-portal-avatar]');
+        const chipNameEl = document.querySelector('[data-portal-chip-name]');
+        const coachActionEl = document.querySelector('[data-launcher-coach]');
+        const userIdEl = document.querySelector('[data-portal-id]');
+        const coachBadgeEl = document.querySelector('[data-portal-coach]');
+        const coachSummaryEl = document.querySelector('[data-portal-coach-summary]');
+        const scoreEl = document.querySelector('[data-portal-score]');
+        const focusGrid = document.querySelector('[data-portal-focus]');
+        const medsContainer = document.querySelector('[data-portal-meds]');
+        const touchpointsContainer = document.querySelector('[data-portal-touchpoints]');
+        const nextTouchpointEl = document.querySelector('[data-portal-next]');
+        const profileForm = document.querySelector('[data-profile-form]');
+        const profileStatusEl = document.querySelector('[data-profile-status]');
+        const profileAvatarInput = document.querySelector('[data-profile-avatar-input]');
+        const profileAvatarTrigger = document.querySelector('[data-profile-avatar-trigger]');
+        const profileAvatarEl = document.querySelector('[data-profile-avatar]');
+        const resultsList = document.querySelector('[data-results-list]');
+        const cartList = document.querySelector('[data-portal-cart-items]');
+        const cartEmpty = document.querySelector('[data-portal-cart-empty]');
+        const cartSubtotalEl = document.querySelector('[data-cart-subtotal]');
+        const cartDeliveryEl = document.querySelector('[data-cart-delivery]');
+        const cartTotalEl = document.querySelector('[data-cart-total]');
+        const cartCheckoutBtn = document.querySelector('[data-cart-checkout]');
+        const cartErrorEl = document.querySelector('[data-cart-error]');
+        const cartCountEls = document.querySelectorAll('[data-portal-cart-count]');
+        const cartTotalBadgeEls = document.querySelectorAll('[data-portal-cart-total]');
+
+        const defaults = {
+          profile: {
+            name: 'Anjali',
+            stage: 'Stage 3 | Active Plan',
+            userId: 'INF-2483',
+            coach: 'Neha Patel',
+            avatar: 'assets/images/hero-couple.jpg',
+          },
+          assessment: {
+            score: 82,
+            focusAreas: ['Genetics', 'Lifestyle', 'Stress', 'Nutrition'],
+          },
+          medications: [
+            { schedule: 'Morning', items: ['Hair Ras', 'Defence Shampoo'] },
+            { schedule: 'Evening', items: ['Calm Ras', 'Nourish Oil'] },
+          ],
+          touchpoints: [
+            { label: 'Coach Check-in', value: 'Tue, 24 Sept · 5:30 PM' },
+            { label: 'Refill Reminder', value: 'Next week' },
+          ],
+          results: [
+            {
+              id: 'hair-test',
+              title: 'Comprehensive Hair Health Test',
+              status: 'Completed',
+              updatedAt: 'Today, 10:15 AM',
+              link: 'result.html#hair-test',
+            },
+            {
+              id: 'skin-analysis',
+              title: 'Skin & Scalp Scan',
+              status: 'Doctor reviewing',
+              updatedAt: 'Yesterday, 6:20 PM',
+              link: 'result.html#skin',
+            },
+          ],
+          cart: [
+            {
+              id: 'hair-ras',
+              name: 'Hair Ras Tonic',
+              dosage: 'Morning after meals',
+              qty: 1,
+              price: 1899,
+              tag: 'Doctor prescribed',
+              image: 'assets/images/product-herbs.jpg',
+            },
+            {
+              id: 'defence-shampoo',
+              name: 'Defence Shampoo',
+              dosage: 'Alternate days',
+              qty: 1,
+              price: 999,
+              tag: 'Clinic exclusive',
+              image: 'assets/images/product-shampoo.jpg',
+            },
+            {
+              id: 'calm-ras',
+              name: 'Calm Ras Elixir',
+              dosage: 'Night routine',
+              qty: 1,
+              price: 1499,
+              tag: 'Stress balance',
+              image: 'assets/images/threefold-supplement.jpg',
+            },
+          ],
+        };
+
+        const PROFILE_STORAGE_KEY = 'infiniumUserProfile';
+        const CART_STORAGE_KEY = 'infiniumUserCart';
+        const RESULTS_STORAGE_KEY = 'infiniumUserResults';
+
+        const updateText = (el, text) => {
+          if (el && text) {
+            el.textContent = text;
+          }
+        };
+
+        const renderScore = (score) => {
+          if (!scoreEl) return;
+          scoreEl.textContent = typeof score === 'number' ? `${score}%` : '—';
+        };
+
+        const renderFocusAreas = (areas) => {
+          if (!focusGrid) return;
+          const list = areas && areas.length ? areas.slice(0, 4) : defaults.assessment.focusAreas;
+          focusGrid.innerHTML = list.map((area) => `<article><p>${area}</p></article>`).join('');
+        };
+
+        const renderMedications = (entries) => {
+          if (!medsContainer) return;
+          if (!entries || !entries.length) {
+            medsContainer.innerHTML =
+              '<p class="portal-empty">Your personalised medication schedule will appear here once assigned.</p>';
+            return;
+          }
+          medsContainer.innerHTML = entries
+            .map(
+              (entry) => `<article class="portal-medications__item">
+                <p class="portal-label">${entry.schedule || 'Daily'}</p>
+                <strong>${(entry.items || []).join(', ') || 'Plan coming soon'}</strong>
+              </article>`
+            )
+            .join('');
+        };
+
+        const renderTouchpoints = (entries) => {
+          if (!touchpointsContainer) return;
+          if (!entries || !entries.length) {
+            touchpointsContainer.innerHTML = '<li class="portal-empty">No touchpoints scheduled yet.</li>';
+            if (nextTouchpointEl) {
+              nextTouchpointEl.textContent = '—';
+            }
+            return;
+          }
+          touchpointsContainer.innerHTML = entries
+            .map(
+              (entry) => `<li>
+                <p>${entry.label || 'Touchpoint'}</p>
+                <strong>${entry.value || ''}</strong>
+              </li>`
+            )
+            .join('');
+          if (nextTouchpointEl) {
+            nextTouchpointEl.textContent = entries[0].value || '—';
+          }
+        };
+
+        const cloneFallback = (value) => {
+          if (Array.isArray(value)) {
+            return value.map((item) => (item && typeof item === 'object' ? { ...item } : item));
+          }
+          if (value && typeof value === 'object') {
+            return { ...value };
+          }
+          return value;
+        };
+
+        const loadFromStorage = (key, fallback) => {
+          try {
+            const raw = localStorage.getItem(key);
+            if (!raw) return cloneFallback(fallback);
+            return JSON.parse(raw);
+          } catch (error) {
+            return cloneFallback(fallback);
+          }
+        };
+
+        const saveToStorage = (key, value) => {
+          try {
+            localStorage.setItem(key, JSON.stringify(value));
+          } catch (_) {
+            /* ignore storage issues */
+          }
+        };
+
+        const formatCurrency = (value = 0) =>
+          `₹${(value || 0).toLocaleString('en-IN', { maximumFractionDigits: 0 })}`;
+
+        let storedProfile = loadFromStorage(PROFILE_STORAGE_KEY, defaults.profile);
+        let userResults = loadFromStorage(RESULTS_STORAGE_KEY, defaults.results);
+        let cartItems = loadFromStorage(CART_STORAGE_KEY, defaults.cart);
+        if (!Array.isArray(cartItems) || !cartItems.length) {
+          cartItems = defaults.cart.map((item) => ({ ...item }));
+        }
+
+        const persistProfile = () => saveToStorage(PROFILE_STORAGE_KEY, storedProfile);
+        const persistResults = () => saveToStorage(RESULTS_STORAGE_KEY, userResults);
+        const persistCart = () => saveToStorage(CART_STORAGE_KEY, cartItems);
+
+        const renderResults = (entries) => {
+          if (!resultsList) return;
+          const list = entries && entries.length ? entries : defaults.results;
+          resultsList.innerHTML = list
+            .map(
+              (entry) => `<article class="portal-result" data-result-id="${entry.id}">
+                <div>
+                  <p class="portal-result__status">${entry.status || 'Pending'}</p>
+                  <h4>${entry.title || 'Assessment'}</h4>
+                  <p class="portal-result__meta">${entry.updatedAt ? `Updated ${entry.updatedAt}` : ''}</p>
+                </div>
+                <div class="portal-result__actions">
+                  <button type="button" data-result-action="view" data-result-link="${entry.link || 'result.html'}">
+                    View
+                  </button>
+                  <button type="button" data-result-action="download" data-result-id="${entry.id}">
+                    Download
+                  </button>
+                </div>
+              </article>`
+            )
+            .join('');
+        };
+
+        const computeCartTotals = () => {
+          const subtotal = cartItems.reduce(
+            (sum, item) => sum + (item.price || 0) * Math.max(1, item.qty || 0),
+            0
+          );
+          const delivery = subtotal === 0 || subtotal >= 2500 ? 0 : 99;
+          return { subtotal, delivery, total: subtotal + delivery };
+        };
+
+        const syncCartBadges = () => {
+          const totals = computeCartTotals();
+          const count = cartItems.reduce((sum, item) => sum + Math.max(0, item.qty || 0), 0);
+          cartCountEls.forEach((el) => {
+            el.textContent = count.toString();
+          });
+          cartTotalBadgeEls.forEach((el) => {
+            el.textContent = formatCurrency(totals.total);
+          });
+          return totals;
+        };
+
+        const renderCartItems = () => {
+          if (!cartList) return;
+          if (!cartItems.length) {
+            cartList.innerHTML = '';
+            if (cartEmpty) cartEmpty.hidden = false;
+            return;
+          }
+          if (cartEmpty) cartEmpty.hidden = true;
+          cartList.innerHTML = cartItems
+            .map(
+              (item) => `<article class="portal-cart__item" data-cart-item="${item.id}">
+                <img src="${item.image || 'assets/images/product-herbs.jpg'}" alt="${item.name || 'Product'}" />
+                <div class="portal-cart__info">
+                  <h4>${item.name || 'Plan Item'}</h4>
+                  <p>${item.dosage || ''}</p>
+                  <span class="portal-cart__tag">${item.tag || 'Plan item'}</span>
+                  <div class="portal-cart__quantity">
+                    <button type="button" data-cart-action="decrement" data-cart-id="${item.id}" aria-label="Decrease quantity">
+                      &minus;
+                    </button>
+                    <span>${item.qty || 1}</span>
+                    <button type="button" data-cart-action="increment" data-cart-id="${item.id}" aria-label="Increase quantity">
+                      +
+                    </button>
+                  </div>
+                </div>
+                <div class="portal-cart__price">
+                  <strong>${formatCurrency((item.price || 0) * Math.max(1, item.qty || 0))}</strong>
+                  <button type="button" data-cart-action="remove" data-cart-id="${item.id}">Remove</button>
+                </div>
+              </article>`
+            )
+            .join('');
+        };
+
+        const updateCartState = () => {
+          persistCart();
+          renderCartItems();
+          const totals = syncCartBadges();
+          if (cartSubtotalEl) cartSubtotalEl.textContent = formatCurrency(totals.subtotal);
+          if (cartDeliveryEl) cartDeliveryEl.textContent = totals.delivery === 0 ? 'FREE' : formatCurrency(totals.delivery);
+          if (cartTotalEl) cartTotalEl.textContent = formatCurrency(totals.total);
+          if (cartCheckoutBtn) {
+            cartCheckoutBtn.disabled = !cartItems.length;
+          }
+          if (cartErrorEl) cartErrorEl.textContent = '';
+        };
+
+        const applyProfile = (profile = {}) => {
+          updateText(nameEl, profile.name);
+          updateText(stageEl, profile.stage);
+          updateText(userIdEl, profile.userId);
+          if (chipNameEl && profile.name) {
+            const [firstName] = profile.name.split(' ');
+            updateText(chipNameEl, firstName || profile.name);
+          }
+          if (profile.avatar) {
+            if (avatarEl) {
+              avatarEl.src = profile.avatar;
+            }
+            if (profileAvatarEl) {
+              profileAvatarEl.src = profile.avatar;
+            }
+          }
+
+          if (profile.coach) {
+            updateText(coachBadgeEl, `Coach ${profile.coach}`);
+            updateText(coachSummaryEl, profile.coach);
+            updateText(coachActionEl, `Talk to ${profile.coach}`);
+          }
+
+          if (profileForm) {
+            profileForm.elements.name.value = profile.name || '';
+            profileForm.elements.email.value = profile.email || '';
+            profileForm.elements.phone.value = profile.phone || '';
+            profileForm.elements.dob.value = profile.dob || '';
+            profileForm.elements.gender.value = profile.gender || '';
+            profileForm.elements.city.value = profile.city || '';
+            profileForm.elements.goals.value = profile.goals || '';
+          }
+        };
+
+        const loadStoredContext = () => {
+          try {
+            const raw = localStorage.getItem('infiniumUserContext');
+            if (!raw) return {};
+            return JSON.parse(raw);
+          } catch (error) {
+            return {};
+          }
+        };
+
+        const upsertUserContext = (updates = {}) => {
+          const context = { ...loadStoredContext(), ...updates };
+          try {
+            localStorage.setItem('infiniumUserContext', JSON.stringify(context));
+          } catch (_) {
+            /* ignore */
+          }
+        };
+
+        renderScore(defaults.assessment.score);
+        renderFocusAreas(defaults.assessment.focusAreas);
+        renderMedications(defaults.medications);
+        renderTouchpoints(defaults.touchpoints);
+        renderResults(userResults);
+        renderCartItems();
+        updateCartState();
+
+        const storedContext = loadStoredContext();
+        storedProfile = { ...storedProfile, ...storedContext };
+        persistProfile();
+        applyProfile({ ...defaults.profile, ...storedProfile });
+
+        const flashProfileStatus = (message, isError = false) => {
+          if (!profileStatusEl) return;
+          profileStatusEl.textContent = message;
+          profileStatusEl.dataset.state = isError ? 'error' : 'success';
+          if (message) {
+            setTimeout(() => {
+              profileStatusEl.textContent = '';
+            }, 2500);
+          }
+        };
+
+        const extractProfileFromForm = () => {
+          if (!profileForm) return {};
+          const data = new FormData(profileForm);
+          return {
+            name: (data.get('name') || '').trim(),
+            email: (data.get('email') || '').trim(),
+            phone: (data.get('phone') || '').trim(),
+            dob: data.get('dob') || '',
+            gender: data.get('gender') || '',
+            city: (data.get('city') || '').trim(),
+            goals: (data.get('goals') || '').trim(),
+          };
+        };
+
+        const handleAvatarUpload = (file) => {
+          if (!file) return;
+          const reader = new FileReader();
+          reader.onload = () => {
+            storedProfile.avatar = reader.result;
+            persistProfile();
+            applyProfile({ ...storedProfile });
+            upsertUserContext({ avatar: reader.result });
+            flashProfileStatus('Photo updated');
+          };
+          reader.readAsDataURL(file);
+        };
+
+        profileAvatarTrigger?.addEventListener('click', () => {
+          profileAvatarInput?.click();
+        });
+
+        profileAvatarInput?.addEventListener('change', (event) => {
+          const file = event.target.files?.[0];
+          handleAvatarUpload(file);
+        });
+
+        profileForm?.addEventListener('submit', (event) => {
+          event.preventDefault();
+          const payload = extractProfileFromForm();
+          storedProfile = { ...storedProfile, ...payload };
+          persistProfile();
+          applyProfile({ ...defaults.profile, ...storedProfile });
+          upsertUserContext({
+            name: payload.name,
+            email: payload.email,
+            phone: payload.phone,
+            stage: storedProfile.stage || defaults.profile.stage,
+          });
+          flashProfileStatus('Profile saved');
+        });
+
+        resultsList?.addEventListener('click', (event) => {
+          const button = event.target.closest('[data-result-action]');
+          if (!button) return;
+          const action = button.dataset.resultAction;
+          if (action === 'view') {
+            const link = button.dataset.resultLink || 'result.html';
+            window.open(link, '_blank', 'noopener');
+          } else if (action === 'download') {
+            const id = button.dataset.resultId;
+            const result = userResults.find((entry) => entry.id === id);
+            const link = (result && result.link) || 'result.html';
+            window.open(`${link}?download=1`, '_blank', 'noopener');
+          }
+        });
+
+        cartList?.addEventListener('click', (event) => {
+          const button = event.target.closest('[data-cart-action]');
+          if (!button) return;
+          const id = button.dataset.cartId;
+          if (!id) return;
+          const index = cartItems.findIndex((entry) => entry.id === id);
+          if (index === -1) return;
+          const action = button.dataset.cartAction;
+          if (action === 'increment') {
+            cartItems[index].qty = Math.max(1, (cartItems[index].qty || 1) + 1);
+          } else if (action === 'decrement') {
+            cartItems[index].qty = Math.max(1, (cartItems[index].qty || 1) - 1);
+          } else if (action === 'remove') {
+            cartItems.splice(index, 1);
+          }
+          updateCartState();
+        });
+
+        const setCartLoading = (isLoading) => {
+          if (!cartCheckoutBtn) return;
+          cartCheckoutBtn.disabled = isLoading || !cartItems.length;
+          cartCheckoutBtn.classList.toggle('is-loading', isLoading);
+          cartCheckoutBtn.textContent = isLoading ? 'Starting Razorpay…' : 'Pay & Checkout';
+        };
+
+        const collectCheckoutCustomer = () => ({
+          name: storedProfile.name || defaults.profile.name,
+          contact: storedProfile.phone || storedContext.phone,
+          email: storedProfile.email || storedContext.email,
+          stage: storedProfile.stage || storedContext.stage || defaults.profile.stage,
+        });
+
+        const handleCheckout = async () => {
+          if (!cartItems.length) return;
+          cartErrorEl.textContent = '';
+          setCartLoading(true);
+          const totals = computeCartTotals();
+          try {
+            const response = await fetch(`${resolveApiBase()}/api/payments/plan-link`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                totalAmount: totals.total,
+                customer: collectCheckoutCustomer(),
+                items: cartItems.map((item) => `${item.name} x${item.qty}`),
+                successRedirect: `${window.location.origin}/recommended-plan.html`,
+              }),
+            });
+            const payload = await response.json().catch(() => ({}));
+            if (!response.ok || !payload?.paymentUrl) {
+              throw new Error(payload?.message || 'Unable to start checkout. Please try again.');
+            }
+            window.open(payload.paymentUrl, '_blank', 'noopener');
+          } catch (error) {
+            if (cartErrorEl) cartErrorEl.textContent = error.message;
+          } finally {
+            setCartLoading(false);
+          }
+        };
+
+        cartCheckoutBtn?.addEventListener('click', handleCheckout);
+
+        const resolveApiBase = () => {
+          if (typeof window.__INF_OTP_API_BASE === 'string') {
+            return window.__INF_OTP_API_BASE;
+          }
+          if (window.location.hostname === 'localhost' && window.location.port !== '4000') {
+            return window.location.origin;
+          }
+          return '';
+        };
+
+        const base = resolveApiBase();
+        fetch(`${base}/api/user/dashboard`)
+          .then((res) => res.json())
+          .then((data) => {
+            applyProfile({
+              name: data.profile?.name,
+              stage: data.profile?.stage ? `${data.profile.stage} | Active Plan` : undefined,
+              avatar: data.profile?.avatarUrl,
+              coach: data.profile?.coach,
+              userId: data.profile?.userId ?? data.profile?.userId,
+            });
+            renderScore(data.assessment?.score);
+            renderFocusAreas(data.assessment?.focusAreas);
+            renderMedications(data.medications);
+            renderTouchpoints(data.touchpoints);
+            if (Array.isArray(data?.results)) {
+              userResults = data.results;
+              persistResults();
+              renderResults(userResults);
+            }
+            if (Array.isArray(data?.cartItems)) {
+              cartItems = data.cartItems.map((item) => ({
+                id: item.id || item.sku || item.name,
+                name: item.name,
+                dosage: item.dosage,
+                qty: item.qty || 1,
+                price: item.price || 0,
+                tag: item.tag,
+                image: item.image,
+              }));
+              updateCartState();
+            }
+          })
+          .catch(() => {
+            /* keep defaults */
+          });
+      })();
+    </script>
+      <a href="https://wa.me/917621871654" class="whatsapp-fab" target="_blank" rel="noopener">
+      <img src="assets/images/whatsApp-icon.png" alt="WhatsApp" class="whatsapp-fab__icon" />
+    </a>
+</body>
+</html>

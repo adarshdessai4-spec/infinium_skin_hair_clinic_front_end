@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infinium Aesthetic Institute | Infinium Skin & Hair Clinic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body class="has-mobile-tab">
+    <!-- SAME HEADER AS INDEX -->
+    <nav class="nav">
+      <div class="nav__inner">
+        <a class="logo" href="index.html">
+          <img
+            src="assets/images/brand_logo.png"
+            alt="Infinium Skin & Hair Clinic logo"
+          />
+        </a>
+
+        <div class="brand-tabs">
+          <a href="index.html" class="brand-tabs__link">
+            Home
+          </a>
+          <span class="brand-tabs__divider"></span>
+          <a href="franchise.html" class="brand-tabs__link">
+            Infinium Franchise Module
+          </a>
+          <span class="brand-tabs__divider"></span>
+          <a href="institute.html" class="brand-tabs__link">
+            Infinium Aesthetics &amp; Cosmetic Institute
+          </a>
+          <span class="brand-tabs__divider"></span>
+          <a href="home-care-products.html" class="brand-tabs__link">
+            Infinium Home Care Products
+          </a>
+        </div>
+
+        <div class="nav-search">
+          <input type="search" placeholder="Search Infinium..." />
+        </div>
+
+        <div class="nav-right">
+          <button
+            class="nav-icon nav-icon--menu"
+            type="button"
+            aria-label="Toggle navigation menu"
+            aria-controls="menuOverlay"
+            aria-expanded="false"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      class="menu-overlay"
+      id="menuOverlay"
+      aria-hidden="true"
+      tabindex="-1"
+    >
+      <button
+        class="menu-overlay__close"
+        type="button"
+        aria-label="Close menu"
+      >
+        &times;
+      </button>
+      <div class="menu-overlay__panel">
+        <div class="menu-overlay__brand">
+          <span class="menu-overlay__logo">Infinium.</span>
+        </div>
+        <section class="menu-overlay__group menu-overlay__group--divisions">
+          <p class="menu-overlay__heading">Explore Infinium</p>
+          <ul class="menu-overlay__list menu-overlay__list--brand-tabs">
+            <li>
+              <a class="menu-overlay__link" href="index.html"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a class="menu-overlay__link" href="franchise.html"
+                >Infinium Franchise Module</a
+              >
+            </li>
+            <li>
+              <a class="menu-overlay__link" href="institute.html"
+                >Infinium Aesthetics &amp; Cosmetic Institute</a
+              >
+            </li>
+            <li>
+              <a class="menu-overlay__link" href="home-care-products.html"
+                >Infinium Home Care Products</a
+              >
+            </li>
+          </ul>
+        </section>
+        <section class="menu-overlay__group menu-overlay__group--primary">
+          <p class="menu-overlay__heading">What We Do</p>
+          <p class="menu-overlay__copy">
+            We help you take control of your hair loss journey in a
+            personalised, science-backed way.
+          </p>
+          <div class="menu-overlay__list-grid">
+            <ul class="menu-overlay__list">
+              
+              <li>
+                <a class="menu-overlay__link" href="money-back.html"
+                  >Money Back Guarantee</a
+                >
+              </li>
+              <li>
+                <a class="menu-overlay__link" href="referral.html">Referral</a>
+              </li>
+              <li>
+                <a class="menu-overlay__link" href="franchise.html"
+                  >Franchise Partner</a
+                >
+              </li>
+            </ul>
+            <ul class="menu-overlay__list">
+              <li>
+                <a class="menu-overlay__link" href="hair-test.html"
+                  >Hair Test ™</a
+                >
+              </li>
+              <li>
+                <a class="menu-overlay__link" href="combos.html"
+                  >Infinium Combos</a
+                >
+              </li>
+            </ul>
+          </div>
+        </section>
+        <div class="menu-overlay__grid menu-overlay__grid--secondary">
+          <section class="menu-overlay__group">
+            <p class="menu-overlay__heading">How We Do It</p>
+            <ul class="menu-overlay__list menu-overlay__list--single">
+              <li><a class="menu-overlay__link" href="science.html">Infinium Science</a></li>
+              
+              
+              
+            </ul>
+          </section>
+          <section class="menu-overlay__group">
+            <p class="menu-overlay__heading">Who We Are</p>
+            <ul class="menu-overlay__list menu-overlay__list--single">
+              
+              
+            </ul>
+          </section>
+        </div>
+        <section class="menu-overlay__group menu-overlay__group--contact">
+          <p class="menu-overlay__heading">Get In Touch</p>
+          <div class="menu-overlay__social">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="WhatsApp">WA</a>
+          </div>
+        </section>
+        
+      </div>
+      <div class="products-panel" id="productsPanel" aria-hidden="true">
+        <div class="products-panel__media" aria-hidden="true">
+          <img src="assets/images/regimen-supplements.jpg" alt="" />
+        </div>
+        <div class="products-panel__body">
+          <button
+            type="button"
+            class="products-panel__back"
+            data-products-close
+          >
+            &larr; Products
+          </button>
+          <div class="products-panel__columns">
+            <div>
+              <h4>Hair Care</h4>
+              <ul>
+                <li><a href="#">Hair Ras</a></li>
+                <li><a href="#">Hair Vitamin</a></li>
+                <li><a href="#">Health Tatva</a></li>
+                <li><a href="#">Defence Shampoo</a></li>
+                <li><a href="#">Defence Conditioner</a></li>
+                <li><a href="#">Anti Dandruff Lotion</a></li>
+                <li><a href="#">Cholest Vati</a></li>
+                <li><a href="#">Calm Ras</a></li>
+                <li><a href="#">Consti Clear</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Gut &amp; Wellness</h4>
+              <ul>
+                <li><a href="#">Gut Shuddhi</a></li>
+                <li><a href="#">Nasal Drops</a></li>
+                <li><a href="#">Hair Actives Serum</a></li>
+                <li><a href="#">Anti-Dandruff Shampoo</a></li>
+                <li><a href="#">Digest Boost</a></li>
+                <li><a href="#">Mom Santulan</a></li>
+                <li><a href="#">Iron Santulan</a></li>
+                <li><a href="#">Thyro Santulan</a></li>
+                <li><a href="#">Her Santulan</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Scalp Oils</h4>
+              <ul>
+                <li><a href="#">Scalp Oil</a></li>
+                <li><a href="#">Nourish Hair Oil</a></li>
+                <li><a href="#">Hair Vitamin For Her</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main class="division-main">
+      <section class="section">
+        <div class="container">
+          <div class="module-hero">
+            <div class="module-hero__copy">
+              <p class="module-hero__eyebrow">Infinium Aesthetics &amp; Cosmetic Institute</p>
+              <h1>Build a future-ready aesthetics career</h1>
+              <p>
+                Learn directly from Infinium dermatologists and surgeons through outcome-driven programs that mix theory,
+                hands-on practice, and real clinic exposure.
+              </p>
+              <div class="module-stats">
+                <div class="module-stat">
+                  <strong>1,200+</strong>
+                  <span>Professionals trained</span>
+                </div>
+                <div class="module-stat">
+                  <strong>20+</strong>
+                  <span>Procedures covered</span>
+                </div>
+                <div class="module-stat">
+                  <strong>6</strong>
+                  <span>Certification tracks</span>
+                </div>
+              </div>
+            </div>
+            <div class="module-hero__media">
+              <img src="assets/images/menu-overlay-lifestyle.jpg" alt="Students at Infinium Aesthetic Institute" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Programs we offer</h2>
+            <span class="heading-underline"></span>
+          </div>
+          <div class="module-card-grid">
+            <article class="module-card">
+              <h3>7-Day Intensive</h3>
+              <p>Ideal for practising dermatologists looking to upgrade skills in lasers, peels, and injectables.</p>
+            </article>
+            <article class="module-card">
+              <h3>1-Month Certificate</h3>
+              <p>Comprehensive coverage of non-surgical treatments with daily hands-on practice and viva.</p>
+            </article>
+            <article class="module-card">
+              <h3>6-Month Professional Program</h3>
+              <p>For cosmetologists planning to manage clinics – includes anatomy, OT protocols, and counselling skills.</p>
+            </article>
+            <article class="module-card">
+              <h3>1-Year Advanced Diploma</h3>
+              <p>Full-stack training across hair, skin, lasers, and clinic entrepreneurship with internships at Infinium.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Curriculum highlights</h2>
+            <span class="heading-underline"></span>
+          </div>
+          <div class="module-card-grid">
+            <article class="module-card">
+              <h3>Clinical Modules</h3>
+              <ul>
+                <li>Laser physics &amp; safety</li>
+                <li>Chemical peels &amp; resurfacing</li>
+                <li>PRP / GFC and mesotherapy</li>
+                <li>Hydrafacial &amp; dermaplaning</li>
+              </ul>
+            </article>
+            <article class="module-card">
+              <h3>Hair Science</h3>
+              <ul>
+                <li>Trichoscopy &amp; diagnosis</li>
+                <li>Hair transplant OT protocols</li>
+                <li>Low-level laser therapy</li>
+                <li>Post-procedure care</li>
+              </ul>
+            </article>
+            <article class="module-card">
+              <h3>Business &amp; Soft Skills</h3>
+              <ul>
+                <li>Clinic SOPs &amp; compliance</li>
+                <li>Counselling &amp; photography</li>
+                <li>Inventory + CRM workflows</li>
+                <li>Personal branding</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Learn inside a live clinic ecosystem</h2>
+            <span class="heading-underline"></span>
+          </div>
+          <div class="module-card-grid">
+            <article class="module-card">
+              <h3>Simulation Labs</h3>
+              <p>Practice on training mannequins and supervised models with the same equipment used at Infinium clinics.</p>
+            </article>
+            <article class="module-card">
+              <h3>Mentor Pods</h3>
+              <p>Small group mentoring with senior dermatologists and plastic surgeons each week.</p>
+            </article>
+            <article class="module-card">
+              <h3>Career Services</h3>
+              <p>Placement assistance across Infinium centres and partner clinics plus entrepreneurship guidance.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-heading">
+            <h2>FAQs</h2>
+            <span class="heading-underline"></span>
+          </div>
+          <div class="faq-list">
+            <article class="faq-item">
+              <h4>Who can apply?</h4>
+              <p>Dermatologists, MBBS doctors, BAMS/BHMS practitioners, cosmetologists, and final-year students.</p>
+            </article>
+            <article class="faq-item">
+              <h4>Do you offer certifications?</h4>
+              <p>Yes, each program offers a certificate issued by Infinium Aesthetic Institute after evaluation.</p>
+            </article>
+            <article class="faq-item">
+              <h4>Is accommodation available?</h4>
+              <p>We provide hostel recommendations and discounted partner stays for outstation students.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="module-cta-panel">
+            <div>
+              <h3>Download the detailed brochure</h3>
+              <p>Includes curriculum, faculty list, fee structure, and upcoming batch dates.</p>
+            </div>
+            <a class="primary-cta" href="mailto:academy@infinium.com">Request Brochure</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- SAME FOOTER / WHATSAPP / MOBILE BAR / SCRIPTS AS INDEX -->
+    <footer class="site-footer">
+      <!-- you can copy the exact footer markup from index.html here -->
+    </footer>
+
+    <a
+      href="https://wa.me/91XXXXXXXXXX"
+      class="whatsapp-fab"
+      target="_blank"
+      rel="noopener"
+    >
+      <img
+        src="assets/images/whatsApp-icon.png"
+        alt="WhatsApp"
+        class="whatsapp-fab__icon"
+      />
+    </a>
+
+    <nav class="mobile-tab-bar" aria-label="Quick actions">
+      <a href="franchise.html">Franchise</a>
+      <a href="hair-test.html">Take Test</a>
+      <button type="button" data-login-trigger>Log In</button>
+    </nav>
+
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

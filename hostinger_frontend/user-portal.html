@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Portal | Infinium Hair & Skin Care Clinic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body class="portal-body portal-body--user">
+    <header class="portal-hero">
+      <div class="portal-hero__content">
+        <div class="portal-hero__profile">
+          <div class="portal-logo">Infinium</div>
+          <p class="portal-hero__eyebrow">Personalised recovery program</p>
+          <h1 class="portal-hero__headline">
+            Welcome back, <span data-portal-name>Anjali</span>
+          </h1>
+          <p class="portal-hero__stage" data-portal-stage>Stage 3 | Active Plan</p>
+          <ul class="portal-hero__badges">
+            <li class="portal-tag" data-portal-id>INF-2483</li>
+            <li class="portal-tag" data-portal-coach>Coach Neha Patel</li>
+          </ul>
+          <div class="portal-hero__actions">
+            <button
+              type="button"
+              class="portal-pill portal-pill--accent"
+              onclick="location.href='recommended-plan.html'"
+            >
+              View Recommended Plan
+            </button>
+            <button type="button" class="portal-pill" onclick="location.href='coach-call.html'">Book Coach Call</button>
+            <button
+              type="button"
+              class="portal-icon"
+              onclick="location.href='index.html'"
+              aria-label="Back to home"
+            >
+              ⟲
+            </button>
+          </div>
+        </div>
+        <div class="portal-hero__illustration">
+          <img src="assets/images/hero-couple.jpg" alt="Care team" data-portal-avatar />
+        </div>
+      </div>
+      <div class="portal-hero__summary">
+        <article>
+          <p>Assessment Score</p>
+          <strong data-portal-score>82%</strong>
+        </article>
+        <article>
+          <p>Primary Coach</p>
+          <strong data-portal-coach-summary>Neha Patel</strong>
+        </article>
+        <article>
+          <p>Next Touchpoint</p>
+          <strong data-portal-next>Tue, 24 Sept · 5:30 PM</strong>
+        </article>
+      </div>
+    </header>
+
+    <main class="portal-main portal-main--user">
+      <section class="portal-section">
+        <div class="portal-section__head">
+          <div>
+            <p class="portal-section__eyebrow">Need something?</p>
+            <h3>Quick actions</h3>
+          </div>
+        </div>
+        <div class="portal-launcher">
+          <button type="button" onclick="location.href='coach-call.html'">
+            <span data-launcher-coach>Talk to your Hair Coach</span>
+          </button>
+          <button type="button">
+            <span data-launcher-diet>My Diet Plan</span>
+          </button>
+          <button type="button">
+            <span data-launcher-prescription>My Prescription</span>
+          </button>
+          <button type="button">
+            <span data-launcher-refill>Buy Again</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="portal-section portal-root">
+        <div class="portal-section__head">
+          <div>
+            <p class="portal-section__eyebrow">Program overview</p>
+            <h3>Your root causes</h3>
+          </div>
+          <button
+            type="button"
+            class="portal-pill portal-pill--ghost"
+            onclick="location.href='recommended-plan.html'"
+          >
+            My Recommended Plan
+          </button>
+        </div>
+        <div class="root-grid" data-portal-focus>
+          <article>
+            <p>Genetics</p>
+          </article>
+          <article>
+            <p>Lifestyle</p>
+          </article>
+          <article>
+            <p>Stress</p>
+          </article>
+          <article>
+            <p>Nutrition</p>
+          </article>
+        </div>
+        <div class="root-summary">
+          <h3>Will Infinium work for me?</h3>
+          <p>
+            Absolutely, results depend on your hair loss stage and age.<br />As per your test, you will take
+            <strong>5 months</strong> to see visible results.
+          </p>
+          <div class="root-timeline">
+            <article>
+              <h4>Month 1-2</h4>
+              <p>Treat internal root causes behind your hair fall.</p>
+            </article>
+            <article>
+              <h4>Month 3-4</h4>
+              <p>Reduce hair fall and improve follicle health.</p>
+            </article>
+            <article>
+              <h4>Month 5-6</h4>
+              <p>Grow new and healthy set of baby hair.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="portal-section portal-section--split">
+        <article class="portal-card portal-card--list">
+          <div class="portal-section__head portal-section__head--compact">
+            <div>
+              <p class="portal-section__eyebrow">Daily care</p>
+              <h3>Medication schedule</h3>
+            </div>
+          </div>
+          <div class="portal-medications" data-portal-meds>
+            <article class="portal-medications__item">
+              <p class="portal-label">Morning</p>
+              <strong>Hair Ras, Defence Shampoo</strong>
+            </article>
+            <article class="portal-medications__item">
+              <p class="portal-label">Evening</p>
+              <strong>Calm Ras, Nourish Oil</strong>
+            </article>
+          </div>
+        </article>
+        <article class="portal-card portal-card--list">
+          <div class="portal-section__head portal-section__head--compact">
+            <div>
+              <p class="portal-section__eyebrow">Stay on track</p>
+              <h3>Upcoming touchpoints</h3>
+            </div>
+          </div>
+          <ul class="portal-touchpoints" data-portal-touchpoints>
+            <li>
+              <p>Coach Check-in</p>
+              <strong>Tue, 24 Sept · 5:30 PM</strong>
+            </li>
+            <li>
+              <p>Refill Reminder</p>
+              <strong>Next week</strong>
+            </li>
+          </ul>
+        </article>
+      </section>
+    </main>
+    <script>
+      (function () {
+        const nameEl = document.querySelector('[data-portal-name]');
+        const stageEl = document.querySelector('[data-portal-stage]');
+        const avatarEl = document.querySelector('[data-portal-avatar]');
+        const coachActionEl = document.querySelector('[data-launcher-coach]');
+        const userIdEl = document.querySelector('[data-portal-id]');
+        const coachBadgeEl = document.querySelector('[data-portal-coach]');
+        const coachSummaryEl = document.querySelector('[data-portal-coach-summary]');
+        const scoreEl = document.querySelector('[data-portal-score]');
+        const focusGrid = document.querySelector('[data-portal-focus]');
+        const medsContainer = document.querySelector('[data-portal-meds]');
+        const touchpointsContainer = document.querySelector('[data-portal-touchpoints]');
+        const nextTouchpointEl = document.querySelector('[data-portal-next]');
+
+        const defaults = {
+          profile: {
+            name: 'Anjali',
+            stage: 'Stage 3 | Active Plan',
+            userId: 'INF-2483',
+            coach: 'Neha Patel',
+            avatar: 'assets/images/hero-couple.jpg',
+          },
+          assessment: {
+            score: 82,
+            focusAreas: ['Genetics', 'Lifestyle', 'Stress', 'Nutrition'],
+          },
+          medications: [
+            { schedule: 'Morning', items: ['Hair Ras', 'Defence Shampoo'] },
+            { schedule: 'Evening', items: ['Calm Ras', 'Nourish Oil'] },
+          ],
+          touchpoints: [
+            { label: 'Coach Check-in', value: 'Tue, 24 Sept · 5:30 PM' },
+            { label: 'Refill Reminder', value: 'Next week' },
+          ],
+        };
+
+        const updateText = (el, text) => {
+          if (el && text) {
+            el.textContent = text;
+          }
+        };
+
+        const renderScore = (score) => {
+          if (!scoreEl) return;
+          scoreEl.textContent = typeof score === 'number' ? `${score}%` : '—';
+        };
+
+        const renderFocusAreas = (areas) => {
+          if (!focusGrid) return;
+          const list = areas && areas.length ? areas.slice(0, 4) : defaults.assessment.focusAreas;
+          focusGrid.innerHTML = list.map((area) => `<article><p>${area}</p></article>`).join('');
+        };
+
+        const renderMedications = (entries) => {
+          if (!medsContainer) return;
+          if (!entries || !entries.length) {
+            medsContainer.innerHTML =
+              '<p class="portal-empty">Your personalised medication schedule will appear here once assigned.</p>';
+            return;
+          }
+          medsContainer.innerHTML = entries
+            .map(
+              (entry) => `<article class="portal-medications__item">
+                <p class="portal-label">${entry.schedule || 'Daily'}</p>
+                <strong>${(entry.items || []).join(', ') || 'Plan coming soon'}</strong>
+              </article>`
+            )
+            .join('');
+        };
+
+        const renderTouchpoints = (entries) => {
+          if (!touchpointsContainer) return;
+          if (!entries || !entries.length) {
+            touchpointsContainer.innerHTML = '<li class="portal-empty">No touchpoints scheduled yet.</li>';
+            if (nextTouchpointEl) {
+              nextTouchpointEl.textContent = '—';
+            }
+            return;
+          }
+          touchpointsContainer.innerHTML = entries
+            .map(
+              (entry) => `<li>
+                <p>${entry.label || 'Touchpoint'}</p>
+                <strong>${entry.value || ''}</strong>
+              </li>`
+            )
+            .join('');
+          if (nextTouchpointEl) {
+            nextTouchpointEl.textContent = entries[0].value || '—';
+          }
+        };
+
+        const applyProfile = (profile = {}) => {
+          updateText(nameEl, profile.name);
+          updateText(stageEl, profile.stage);
+          updateText(userIdEl, profile.userId);
+          if (profile.avatar && avatarEl) {
+            avatarEl.src = profile.avatar;
+          }
+
+          if (profile.coach) {
+            updateText(coachBadgeEl, `Coach ${profile.coach}`);
+            updateText(coachSummaryEl, profile.coach);
+            updateText(coachActionEl, `Talk to ${profile.coach}`);
+          }
+        };
+
+        const loadStoredContext = () => {
+          try {
+            const raw = localStorage.getItem('infiniumUserContext');
+            if (!raw) return {};
+            return JSON.parse(raw);
+          } catch (error) {
+            return {};
+          }
+        };
+
+        applyProfile(defaults.profile);
+        renderScore(defaults.assessment.score);
+        renderFocusAreas(defaults.assessment.focusAreas);
+        renderMedications(defaults.medications);
+        renderTouchpoints(defaults.touchpoints);
+
+        applyProfile(loadStoredContext());
+
+        const resolveApiBase = () => {
+          if (typeof window.__INF_OTP_API_BASE === 'string') {
+            return window.__INF_OTP_API_BASE;
+          }
+          if (window.location.hostname === 'localhost' && window.location.port !== '4000') {
+            return window.location.origin;
+          }
+          return '';
+        };
+
+        const base = resolveApiBase();
+        fetch(`${base}/api/user/dashboard`)
+          .then((res) => res.json())
+          .then((data) => {
+            applyProfile({
+              name: data.profile?.name,
+              stage: data.profile?.stage ? `${data.profile.stage} | Active Plan` : undefined,
+              avatar: data.profile?.avatarUrl,
+              coach: data.profile?.coach,
+              userId: data.profile?.userId ?? data.profile?.userId,
+            });
+            renderScore(data.assessment?.score);
+            renderFocusAreas(data.assessment?.focusAreas);
+            renderMedications(data.medications);
+            renderTouchpoints(data.touchpoints);
+          })
+          .catch(() => {
+            /* keep defaults */
+          });
+      })();
+    </script>
+      <a href="https://wa.me/917621871654" class="whatsapp-fab" target="_blank" rel="noopener">
+      <img src="assets/images/whatsApp-icon.png" alt="WhatsApp" class="whatsapp-fab__icon" />
+    </a>
+</body>
+</html>

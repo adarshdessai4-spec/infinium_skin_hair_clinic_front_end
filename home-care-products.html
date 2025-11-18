@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infinium Home Care Products | Infinium Skin & Hair Clinic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body class="has-mobile-tab">
+    <!-- SAME HEADER AS INDEX -->
+    <nav class="nav">
+      <div class="nav__inner">
+        <a class="logo" href="index.html">
+          <img
+            src="assets/images/brand_logo.png"
+            alt="Infinium Skin & Hair Clinic logo"
+          />
+        </a>
+
+        <div class="brand-tabs">
+          <a href="index.html" class="brand-tabs__link">
+            Home
+          </a>
+          <span class="brand-tabs__divider"></span>
+          <a href="franchise.html" class="brand-tabs__link">
+            Infinium Franchise Module
+          </a>
+          <span class="brand-tabs__divider"></span>
+          <a href="institute.html" class="brand-tabs__link">
+            Infinium Aesthetics &amp; Cosmetic Institute
+          </a>
+          <span class="brand-tabs__divider"></span>
+          <a href="home-care-products.html" class="brand-tabs__link">
+            Infinium Home Care Products
+          </a>
+        </div>
+
+        <div class="nav-search">
+          <input type="search" placeholder="Search Infinium..." />
+        </div>
+
+        <div class="nav-right">
+          <button
+            class="nav-icon nav-icon--menu"
+            type="button"
+            aria-label="Toggle navigation menu"
+            aria-controls="menuOverlay"
+            aria-expanded="false"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      class="menu-overlay"
+      id="menuOverlay"
+      aria-hidden="true"
+      tabindex="-1"
+    >
+      <button
+        class="menu-overlay__close"
+        type="button"
+        aria-label="Close menu"
+      >
+        &times;
+      </button>
+      <div class="menu-overlay__panel">
+        <div class="menu-overlay__brand">
+          <span class="menu-overlay__logo">Infinium.</span>
+        </div>
+        <section class="menu-overlay__group menu-overlay__group--divisions">
+          <p class="menu-overlay__heading">Explore Infinium</p>
+          <ul class="menu-overlay__list menu-overlay__list--brand-tabs">
+            <li>
+              <a class="menu-overlay__link" href="index.html"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a class="menu-overlay__link" href="franchise.html"
+                >Infinium Franchise Module</a
+              >
+            </li>
+            <li>
+              <a class="menu-overlay__link" href="institute.html"
+                >Infinium Aesthetics &amp; Cosmetic Institute</a
+              >
+            </li>
+            <li>
+              <a class="menu-overlay__link" href="home-care-products.html"
+                >Infinium Home Care Products</a
+              >
+            </li>
+          </ul>
+        </section>
+        <section class="menu-overlay__group menu-overlay__group--primary">
+          <p class="menu-overlay__heading">What We Do</p>
+          <p class="menu-overlay__copy">
+            We help you take control of your hair loss journey in a
+            personalised, science-backed way.
+          </p>
+          <div class="menu-overlay__list-grid">
+            <ul class="menu-overlay__list">
+              
+              <li>
+                <a class="menu-overlay__link" href="money-back.html"
+                  >Money Back Guarantee</a
+                >
+              </li>
+              <li>
+                <a class="menu-overlay__link" href="referral.html">Referral</a>
+              </li>
+              <li>
+                <a class="menu-overlay__link" href="franchise.html"
+                  >Franchise Partner</a
+                >
+              </li>
+            </ul>
+            <ul class="menu-overlay__list">
+              <li>
+                <a class="menu-overlay__link" href="hair-test.html"
+                  >Hair Test ™</a
+                >
+              </li>
+              <li>
+                <a class="menu-overlay__link" href="combos.html"
+                  >Infinium Combos</a
+                >
+              </li>
+            </ul>
+          </div>
+        </section>
+        <div class="menu-overlay__grid menu-overlay__grid--secondary">
+          <section class="menu-overlay__group">
+            <p class="menu-overlay__heading">How We Do It</p>
+            <ul class="menu-overlay__list menu-overlay__list--single">
+              <li><a class="menu-overlay__link" href="science.html">Infinium Science</a></li>
+              
+              
+              
+            </ul>
+          </section>
+          <section class="menu-overlay__group">
+            <p class="menu-overlay__heading">Who We Are</p>
+            <ul class="menu-overlay__list menu-overlay__list--single">
+              
+              
+            </ul>
+          </section>
+        </div>
+        <section class="menu-overlay__group menu-overlay__group--contact">
+          <p class="menu-overlay__heading">Get In Touch</p>
+          <div class="menu-overlay__social">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="WhatsApp">WA</a>
+          </div>
+        </section>
+        
+      </div>
+      <div class="products-panel" id="productsPanel" aria-hidden="true">
+        <div class="products-panel__media" aria-hidden="true">
+          <img src="assets/images/regimen-supplements.jpg" alt="" />
+        </div>
+        <div class="products-panel__body">
+          <button
+            type="button"
+            class="products-panel__back"
+            data-products-close
+          >
+            &larr; Products
+          </button>
+          <div class="products-panel__columns">
+            <div>
+              <h4>Hair Care</h4>
+              <ul>
+                <li><a href="#">Hair Ras</a></li>
+                <li><a href="#">Hair Vitamin</a></li>
+                <li><a href="#">Health Tatva</a></li>
+                <li><a href="#">Defence Shampoo</a></li>
+                <li><a href="#">Defence Conditioner</a></li>
+                <li><a href="#">Anti Dandruff Lotion</a></li>
+                <li><a href="#">Cholest Vati</a></li>
+                <li><a href="#">Calm Ras</a></li>
+                <li><a href="#">Consti Clear</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Gut &amp; Wellness</h4>
+              <ul>
+                <li><a href="#">Gut Shuddhi</a></li>
+                <li><a href="#">Nasal Drops</a></li>
+                <li><a href="#">Hair Actives Serum</a></li>
+                <li><a href="#">Anti-Dandruff Shampoo</a></li>
+                <li><a href="#">Digest Boost</a></li>
+                <li><a href="#">Mom Santulan</a></li>
+                <li><a href="#">Iron Santulan</a></li>
+                <li><a href="#">Thyro Santulan</a></li>
+                <li><a href="#">Her Santulan</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Scalp Oils</h4>
+              <ul>
+                <li><a href="#">Scalp Oil</a></li>
+                <li><a href="#">Nourish Hair Oil</a></li>
+                <li><a href="#">Hair Vitamin For Her</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main class="division-main">
+      <section class="section">
+        <div class="container">
+          <div class="module-hero">
+            <div class="module-hero__copy">
+              <p class="module-hero__eyebrow">Infinium Home Care Range</p>
+              <h1>Clinic-grade products for daily rituals</h1>
+              <p>
+                Dermatologist-formulated skin and hair essentials that extend in-clinic results. Thoughtfully made, cruelty-free,
+                and tested for Indian climates.
+              </p>
+              <div class="module-stats">
+                <div class="module-stat">
+                  <strong>25+</strong>
+                  <span>Products</span>
+                </div>
+                <div class="module-stat">
+                  <strong>93%</strong>
+                  <span>User repurchase rate</span>
+                </div>
+                <div class="module-stat">
+                  <strong>US-FDA</strong>
+                  <span>Approved actives</span>
+                </div>
+              </div>
+            </div>
+            <div class="module-hero__media">
+              <img src="assets/images/product-herbs.jpg" alt="Infinium home care products" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Featured collections</h2>
+            <span class="heading-underline"></span>
+          </div>
+          <div class="module-product-showcase">
+            <article class="module-product-card">
+              <img src="assets/images/product-shampoo.jpg" alt="Hair defence range" />
+              <small>Hair Defence</small>
+              <h3>Detox + Strengthen</h3>
+              <p>Anti-dandruff shampoo, scalp tonic, and Hair Ras supplements work together to rebalance scalp microbiome.</p>
+            </article>
+            <article class="module-product-card">
+              <img src="assets/images/menu-overlay-lifestyle.jpg" alt="Glow essentials" />
+              <small>Skin Radiance</small>
+              <h3>Protect + Repair</h3>
+              <p>Sunscreens, niacinamide moisturisers, and overnight barrier balms for pollution-heavy days.</p>
+            </article>
+            <article class="module-product-card">
+              <img src="assets/images/product-herbs.jpg" alt="Nutrition stack" />
+              <small>Inside-Out</small>
+              <h3>Holistic Nutrition</h3>
+              <p>Adaptogenic Ras blends, gut tonics, and mineral boosters to support thick, glossy hair from within.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Your daily ritual</h2>
+            <span class="heading-underline"></span>
+          </div>
+          <div class="module-process">
+            <div class="module-process__step">
+              <h3>Cleanse</h3>
+              <p>SLS-free face wash and defence shampoo remove build-up without stripping essential oils.</p>
+            </div>
+            <div class="module-process__step">
+              <h3>Treat</h3>
+              <p>Targeted serums, scalp tonics, and actives like retinol or peptides address specific concerns.</p>
+            </div>
+            <div class="module-process__step">
+              <h3>Nourish</h3>
+              <p>Moisturisers, body brightening creams, and overnight oils lock in hydration.</p>
+            </div>
+            <div class="module-process__step">
+              <h3>Supplement</h3>
+              <p>Hair Ras, biotin, and hormone-balancing blends reinforce results from the inside.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Ingredient commitments</h2>
+            <span class="heading-underline"></span>
+          </div>
+          <div class="two-column-copy">
+            <article class="module-card">
+              <h3>Science + Ayurveda</h3>
+              <p>Every formulation blends clinically proven actives (like salicylic acid, peptides, minoxidil) with ayurvedic
+                botanicals for sustained benefits.</p>
+            </article>
+            <article class="module-card">
+              <h3>Responsible manufacturing</h3>
+              <p>Made in ISO-certified facilities, cruelty free, dermat-tested, with recyclable packaging wherever possible.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-heading">
+            <h2>FAQs</h2>
+            <span class="heading-underline"></span>
+          </div>
+          <div class="faq-list">
+            <article class="faq-item">
+              <h4>Where can I buy Infinium products?</h4>
+              <p>Visit our clinics, order via the Infinium app, or speak with your coach to get a curated regimen shipped.</p>
+            </article>
+            <article class="faq-item">
+              <h4>Are the products suitable for sensitive skin?</h4>
+              <p>Yes, formulations are patch-tested. Sensitive or pregnant clients receive customised recommendations.</p>
+            </article>
+            <article class="faq-item">
+              <h4>Can I subscribe?</h4>
+              <p>Monthly refills, combo kits, and auto-shipping are available through the Infinium concierge team.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="module-cta-panel">
+            <div>
+              <h3>Need help picking the right kit?</h3>
+              <p>Book a 15-min consult and we’ll pair you with the ideal at-home plan.</p>
+            </div>
+            <a class="primary-cta" href="hair-test.html">Take The Hair Test ™</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- SAME FOOTER / WHATSAPP / MOBILE BAR / SCRIPTS AS INDEX -->
+    <footer class="site-footer">
+      <!-- copy footer block from index.html -->
+    </footer>
+
+    <a
+      href="https://wa.me/91XXXXXXXXXX"
+      class="whatsapp-fab"
+      target="_blank"
+      rel="noopener"
+    >
+      <img
+        src="assets/images/whatsApp-icon.png"
+        alt="WhatsApp"
+        class="whatsapp-fab__icon"
+      />
+    </a>
+
+    <nav class="mobile-tab-bar" aria-label="Quick actions">
+      <a href="franchise.html">Franchise</a>
+      <a href="hair-test.html">Take Test</a>
+      <button type="button" data-login-trigger>Log In</button>
+    </nav>
+
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

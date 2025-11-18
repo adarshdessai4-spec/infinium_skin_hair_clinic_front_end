@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hair Coach Call | Infinium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body class="coach-page">
+    <header class="coach-header">
+      <div class="coach-tagline">
+        <p>Hi <span data-coach-user>Anjali</span> 👋</p>
+        <p>+91-9828366842</p>
+      </div>
+      <div class="coach-card">
+        <div>
+          <p>Certified</p>
+          <h2>Hair Coach</h2>
+          <p>Here for you, always.</p>
+        </div>
+        <img src="assets/images/hero-couple.jpg" alt="Coach" />
+      </div>
+      <div class="coach-actions">
+        <a
+          class="ghost-btn"
+          href="https://wa.me/918928366842?text=Hi%20Infinium%2C%20I%27d%20like%20to%20talk%20to%20my%20hair%20coach."
+          target="_blank"
+          rel="noopener"
+        >
+          Speak Now
+        </a>
+        <button type="button" class="primary-cta" data-book-call>Book a Call</button>
+      </div>
+    </header>
+
+    <main class="coach-body">
+      <div class="coach-status">
+        <div class="coach-icon">📞</div>
+        <h3>Call Booked</h3>
+        <p data-call-info>15 November · 4:00 PM - 4:30 PM · Hindi</p>
+        <button type="button" class="ghost-btn" data-open-reschedule>Reschedule</button>
+      </div>
+    </main>
+
+    <div class="reschedule-modal" aria-hidden="true">
+      <div class="reschedule-modal__dialog">
+        <header>
+          <h3>Reschedule Call</h3>
+          <button type="button" data-close-reschedule>&times;</button>
+        </header>
+        <section>
+          <p class="label">Choose language</p>
+          <div class="pill-wrap">
+            <button type="button" class="tag-btn is-active" data-select-option data-group="language">Hindi</button>
+            <button type="button" class="tag-btn" data-select-option data-group="language">English</button>
+            <button type="button" class="tag-btn" data-select-option data-group="language">Tamil</button>
+            <button type="button" class="tag-btn" data-select-option data-group="language">Telugu</button>
+          </div>
+        </section>
+        <section>
+          <p class="label">Choose date</p>
+          <div class="pill-wrap">
+            <button type="button" class="tag-btn is-disabled" disabled>Tomorrow 13</button>
+            <button type="button" class="tag-btn" data-select-option data-group="date">Friday 14</button>
+            <button type="button" class="tag-btn is-active" data-select-option data-group="date">Saturday 15</button>
+          </div>
+        </section>
+        <section>
+          <p class="label">Choose time slot</p>
+          <div class="time-tabs">
+            <span class="is-active">Morning</span>
+            <span>Afternoon</span>
+            <span>Evening</span>
+          </div>
+          <div class="pill-wrap">
+            <button type="button" class="tag-btn is-active" data-select-option data-group="slot">10:00 AM</button>
+            <button type="button" class="tag-btn" data-select-option data-group="slot">10:30 AM</button>
+            <button type="button" class="tag-btn" data-select-option data-group="slot">11:00 AM</button>
+            <button type="button" class="tag-btn" data-select-option data-group="slot">11:30 AM</button>
+          </div>
+        </section>
+        <button type="button" class="reschedule-save" data-save-reschedule>Save Changes</button>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        try {
+          const raw = localStorage.getItem('infiniumUserContext');
+          if (!raw) return;
+          const ctx = JSON.parse(raw);
+          const el = document.querySelector('[data-coach-user]');
+          if (el && ctx.name) {
+            el.textContent = ctx.name;
+          }
+        } catch (error) {
+          /* ignore */
+        }
+      })();
+        } catch (error) {
+          /* ignore */
+        }
+
+        const callState = {
+          language: 'Hindi',
+          date: '15 November',
+          slot: '4:00 PM - 4:30 PM',
+        };
+
+        const callInfoEl = document.querySelector('[data-call-info]');
+        const updateCallInfo = () => {
+          if (callInfoEl) {
+            callInfoEl.textContent = `${callState.date} · ${callState.slot} · ${callState.language}`;
+          }
+        };
+        updateCallInfo();
+
+        const modal = document.querySelector('.reschedule-modal');
+        const openModal = () => modal?.classList.add('is-open');
+        const closeModal = () => modal?.classList.remove('is-open');
+
+        document.querySelector('[data-open-reschedule]')?.addEventListener('click', openModal);
+        document.querySelector('[data-close-reschedule]')?.addEventListener('click', closeModal);
+        document.querySelector('[data-book-call]')?.addEventListener('click', () => {
+          callState.date = '18 November';
+          callState.slot = '5:00 PM - 5:30 PM';
+          callState.language = 'Hindi';
+          updateCallInfo();
+          alert('Your call has been booked!');
+        });
+
+        document.querySelectorAll('[data-select-option]')?.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            if (btn.disabled) return;
+            const group = btn.dataset.group;
+            document
+              .querySelectorAll(`[data-select-option][data-group=\"${group}\"]`)
+              .forEach((el) => el.classList.remove('is-active'));
+            btn.classList.add('is-active');
+            if (group === 'language') {
+              callState.language = btn.textContent.trim();
+            }
+            if (group === 'date') {
+              callState.date = btn.textContent.replace(/[^0-9a-zA-Z ]/g, '').trim();
+            }
+            if (group === 'slot') {
+              callState.slot = btn.textContent.trim();
+            }
+          });
+        });
+
+        document.querySelector('[data-save-reschedule]')?.addEventListener('click', () => {
+          updateCallInfo();
+          closeModal();
+        });
+      })();
+    </script>
+      <a href="https://wa.me/917621871654" class="whatsapp-fab" target="_blank" rel="noopener">
+      <img src="assets/images/whatsApp-icon.png" alt="WhatsApp" class="whatsapp-fab__icon" />
+    </a>
+</body>
+</html>

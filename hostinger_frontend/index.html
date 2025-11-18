@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infinium Hair & Skin Clinic | Hair & Skin Care Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body class="has-mobile-tab">
+    <nav class="nav">
+      <div class="nav__inner">
+        <a class="logo" href="index.html">Infinium Hair & Skin Care Clinic</a>
+        <div class="nav-right">
+          <button
+            class="nav-icon nav-icon--menu"
+            type="button"
+            aria-label="Toggle navigation menu"
+            aria-controls="menuOverlay"
+            aria-expanded="false"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <a
+      class="franchise-marquee"
+      href="franchise.html"
+      aria-label="Become our franchise partner"
+      data-franchise-link
+      title="Become our franchise partner"
+    >
+      <span class="franchise-marquee__inner">Become our franchise partner &nbsp;•&nbsp; Expand with Infinium &nbsp;•&nbsp;</span>
+    </a>
+
+    <div class="menu-overlay" id="menuOverlay" aria-hidden="true" tabindex="-1">
+      <button class="menu-overlay__close" type="button" aria-label="Close menu">&times;</button>
+      <div class="menu-overlay__panel">
+        <div class="menu-overlay__brand">
+          <span class="menu-overlay__logo">Infinium.</span>
+        </div>
+        <section class="menu-overlay__group menu-overlay__group--primary">
+          <p class="menu-overlay__heading">What We Do</p>
+          <p class="menu-overlay__copy">
+            We help you take control of your hair loss journey in a personalised, science-backed way.
+          </p>
+          <div class="menu-overlay__list-grid">
+            <ul class="menu-overlay__list">
+              
+              <li><a class="menu-overlay__link" href="money-back.html">Money Back Guarantee</a></li>
+              <li><a class="menu-overlay__link" href="referral.html">Referral</a></li>
+              <li><a class="menu-overlay__link" href="franchise.html">Franchise Partner</a></li>
+            </ul>
+            <ul class="menu-overlay__list">
+              <li><a class="menu-overlay__link" href="hair-test.html">Hair Test ™</a></li>
+              <li><a class="menu-overlay__link" href="combos.html">Infinium Combos</a></li>
+            </ul>
+          </div>
+        </section>
+        <div class="menu-overlay__grid menu-overlay__grid--secondary">
+          <section class="menu-overlay__group">
+            <p class="menu-overlay__heading">How We Do It</p>
+            <ul class="menu-overlay__list menu-overlay__list--single">
+              <li><a class="menu-overlay__link" href="science.html">Infinium Science</a></li>
+              
+              
+              
+            </ul>
+          </section>
+          <section class="menu-overlay__group">
+            <p class="menu-overlay__heading">Who We Are</p>
+            <ul class="menu-overlay__list menu-overlay__list--single">
+              
+              
+            </ul>
+          </section>
+        </div>
+        <section class="menu-overlay__group menu-overlay__group--contact">
+          <p class="menu-overlay__heading">Get In Touch</p>
+          <div class="menu-overlay__social">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="WhatsApp">WA</a>
+          </div>
+        </section>
+        
+      </div>
+      <div class="products-panel" id="productsPanel" aria-hidden="true">
+        <div class="products-panel__media" aria-hidden="true">
+          <img src="assets/images/regimen-supplements.jpg" alt="" />
+        </div>
+        <div class="products-panel__body">
+          <button type="button" class="products-panel__back" data-products-close>
+            &larr; Products
+          </button>
+          <div class="products-panel__columns">
+            <div>
+              <h4>Hair Care</h4>
+              <ul>
+                <li><a href="#">Hair Ras</a></li>
+                <li><a href="#">Hair Vitamin</a></li>
+                <li><a href="#">Health Tatva</a></li>
+                <li><a href="#">Defence Shampoo</a></li>
+                <li><a href="#">Defence Conditioner</a></li>
+                <li><a href="#">Anti Dandruff Lotion</a></li>
+                <li><a href="#">Cholest Vati</a></li>
+                <li><a href="#">Calm Ras</a></li>
+                <li><a href="#">Consti Clear</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Gut &amp; Wellness</h4>
+              <ul>
+                <li><a href="#">Gut Shuddhi</a></li>
+                <li><a href="#">Nasal Drops</a></li>
+                <li><a href="#">Hair Actives Serum</a></li>
+                <li><a href="#">Anti-Dandruff Shampoo</a></li>
+                <li><a href="#">Digest Boost</a></li>
+                <li><a href="#">Mom Santulan</a></li>
+                <li><a href="#">Iron Santulan</a></li>
+                <li><a href="#">Thyro Santulan</a></li>
+                <li><a href="#">Her Santulan</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Scalp Oils</h4>
+              <ul>
+                <li><a href="#">Scalp Oil</a></li>
+                <li><a href="#">Nourish Hair Oil</a></li>
+                <li><a href="#">Hair Vitamin For Her</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="login-modal" id="loginModal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="login-modal__overlay" data-login-close></div>
+      <div class="login-modal__content" data-login-content>
+        <button class="login-modal__close" type="button" aria-label="Close login" data-login-close>&times;</button>
+        <h2>Login with OTP</h2>
+        <span class="login-modal__divider" aria-hidden="true"></span>
+
+        <div class="login-step is-active" data-login-step="number">
+          <div class="login-role" role="tablist">
+            <button type="button" class="login-role__btn is-active" data-login-role="user">User</button>
+            <button type="button" class="login-role__btn" data-login-role="admin">Admin</button>
+          </div>
+          <p class="login-modal__label">Enter your mobile number</p>
+          <label class="login-modal__input" for="loginMobile">
+            <span>+91</span>
+            <input
+              id="loginMobile"
+              type="tel"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              maxlength="10"
+              placeholder="Enter mobile number"
+            />
+          </label>
+          <p class="login-modal__help">We will send you an One Time Password on this mobile number</p>
+          <button type="button" class="login-modal__cta" data-login-action="send">Send OTP</button>
+          <button type="button" class="login-modal__cta login-modal__cta--ghost" data-admin-test-login hidden>
+            Direct Admin Login (Test)
+          </button>
+          <button type="button" class="login-modal__cta login-modal__cta--ghost" data-user-test-login hidden>
+            Direct User Login (Test)
+          </button>
+          <div class="login-socials">
+            <button type="button" class="login-social login-social--google">
+              <img src="assets/images/google-logo.svg" alt="" aria-hidden="true" />
+              <span>Continue with Google</span>
+            </button>
+            <button type="button" class="login-social login-social--apple">
+              <img src="assets/images/apple-logo.svg" alt="" aria-hidden="true" />
+              <span>Continue with Apple</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="login-step" data-login-step="otp">
+          <p class="login-modal__label">Enter OTP</p>
+          <div class="otp-inputs" data-otp-inputs>
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-otp-input />
+          </div>
+          <p class="login-modal__help">
+            Enter the OTP sent to <strong data-otp-target>+91 XXXXXXXX</strong>
+          </p>
+          <p class="login-modal__resend">
+            <button type="button" data-login-resend disabled>Resend</button>
+            <span>OTP in <span data-login-countdown>60</span> sec</span>
+          </p>
+          <button type="button" class="login-modal__cta" data-login-action="verify">Verify OTP</button>
+        </div>
+
+        <div class="login-step" data-login-step="profile">
+          <div class="login-success" data-login-success>
+            <span class="login-success__icon" aria-hidden="true">✓</span>
+            <div>
+              <h3>OTP verified</h3>
+              <p>Your number <strong data-login-success-phone>+91 XXXXXXXX</strong> is confirmed.</p>
+            </div>
+          </div>
+          <p class="login-modal__label">Tell us your name</p>
+          <label class="login-modal__input" for="loginName">
+            <input
+              id="loginName"
+              type="text"
+              placeholder="Enter full name"
+              autocomplete="name"
+            />
+          </label>
+          <p class="login-modal__help">We personalise your plan with this name.</p>
+          <button type="button" class="login-modal__cta" data-login-action="complete">Continue</button>
+        </div>
+
+        <p class="login-modal__error" data-login-error role="alert"></p>
+      </div>
+    </div>
+
+    <main>
+      <header class="hero">
+        <div class="container hero-content">
+          <div class="hero-text">
+            <p class="eyebrow">Science-Led<br />Hair Growth Solutions</p>
+            <h1>Know The Root Cause Of Your Hair Problems</h1>
+            <p class="supporting">93% saw results* in 5 months</p>
+            <a class="primary-cta" href="hair-test.html">Take The Hair Test ™</a>
+          </div>
+
+          <div class="hero-visual">
+            <div class="image-wrap">
+              <img src="assets/images/hero-couple.jpg" alt="Happy couple with great hair" />
+              <span class="squiggle squiggle-left"></span>
+              <span class="squiggle squiggle-right"></span>
+            </div>
+            <div class="review-card hero-review">
+              <div class="review-header">
+                <img src="assets/images/google-logo.svg" alt="Google logo" />
+                <div class="review-header__rating">
+                  <strong>4.5</strong>
+                  <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                </div>
+              </div>
+              <p>21,553+ reviews</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="press section">
+      <div class="container">
+        <div class="press-logos">
+          <div class="press-logos__track">
+            <span class="logo-text">Dailyhunt</span>
+            <span class="logo-text">Hindustan Times</span>
+            <span class="logo-text">The Tribune</span>
+            <span class="logo-text">Businesswire India</span>
+            <span class="logo-text">Dailyhunt</span>
+            <span class="logo-text">Hindustan Times</span>
+            <span class="logo-text">The Tribune</span>
+            <span class="logo-text">Businesswire India</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stories-slider section">
+      <div class="container slider-shell">
+        <button class="slider-arrow slider-arrow--left" type="button" aria-label="Previous stories">&#10094;</button>
+        <div class="stories-track">
+          <article class="story-card video-card">
+            <p class="story-tag">Infinium Hair & Skin Care Clinic.</p>
+            <h3>How Sohan's consistency led him to hair growth 💪</h3>
+            <video controls muted poster="assets/images/hero-couple.jpg">
+              <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
+              <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </article>
+          <article class="story-card video-card">
+            <p class="story-tag">Infinium Hair & Skin Care Clinic.</p>
+            <h3>Revanth's story of achieving hair growth 🧬</h3>
+            <video controls muted poster="assets/images/story-revanth.jpg">
+              <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
+              <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+            </video>
+          </article>
+          <article class="story-card video-card">
+            <p class="story-tag">Infinium Hair & Skin Care Clinic.</p>
+            <h3>How I managed hair fall naturally with Infinium Hair & Skin Care Clinic 🌿</h3>
+            <video controls muted poster="assets/images/story-natural.jpg">
+              <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
+              <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+            </video>
+          </article>
+          <article class="story-card video-card">
+            <p class="story-tag">Infinium Hair & Skin Care Clinic.</p>
+            <h3>Stopped my hair fall with Infinium Hair & Skin Care Clinic ✨</h3>
+            <video controls muted poster="assets/images/story-transformation.jpg">
+              <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
+              <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+            </video>
+          </article>
+          <article class="story-card video-card">
+            <p class="story-tag">Infinium Hair & Skin Care Clinic.</p>
+            <h3>How Priya stopped hair fall in 5 months 🙌</h3>
+            <video controls muted poster="assets/images/story-priya.jpg">
+              <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
+              <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+            </video>
+          </article>
+        </div>
+        <button class="slider-arrow slider-arrow--right" type="button" aria-label="Next stories">&#10095;</button>
+      </div>
+    </section>
+
+    <section class="health-section section">
+      <div class="container">
+        <div class="health-heading">
+          <h2>Hair Health Is Whole Body Health</h2>
+          <span class="heading-underline"></span>
+        </div>
+        <div class="health-diagram">
+          <article class="diagram-item item-nutrition">
+            <div class="diagram-icon">🍎</div>
+            <h3>Nutrition</h3>
+            <p>A diet lacking essential nutrients can slow down hair growth.</p>
+          </article>
+          <article class="diagram-item item-environment">
+            <div class="diagram-icon">🌿</div>
+            <h3>Environment</h3>
+            <p>Air, water and the kind of food we eat, all of it impacts hair.</p>
+          </article>
+          <article class="diagram-item item-metabolism">
+            <div class="diagram-icon">⚙️</div>
+            <h3>Metabolism</h3>
+            <p>When your body isn’t functioning at its best, hair can become weak.</p>
+          </article>
+          <div class="diagram-center">
+            <div class="center-circle">
+              <svg viewBox="0 0 220 150" aria-hidden="true" focusable="false">
+                <rect x="6" y="6" width="208" height="138" rx="18" fill="#fbfbfb" stroke="#dedede" stroke-width="3" />
+                <rect x="20" y="20" width="180" height="110" rx="16" fill="#f6f6f6" stroke="#e3e3e3" stroke-width="2" />
+                <g fill="none" stroke="#d3d3d3" stroke-width="3" stroke-linecap="round">
+                  <path d="M32 40h156" />
+                  <path d="M32 50h156" />
+                  <path d="M32 60h156" />
+                </g>
+                <path
+                  d="M50 40c18-18 103-18 121 0v56c-18 18-103 18-121 0z"
+                  fill="#fdfdfd"
+                  stroke="#cfcfcf"
+                  stroke-width="3"
+                />
+                <path
+                  d="M50 82c12-10 18-10 30 0s18 10 30 0 18-10 30 0 18 10 30 0"
+                  fill="none"
+                  stroke="#bdbdbd"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                />
+                <g fill="none" stroke="#a5a5a5" stroke-width="5" stroke-linecap="round">
+                  <path d="M90 44c-10 26-6 60-3 80" />
+                  <path d="M110 40c-4 28-4 60 0 88" />
+                  <path d="M130 44c10 26 6 60 3 80" />
+                </g>
+                <g fill="#bfbfbf">
+                  <path
+                    d="M110 78c-6 8-8 18 0 30 8-12 6-22 0-30z"
+                  />
+                  <path d="M90 82c-4 6-4 14 0 24 4-10 4-18 0-24z" />
+                  <path d="M130 82c-4 6-4 14 0 24 4-10 4-18 0-24z" />
+                </g>
+                <g fill="none" stroke="#bcbcbc" stroke-width="3" stroke-linecap="round">
+                  <path d="M78 108c6-8 14-8 20 0" />
+                  <path d="M126 118c6-10 16-10 22 0" />
+                </g>
+                <g fill="#c2c2c2">
+                  <circle cx="70" cy="124" r="4" />
+                  <circle cx="88" cy="130" r="4" />
+                  <circle cx="140" cy="128" r="4" />
+                  <circle cx="158" cy="122" r="4" />
+                  <circle cx="110" cy="132" r="4" />
+                </g>
+                <g stroke="#d0d0d0" stroke-width="3" stroke-linecap="round">
+                  <path d="M32 96c12 6 18 6 30 0" />
+                  <path d="M158 96c12 6 18 6 30 0" />
+                </g>
+              </svg>
+            </div>
+            <span class="diagram-line line-nutrition"></span>
+            <span class="diagram-line line-environment"></span>
+            <span class="diagram-line line-metabolism"></span>
+            <span class="diagram-line line-stress"></span>
+            <span class="diagram-line line-hormones"></span>
+          </div>
+          <article class="diagram-item item-stress">
+            <div class="diagram-icon">〰️</div>
+            <h3>Stress</h3>
+            <p>High stress levels can disrupt the hair cycle, leading to excess fall.</p>
+          </article>
+          <article class="diagram-item item-hormones">
+            <div class="diagram-icon">💧</div>
+            <h3>Hormones</h3>
+            <p>Natural body imbalances can lead to thinning and increased hair fall.</p>
+          </article>
+        </div>
+        <a class="primary-cta health-cta" href="hair-test.html">Take The Hair Test ™</a>
+      </div>
+    </section>
+
+    <section class="threefold section">
+      <div class="container threefold-grid">
+        <div class="threefold-media">
+          <img src="assets/images/threefold-supplement.jpg" alt="Infinium Hair & Skin Care Clinic supplement bottle" />
+        </div>
+        <div class="threefold-copy">
+          <p class="eyebrow">Infinium Hair & Skin Care Clinic's Holistic Plan For Hair Fall</p>
+          <h2>The Threefold Way</h2>
+          <p class="threefold-subtitle">Ayurveda + Dermatology + Nutrition</p>
+          <p>
+            Infinium Hair & Skin Care Clinic combines dermatology, Ayurveda, and nutrition to build customised hair loss
+            plans that target the root cause delivering assured results.
+          </p>
+          <a class="primary-cta" href="hair-test.html">Take The Hair Test ™</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="journey section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>The Infinium Hair & Skin Care Clinic Journey</h2>
+          <span class="heading-underline"></span>
+        </div>
+        <div class="journey-cards">
+          <article class="journey-card">
+            <div class="journey-icon">📱</div>
+            <h3><a href="hair-test.html">Take The Hair Test</a></h3>
+            <p>An online test that assesses the root cause of your hair loss.</p>
+            <footer>
+              <strong>Step 1</strong>
+              <span>Takes 2-4 mins</span>
+            </footer>
+          </article>
+          <article class="journey-card">
+            <div class="journey-icon">🛒</div>
+            <h3>Buy The Plan</h3>
+            <p>Based on your responses, our hair experts recommend a customised plan.</p>
+            <footer>
+              <strong>Step 2</strong>
+              <span>Takes 5 mins</span>
+            </footer>
+          </article>
+          <article class="journey-card">
+            <div class="journey-icon">🎧</div>
+            <h3>Get Hair Coach Guidance</h3>
+            <p>Infinium Hair & Skin Care Clinic's expert hair coaches assist you and get you started on your journey.</p>
+            <footer>
+              <strong>Step 3</strong>
+              <span>Takes 3-5 months</span>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="community section">
+      <div class="container">
+        <div class="community-panel">
+          <h2>Worried About Hair Fall?</h2>
+          <span class="heading-underline"></span>
+          <p>Join the conversation. Start your hair recovery.</p>
+          <p class="community-subtitle">Get expert hair advice in our exclusive Telegram community.</p>
+          <a class="primary-cta" href="https://t.me/infiniumhairclinic" target="_blank" rel="noopener">Join The Community</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="essentials section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>The Essentials</h2>
+          <span class="heading-underline"></span>
+        </div>
+        <div class="essentials-slider">
+          <button class="slider-arrow slider-arrow--light" type="button" aria-label="Previous products">&#10094;</button>
+          <div class="essentials-track">
+            <article class="product-card">
+              <img src="assets/images/product-shampoo.jpg" alt="Anti-dandruff shampoo bottle" />
+              <h3>Anti-Dandruff Shampoo with Ichthammol &amp; Aloe</h3>
+              <p>Made with anti-fungal ingredients to manage dandruff of all types.</p>
+              <strong class="price">₹ 300</strong>
+              <div class="product-actions">
+                <button class="primary-cta" type="button">Add To Cart</button>
+                <button class="ghost-link" type="button">View Product</button>
+              </div>
+            </article>
+            <article class="product-card">
+              <img src="assets/images/menu-overlay-lifestyle.jpg" alt="Hair Actives Serum" />
+              <h3>Hair Actives Serum</h3>
+              <p>Contains Redensyl, Procapil and Capixyl to prevent hair loss and promote growth.</p>
+              <strong class="price">₹ 799</strong>
+              <div class="product-actions">
+                <button class="primary-cta" type="button">Add To Cart</button>
+                <button class="ghost-link" type="button">View Product</button>
+              </div>
+            </article>
+            <article class="product-card">
+              <img src="assets/images/product-herbs.jpg" alt="Hair Ras supplement" />
+              <h3>Hair Ras Ayurvedic Herbs</h3>
+              <p>Better hair quality &amp; delayed greying with herbs like shatavari and bhringraj.</p>
+              <strong class="price">₹ 488</strong>
+              <div class="product-actions">
+                <button class="primary-cta" type="button">Add To Cart</button>
+                <button class="ghost-link" type="button">View Product</button>
+              </div>
+            </article>
+          </div>
+          <button class="slider-arrow slider-arrow--light" type="button" aria-label="Next products">&#10095;</button>
+        </div>
+        <a class="ghost-btn" href="home-care-products.html">See All Products</a>
+      </div>
+    </section>
+
+    <section class="regimen section">
+      <div class="container">
+        <div class="regimen-content">
+          <div class="regimen-copy">
+            <p class="eyebrow">Infinium Hair & Skin Care Clinic 2x2 Regimen</p>
+            <h2>2 min twice a day</h2>
+            <p>Follow a simple daily routine. Best results when used for 5 months.</p>
+            <a class="primary-cta" href="science.html">The Science</a>
+          </div>
+          <div class="regimen-media">
+            <img src="assets/images/regimen-supplements.jpg" alt="Supplements" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GOOGLE REVIEWS (hidden) --><section class="reviews section" hidden>
+      <div class="container">
+        <div class="section-heading">
+          <h2>Google Reviews</h2>
+          <span class="heading-underline"></span>
+        </div>
+        <div class="reviews-slider">
+          <button class="slider-arrow" type="button" aria-label="Previous review">&#10094;</button>
+          <div class="reviews-track">
+            <article class="review-card">
+              <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p>
+                “Before trying Infinium Hair & Skin Care Clinic I had used a lot of other medication too... Infinium Hair
+                & Skin Care Clinic was the one that helped me regrow confidently.”
+              </p>
+              <a href="#">Read More</a>
+              <div class="review-meta">
+                <span>Lokjeet Ranaa</span>
+                <span>Posted on Google</span>
+              </div>
+            </article>
+          <article class="review-card">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p>“I have been following Infinium Hair & Skin Care Clinic regime since last 9 months and the results are amazing.”</p>
+              <a href="#">Read More</a>
+              <div class="review-meta">
+                <span>Devarshi Desai</span>
+                <span>Posted on Google</span>
+              </div>
+            </article>
+          <article class="review-card">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p>“It's all about patience and consistency. Infinium Hair & Skin Care Clinic helped me to grow my hair back.”</p>
+              <a href="#">Read More</a>
+              <div class="review-meta">
+                <span>Shubham Nikam</span>
+                <span>Posted on Google</span>
+              </div>
+            </article>
+          </div>
+          <button class="slider-arrow" type="button" aria-label="Next review">&#10095;</button>
+        </div>
+        <div class="divider"></div>
+        <h3 class="disclaimer-heading">Disclaimers</h3>
+        <p class="disclaimer-copy">
+          *Individual results may vary. Infinium Hair & Skin Care Clinic recommends using the complete plan for at least
+          five months for visible, lasting impact.
+        </p>
+        <button class="scroll-indicator" type="button" aria-label="Scroll down">&#8964;</button>
+      </div>
+    </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-columns">
+          <div>
+            <h4>Infinium Hair & Skin Care Clinic Journey</h4>
+            <ul>
+              <li>FAQ</li>
+              <li>My Plan</li>
+              <li>Online Examination</li>
+              <li>Referral</li>
+              <li>Customer Stories</li>
+              <li>Reviews</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Company</h4>
+            <ul>
+              <li>Science</li>
+              <li>Our Story</li>
+              <li>Blog</li>
+              <li>All Products</li>
+              <li>Hair Solutions for Women</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Legal</h4>
+            <ul>
+              <li>Money Back Guarantee</li>
+              <li>Privacy Policy</li>
+              <li>Terms of Service</li>
+              <li>Return Policy</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Centres</h4>
+            <ul>
+              <li>Pune</li>
+              <li>Nagpur</li>
+              <li>Thane</li>
+              <li>Navi Mumbai</li>
+              <li>Hyderabad</li>
+            </ul>
+          </div>
+        </div>
+        <p class="footer-legal">Registered Copyright 2025</p>
+        <p>
+          Tatvartha Health Pvt. Ltd.<br />
+          Unit no - 101, B wing, Building - 16, Interface, Off Link Road, Malad (West), Mumbai - 400064.
+        </p>
+        <div class="footer-bottom">
+          <div class="social">
+            <span>Catch us on:</span>
+            <div class="social-links">
+              <span>Instagram</span>
+              <span>LinkedIn</span>
+              <span>Facebook</span>
+              <span>YouTube</span>
+            </div>
+          </div>
+          <div class="footer-logo">Infinium Hair & Skin Care Clinic.</div>
+        </div>
+        <p class="footer-legal">Tatvartha Health Pvt. Ltd. — Registered Copyright 2025</p>
+      </div>
+    </footer>
+
+    <a
+      class="whatsapp-fab"
+      href="https://wa.me/917621871654"
+      target="_blank"
+      rel="noopener"
+      aria-label="Chat on WhatsApp at +91 7621 871 654"
+    >
+      <img src="assets/images/whatsApp-icon.png" alt="WhatsApp" aria-hidden="true" />
+    </a>
+    <nav class="mobile-tab-bar" aria-label="Quick actions">
+      <a href="franchise.html">Franchise</a>
+      <a href="hair-test.html">Take Test</a>
+      <button type="button" data-login-trigger>Log In</button>
+      <button type="button" data-menu-open>Menu</button>
+    </nav>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

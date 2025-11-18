@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Recommended Plan | Infinium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body class="plan-body">
+    <header class="plan-header">
+      <div class="plan-logo">Infinium</div>
+      <div class="plan-header__actions">
+        <button type="button" class="portal-pill" onclick="location.href='index.html'">Back</button>
+        <button type="button" class="portal-pill portal-pill--accent">My Cart</button>
+      </div>
+    </header>
+
+    <div class="plan-alert" data-plan-alert hidden aria-live="polite">
+      <strong data-plan-alert-title>Payment confirmed.</strong>
+      <span data-plan-alert-body>We have received your payment.</span>
+    </div>
+
+    <main class="plan-layout">
+      <section class="plan-left">
+        <article class="plan-card assessment-card">
+          <div class="assessment-card__head">
+            <div>
+              <p>Assessment Report</p>
+              <h3 data-plan-name>Anjali</h3>
+              <p data-plan-stage>Stage 3 Female Pattern Hair Fall</p>
+            </div>
+            <img src="assets/images/hero-couple.jpg" alt="Profile" data-plan-avatar />
+          </div>
+          <div class="progress">
+            <span>Your Report is 82% complete</span>
+            <div class="progress__bar"><span style="width: 82%"></span></div>
+          </div>
+          <p class="plan-note" data-plan-summary>
+            Your follicles are active. This is the best time to start the regimen as the chances of visible hair growth
+            are high.
+          </p>
+          <div class="plan-root-icons">
+            <article>
+              <p>Genetics</p>
+            </article>
+            <article>
+              <p>Metabolism</p>
+            </article>
+            <article>
+              <p>Nutrition</p>
+            </article>
+          </div>
+        </article>
+
+        <article class="plan-card match-card">
+          <h4>Here is Abhishek</h4>
+          <p>Who matches your profile</p>
+          <div class="match-gallery">
+            <img src="assets/images/hero-couple.jpg" alt="Month 1-2" />
+            <img src="assets/images/hero-couple.jpg" alt="Month 3-4" />
+            <img src="assets/images/hero-couple.jpg" alt="Month 5-6" />
+          </div>
+        </article>
+
+        <article class="plan-card coach-card">
+          <div class="coach-card__info">
+            <h4>Hair coach unlocked</h4>
+            <p>Dedicated hair expert just a call away.</p>
+          </div>
+          <img src="assets/images/hero-couple.jpg" alt="Coach" />
+        </article>
+
+        <article class="plan-card timeline-card">
+          <h4>Start seeing results in 5 months</h4>
+          <div class="root-timeline">
+            <article>
+              <h4>Month 1-2</h4>
+              <p>Hair fall control</p>
+            </article>
+            <article>
+              <h4>Month 3-4</h4>
+              <p>Hair growth</p>
+            </article>
+            <article>
+              <h4>Month 5-6</h4>
+              <p>Maintaining awesome hair</p>
+            </article>
+          </div>
+        </article>
+      </section>
+
+      <aside class="plan-right">
+        <article class="plan-card kit-card">
+          <h4>Start your journey with just 1 month kit</h4>
+          <ul class="kit-list">
+            <li>
+              <div>
+                <p>For Hair Regrowth</p>
+                <span>Redensyl scalp growth booster</span>
+              </div>
+              <strong>₹980</strong>
+            </li>
+            <li>
+              <div>
+                <p>For Metabolism</p>
+                <span>Traya herbs for improved energy</span>
+              </div>
+              <strong>₹1250</strong>
+            </li>
+            <li>
+              <div>
+                <p>For Hairfall Control</p>
+                <span>Defense against weak follicles</span>
+              </div>
+              <strong>₹890</strong>
+            </li>
+          </ul>
+        </article>
+
+        <article class="plan-card addons-card">
+          <h4>Free Add-ons</h4>
+          <ul>
+            <li>
+              <span>Hair Coach Support</span>
+              <strong>FREE</strong>
+            </li>
+            <li>
+              <span>Customised Diet Plan</span>
+              <strong>FREE</strong>
+            </li>
+            <li>
+              <span>Expert Approval</span>
+              <strong>FREE</strong>
+            </li>
+          </ul>
+        </article>
+
+        <article class="plan-card total-card">
+          <div class="total-row">
+            <span>Total</span>
+            <strong data-plan-total>₹ 2,420</strong>
+          </div>
+          <button type="button" class="primary-cta" data-plan-buy>Buy Now</button>
+        </article>
+      </aside>
+    </main>
+
+    <script>
+      (function () {
+        const nameEl = document.querySelector('[data-plan-name]');
+        const stageEl = document.querySelector('[data-plan-stage]');
+        const avatarEl = document.querySelector('[data-plan-avatar]');
+        const buyButton = document.querySelector('[data-plan-buy]');
+        const kitItems = document.querySelectorAll('.kit-list li');
+        const totalEl = document.querySelector('[data-plan-total]');
+        const alertEl = document.querySelector('[data-plan-alert]');
+        const alertTitleEl = document.querySelector('[data-plan-alert-title]');
+        const alertBodyEl = document.querySelector('[data-plan-alert-body]');
+        let userContext = null;
+
+        const resolveApiBase = () => {
+          if (typeof window.__INF_OTP_API_BASE === 'string') {
+            return window.__INF_OTP_API_BASE;
+          }
+          if (window.location.hostname === 'localhost' && window.location.port !== '4000') {
+            return window.location.origin;
+          }
+          return '';
+        };
+
+        const API_BASE = resolveApiBase();
+
+        const showPlanAlert = (title, body, tone = 'success') => {
+          if (!alertEl) return;
+          alertEl.classList.remove('plan-alert--success', 'plan-alert--warning');
+          if (tone === 'success') {
+            alertEl.classList.add('plan-alert--success');
+          } else if (tone === 'warning') {
+            alertEl.classList.add('plan-alert--warning');
+          }
+          if (alertTitleEl && title) {
+            alertTitleEl.textContent = title;
+          }
+          if (alertBodyEl && body) {
+            alertBodyEl.textContent = body;
+          }
+          alertEl.hidden = false;
+          alertEl.classList.add('is-visible');
+        };
+
+        const maybeShowPaymentDemo = () => {
+          try {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('status') === 'paid') {
+              showPlanAlert(
+                'Payment confirmed',
+                'Thank you! Your Infinium coach will finalize your kit shortly.',
+                'success'
+              );
+              params.delete('status');
+              const newQuery = params.toString();
+              const newUrl = `${window.location.pathname}${newQuery ? `?${newQuery}` : ''}${
+                window.location.hash || ''
+              }`;
+              window.history.replaceState({}, '', newUrl);
+            }
+          } catch (_) {
+            /* ignore */
+          }
+        };
+
+        try {
+          const ctxRaw = localStorage.getItem('infiniumUserContext');
+          if (ctxRaw) {
+            const ctx = JSON.parse(ctxRaw);
+            userContext = ctx;
+            if (ctx.name && nameEl) nameEl.textContent = ctx.name;
+            if (ctx.stage && stageEl) stageEl.textContent = ctx.stage;
+            if (ctx.avatar && avatarEl) avatarEl.src = ctx.avatar;
+          }
+        } catch (_) {
+          /* ignore */
+        }
+
+        maybeShowPaymentDemo();
+
+        const setButtonLoading = (isLoading) => {
+          if (!buyButton) return;
+          buyButton.disabled = isLoading;
+          buyButton.textContent = isLoading ? 'Processing…' : 'Buy Now';
+        };
+
+        const sanitizeCurrency = (value) => {
+          if (!value) return null;
+          const cleaned = value.toString().replace(/[^0-9.]/g, '');
+          if (!cleaned) return null;
+          const parsed = parseFloat(cleaned);
+          if (Number.isNaN(parsed)) return null;
+          return parsed;
+        };
+
+        const formatKitLine = (item) => {
+          const lineTitle = item.querySelector('p')?.textContent?.trim();
+          const lineDesc = item.querySelector('span')?.textContent?.trim();
+          const linePrice = item.querySelector('strong')?.textContent?.trim();
+          const summary = [lineTitle, lineDesc].filter(Boolean).join(' - ');
+          return `${summary}${linePrice ? ` (${linePrice})` : ''}`.trim();
+        };
+
+        const collectPlanSummary = () =>
+          Array.from(kitItems || [])
+            .map((item) => formatKitLine(item))
+            .filter(Boolean);
+
+        const buildSuccessRedirect = () => {
+          try {
+            if (window.location.origin && window.location.origin !== 'null') {
+              return `${window.location.origin}/recommended-plan.html?status=paid`;
+            }
+          } catch (_) {
+            /* ignore */
+          }
+          return undefined;
+        };
+
+        const fallbackToWhatsapp = (planSummary, totalAmount) => {
+          showPlanAlert(
+            'Need help completing payment?',
+            'We could not generate a payment link automatically. A coach will assist you on WhatsApp.',
+            'warning'
+          );
+          const customerName = nameEl?.textContent?.trim();
+          const customerStage = stageEl?.textContent?.trim();
+
+          const messageChunks = [
+            'Hi Infinium team, I am ready to buy my recommended plan.',
+            customerName ? `Name: ${customerName}` : '',
+            customerStage ? `Stage: ${customerStage}` : '',
+            planSummary?.length ? ['Kit Items:', planSummary.map((line) => `- ${line}`).join('\n')].join('\n') : '',
+            totalAmount ? `Total: ${totalAmount}` : '',
+          ].filter(Boolean);
+
+          const waMessage = encodeURIComponent(messageChunks.join('\n\n'));
+          const waUrl = `https://wa.me/917621871654?text=${waMessage}`;
+          const popup = window.open(waUrl, '_blank', 'noopener,noreferrer');
+          if (!popup) {
+            window.location.href = waUrl;
+          }
+        };
+
+        const requestPaymentLink = async (payload) => {
+          const endpoint = API_BASE ? `${API_BASE}/api/payments/plan-link` : '/api/payments/plan-link';
+          const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+          });
+          const data = await response.json().catch(() => ({}));
+          if (!response.ok) {
+            throw new Error(data?.message || 'Failed to create payment link');
+          }
+          return data?.shortUrl || data?.paymentUrl;
+        };
+
+        buyButton?.addEventListener('click', async () => {
+          const totalLabel = totalEl?.textContent?.trim();
+          const totalValue = sanitizeCurrency(totalLabel);
+          if (!totalValue) {
+            alert('Unable to determine the total price. Please refresh the page and try again.');
+            return;
+          }
+          const planSummary = collectPlanSummary();
+
+          setButtonLoading(true);
+          try {
+            const paymentUrl = await requestPaymentLink({
+              totalAmount: totalValue,
+              customer: {
+                name: nameEl?.textContent?.trim(),
+                stage: stageEl?.textContent?.trim(),
+                contact: userContext?.phone,
+                email: userContext?.email,
+              },
+              items: planSummary,
+              successRedirect: buildSuccessRedirect(),
+            });
+
+            if (!paymentUrl) {
+              throw new Error('Payment link was not returned by the server.');
+            }
+
+            const popup = window.open(paymentUrl, '_blank', 'noopener,noreferrer');
+            if (!popup) {
+              window.location.href = paymentUrl;
+            }
+          } catch (error) {
+            console.error('Payment link error', error);
+            alert('Unable to start the payment link automatically. Redirecting you to WhatsApp for assistance.');
+            fallbackToWhatsapp(planSummary, totalLabel);
+          } finally {
+            setButtonLoading(false);
+          }
+        });
+      })();
+    </script>
+      <a href="https://wa.me/917621871654" class="whatsapp-fab" target="_blank" rel="noopener">
+      <img src="assets/images/whatsApp-icon.png" alt="WhatsApp" class="whatsapp-fab__icon" />
+    </a>
+</body>
+</html>

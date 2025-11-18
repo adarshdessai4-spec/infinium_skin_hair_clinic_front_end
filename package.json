@@ -1,0 +1,12 @@
+{
+  "name": "infinium-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "live-server --quiet --open=index.html --port=5173 --watch=.",
+    "start": "npm run dev"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

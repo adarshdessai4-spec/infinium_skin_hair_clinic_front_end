@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infinium Hair & Skin Care Clinic | Hair Test</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <script>
+      (function () {
+        try {
+          const raw = localStorage.getItem('infiniumUserContext');
+          if (!raw) {
+            throw new Error('missing session');
+          }
+          const context = JSON.parse(raw);
+          if (!context?.loggedInAt) {
+            throw new Error('stale session');
+          }
+        } catch (_) {
+          try {
+            sessionStorage.setItem('infiniumPendingDestination', 'hair-test.html');
+          } catch (storageError) {
+            /* ignore */
+          }
+          window.location.replace('index.html?loginRequired=hair-test');
+        }
+      })();
+    </script>
+  </head>
+  <body class="test-body">
+    <header class="test-nav">
+      <div class="test-brand">
+        <div class="test-logo">Infinium Hair & Skin Care Clinic</div>
+        <p>This hair test is co-created with experts</p>
+      </div>
+      <a href="index.html" class="test-exit">Exit</a>
+    </header>
+
+    <main class="test-shell">
+      <div class="test-top-row">
+        <button class="test-prev" type="button" data-test-prev disabled>
+          &#8592; Previous
+        </button>
+      </div>
+      <div class="test-steps">
+        <div class="test-step is-active" data-step-index="0">
+          <span>About</span>
+          <span>You</span>
+        </div>
+        <div class="test-step" data-step-index="1">
+          <span>Hair</span>
+          <span>Health</span>
+        </div>
+        <div class="test-step" data-step-index="2">
+          <span>Internal</span>
+          <span>Health</span>
+        </div>
+        <div class="test-step" data-step-index="3">
+          <span>Scalp</span>
+          <span>Assessment</span>
+        </div>
+      </div>
+
+      <div class="test-progress">
+        <div class="test-progress__bar">
+          <span class="test-progress__fill" data-progress-fill style="width: 0%"></span>
+        </div>
+        <span class="test-progress__value" data-progress-value>0%</span>
+      </div>
+
+      <section class="test-card is-active-panel" data-step-panel="0">
+        <p class="test-eyebrow">Before we start, can we get your name?</p>
+        <label class="test-field">
+          <input type="text" placeholder="Your Name" aria-label="Your name" />
+          <span class="test-field__line"></span>
+        </label>
+        <button class="test-button" type="button" data-test-next>
+          Next
+          <span aria-hidden="true">➜</span>
+        </button>
+        <p class="test-footnote">
+          *Your data is safe with us. We follow strict security measures to protect your privacy and never share your
+          information without consent.
+          <a href="#">Learn more</a>
+        </p>
+      </section>
+
+      <section class="test-card" data-step-panel="1">
+        <p class="test-eyebrow">How old are you?</p>
+        <label class="test-field">
+          <input type="number" placeholder="How old are you?" aria-label="How old are you?" />
+          <span class="test-field__line"></span>
+        </label>
+        <button class="test-button" type="button" data-test-next>
+          Next
+          <span aria-hidden="true">➜</span>
+        </button>
+      </section>
+
+      <section class="test-card" data-step-panel="2">
+        <p class="test-eyebrow">Gender</p>
+        <div class="test-options">
+          <button class="test-option" type="button" data-test-next data-test-value="male">Male</button>
+          <button class="test-option" type="button" data-test-next data-test-value="female">Female</button>
+        </div>
+      </section>
+
+      <section class="test-card" data-step-panel="3">
+        <p class="test-eyebrow">Which image best describes your hair loss?</p>
+        <div class="test-hair-stage">
+          <label class="hair-stage-card">
+            <input type="radio" name="hair-stage" />
+            <div class="hair-stage-card__body">
+              <span class="hair-stage-card__label">Stage-1</span>
+              <div class="hair-stage-card__figures">
+                <div class="hair-figure stage-1"></div>
+                <div class="hair-figure stage-1"></div>
+              </div>
+            </div>
+          </label>
+          <label class="hair-stage-card">
+            <input type="radio" name="hair-stage" />
+            <div class="hair-stage-card__body">
+              <span class="hair-stage-card__label">Stage-2</span>
+              <div class="hair-stage-card__figures">
+                <div class="hair-figure stage-2"></div>
+                <div class="hair-figure stage-2"></div>
+              </div>
+            </div>
+          </label>
+          <label class="hair-stage-card">
+            <input type="radio" name="hair-stage" />
+            <div class="hair-stage-card__body">
+              <span class="hair-stage-card__label">Stage-3</span>
+              <div class="hair-stage-card__figures">
+                <div class="hair-figure stage-3"></div>
+                <div class="hair-figure stage-3"></div>
+              </div>
+            </div>
+          </label>
+          <label class="hair-stage-card">
+            <input type="radio" name="hair-stage" />
+            <div class="hair-stage-card__body">
+              <span class="hair-stage-card__label">Stage-4</span>
+              <div class="hair-stage-card__figures">
+                <div class="hair-figure stage-4"></div>
+                <div class="hair-figure stage-4"></div>
+              </div>
+            </div>
+          </label>
+          <label class="hair-stage-card">
+            <input type="radio" name="hair-stage" />
+            <div class="hair-stage-card__body">
+              <span class="hair-stage-card__label">Stage-5</span>
+              <div class="hair-stage-card__figures">
+                <div class="hair-figure stage-5"></div>
+                <div class="hair-figure stage-5"></div>
+              </div>
+            </div>
+          </label>
+          <label class="hair-stage-card">
+            <input type="radio" name="hair-stage" />
+            <div class="hair-stage-card__body">
+              <span class="hair-stage-card__label">Stage-6</span>
+              <div class="hair-stage-card__figures">
+                <div class="hair-figure stage-6"></div>
+                <div class="hair-figure stage-6"></div>
+              </div>
+            </div>
+          </label>
+          <label class="hair-stage-card">
+            <input type="radio" name="hair-stage" />
+            <div class="hair-stage-card__body">
+              <span class="hair-stage-card__label">Coin Size Patch</span>
+              <div class="hair-stage-card__figures">
+                <div class="hair-figure stage-coin"></div>
+                <div class="hair-figure stage-coin"></div>
+              </div>
+            </div>
+          </label>
+          <label class="hair-stage-card">
+            <input type="radio" name="hair-stage" />
+            <div class="hair-stage-card__body">
+              <span class="hair-stage-card__label">Heavy Hair Fall</span>
+              <div class="hair-stage-card__figures">
+                <div class="hair-figure stage-heavy"></div>
+                <div class="hair-figure stage-heavy"></div>
+              </div>
+            </div>
+          </label>
+        </div>
+        <button class="test-button" type="button" data-test-next data-choice-next="hair-stage" disabled>
+          Next
+          <span aria-hidden="true">➜</span>
+        </button>
+      </section>
+
+      <section class="test-card" data-step-panel="4">
+        <p class="test-eyebrow">Where are you noticing hair loss?</p>
+        <div class="test-choice-grid">
+          <label class="choice-card">
+            <input type="radio" name="hair-loss-area" />
+            <div class="choice-card__body">
+              <span class="choice-card__label">Front only</span>
+              <div class="choice-card__figure">
+                <div class="hair-figure stage-2"></div>
+              </div>
+            </div>
+          </label>
+          <label class="choice-card">
+            <input type="radio" name="hair-loss-area" />
+            <div class="choice-card__body">
+              <span class="choice-card__label">At the top of the head only</span>
+              <div class="choice-card__figure">
+                <div class="hair-figure stage-heavy"></div>
+              </div>
+            </div>
+          </label>
+          <label class="choice-card">
+            <input type="radio" name="hair-loss-area" />
+            <div class="choice-card__body">
+              <span class="choice-card__label">Both front and top of the head</span>
+              <div class="choice-card__figure">
+                <div class="hair-figure stage-3"></div>
+              </div>
+            </div>
+          </label>
+        </div>
+        <button class="test-button" type="button" data-test-next data-choice-next="hair-loss-area" disabled>
+          Next
+          <span aria-hidden="true">➜</span>
+        </button>
+      </section>
+
+      <section class="test-card" data-step-panel="5">
+        <p class="test-eyebrow">Do you have a family history of hair loss?</p>
+        <div class="test-radio-list">
+          <label class="radio-list__item">
+            <input type="radio" name="family-history" />
+            <span>Mother or anyone from mother's side of the family</span>
+          </label>
+          <label class="radio-list__item">
+            <input type="radio" name="family-history" />
+            <span>Father or anyone from father's side of the family</span>
+          </label>
+          <label class="radio-list__item">
+            <input type="radio" name="family-history" />
+            <span>Both</span>
+          </label>
+          <label class="radio-list__item">
+            <input type="radio" name="family-history" />
+            <span>None</span>
+          </label>
+        </div>
+        <button class="test-button" type="button" data-test-next data-choice-next="family-history" disabled>
+          Next
+          <span aria-hidden="true">➜</span>
+        </button>
+      </section>
+
+      <section class="test-card" data-step-panel="6">
+        <p class="test-eyebrow">Do you have dandruff?</p>
+        <div class="test-radio-list">
+          <label class="radio-list__item">
+            <input type="radio" name="dandruff" />
+            <span>No</span>
+          </label>
+          <label class="radio-list__item">
+            <input type="radio" name="dandruff" />
+            <span>Mild dandruff (small white flakes)</span>
+          </label>
+          <label class="radio-list__item">
+            <input type="radio" name="dandruff" />
+            <span>Heavy dandruff (sticky dandruff found in nails on scratching or visible on clothes)</span>
+          </label>
+          <label class="radio-list__item radio-list__item--stacked">
+            <input type="radio" name="dandruff" />
+            <span>
+              <strong>Diagnosed with Psoriasis / Seborrheic Dermatitis</strong>
+              <small>A skin condition that causes red, dry patches on your scalp.</small>
+            </span>
+          </label>
+        </div>
+        <button class="test-button" type="button" data-test-next data-choice-next="dandruff" disabled>
+          Next
+          <span aria-hidden="true">➜</span>
+        </button>
+      </section>
+
+      <section class="test-card" data-step-panel="7">
+        <p class="test-eyebrow">Do you have Gas, Acidity or Bloating?</p>
+        <div class="test-radio-list">
+          <label class="radio-list__item">
+            <input type="radio" name="digestion-issues" />
+            <span>No</span>
+          </label>
+          <label class="radio-list__item">
+            <input type="radio" name="digestion-issues" />
+            <span>Sometimes (1-2 times a week or when I eat out)</span>
+          </label>
+          <label class="radio-list__item">
+            <input type="radio" name="digestion-issues" />
+            <span>Often (3+ times a week)</span>
+          </label>
+        </div>
+        <button class="test-button" type="button" data-test-next data-choice-next="digestion-issues" disabled>
+          Next
+          <span aria-hidden="true">➜</span>
+        </button>
+      </section>
+
+      <section class="test-card" data-step-panel="8">
+        <p class="test-eyebrow">Do you have Blood Pressure problem?</p>
+        <div class="test-radio-list">
+          <label class="radio-list__item">
+            <input type="radio" name="bp-issue" />
+            <span>None</span>
+          </label>
+          <label class="radio-list__item">
+            <input type="radio" name="bp-issue" />
+            <span>Yes, high BP issue</span>
+          </label>
+          <label class="radio-list__item">
+            <input type="radio" name="bp-issue" />
+            <span>Yes, low BP issue</span>
+          </label>
+        </div>
+        <button class="test-button" type="button" data-test-next data-choice-next="bp-issue" disabled>
+          Next
+          <span aria-hidden="true">➜</span>
+        </button>
+      </section>
+
+      <section class="test-card" data-step-panel="9">
+        <p class="test-eyebrow">Upload your scalp picture, for our hair experts to check.</p>
+        <div class="test-upload">
+          <div class="test-upload__media">
+            <img
+              src="assets/images/hero-couple.jpg"
+              alt="Sample scalp photo"
+              data-upload-preview
+              data-default-src="assets/images/hero-couple.jpg"
+            />
+            <span>Try clicking a photo like the sample above</span>
+          </div>
+          <div class="test-upload__actions">
+            <input type="file" id="scalpUploadInput" accept="image/*" hidden />
+            <input type="file" id="scalpCaptureInput" accept="image/*" capture="environment" hidden />
+            <button class="upload-btn" type="button" data-upload-trigger="library">Upload Scalp Photo</button>
+            <button class="upload-btn upload-btn--dark" type="button" data-upload-trigger="camera">Take A Picture</button>
+          </div>
+          <p class="upload-status" data-upload-status>No file selected yet.</p>
+          <button class="test-button test-button--submit" type="button" disabled data-upload-submit>
+            Submit Photo
+          </button>
+        </div>
+        <div class="camera-modal" data-camera-modal hidden>
+          <div class="camera-modal__content">
+            <video autoplay playsinline muted data-camera-video></video>
+            <canvas data-camera-canvas hidden></canvas>
+            <div class="camera-modal__actions">
+              <button type="button" data-camera-capture>Capture</button>
+              <button type="button" data-camera-close>Close</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="test-card test-card--fullheight" data-step-panel="10">
+        <div class="test-loading">
+          <div class="test-loading__icon" aria-hidden="true">✨</div>
+          <h2>Customising your plan...</h2>
+          <ul>
+            <li class="is-complete">Assessing your response</li>
+            <li class="is-complete">Analyzing hair fall</li>
+            <li class="is-active">Building recommendations</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <script src="assets/js/hair-test.js" type="module"></script>
+      <a href="https://wa.me/917621871654" class="whatsapp-fab" target="_blank" rel="noopener">
+      <img src="assets/images/whatsApp-icon.png" alt="WhatsApp" class="whatsapp-fab__icon" />
+    </a>
+</body>
+</html>
