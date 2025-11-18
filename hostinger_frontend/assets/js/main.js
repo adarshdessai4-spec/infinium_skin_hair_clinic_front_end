@@ -69,6 +69,9 @@
 
     menuButton.addEventListener('click', () => toggleMenu());
     closeButton.addEventListener('click', () => toggleMenu(false));
+    document.querySelectorAll('[data-menu-open]').forEach((btn) => {
+      btn.addEventListener('click', () => toggleMenu(true));
+    });
     overlay.addEventListener('click', (event) => {
       if (event.target === overlay) {
         toggleMenu(false);
@@ -164,7 +167,7 @@
     const closeButtons = loginModal.querySelectorAll('[data-login-close]');
     const overlay = loginModal.querySelector('.login-modal__overlay');
     const errorField = loginModal.querySelector('[data-login-error]');
-    const loginSteps = loginModal.querySelectorAll('[data-login-step]');
+    let loginSteps = loginModal.querySelectorAll('[data-login-step]');
     let lastLoginTrigger = null;
     let pendingOtpContext = null;
     const phoneInput = loginModal.querySelector('#loginMobile');
@@ -181,6 +184,43 @@
     const profileNameInput = loginModal.querySelector('#loginName');
     const profileCompleteButton = loginModal.querySelector('[data-login-action="complete"]');
     const profileSuccessPhone = loginModal.querySelector('[data-login-success-phone]');
+    const loginContent = loginModal.querySelector('.login-modal__content');
+    let successStep = loginModal.querySelector('[data-login-step="success"]');
+    if (!successStep && loginContent) {
+      successStep = document.createElement('div');
+      successStep.className = 'login-step login-step--success';
+      successStep.dataset.loginStep = 'success';
+      successStep.innerHTML = `
+        <div class="login-success-final">
+          <div class="login-success-final__tick" data-login-success-tick aria-hidden="true">✓</div>
+          <div class="login-success-final__copy">
+            <h3>
+              Welcome,
+              <span data-login-success-name>Infinium Member</span>
+            </h3>
+            <p>Your personalised Infinium profile is loading…</p>
+          </div>
+        </div>
+      `;
+      if (errorField) {
+        loginContent.insertBefore(successStep, errorField);
+      } else {
+        loginContent.appendChild(successStep);
+      }
+      loginSteps = loginModal.querySelectorAll('[data-login-step]');
+    }
+    const successNameTarget = loginModal.querySelector('[data-login-success-name]');
+    const successTick = loginModal.querySelector('[data-login-success-tick]');
+    const assessmentStep = loginModal.querySelector('[data-login-step="assessment"]');
+    const assessmentButtons = loginModal.querySelectorAll('[data-assessment-choice]');
+    let successRedirectTimer = null;
+    let postLoginDestination = null;
+    const clearSuccessRedirect = () => {
+      if (successRedirectTimer) {
+        clearTimeout(successRedirectTimer);
+        successRedirectTimer = null;
+      }
+    };
     const toggleGoogleLoading = (isLoading) => {
       if (!googleButton) return;
       const label = googleButton.querySelector('span');
@@ -286,6 +326,7 @@
     };
 
     const resetLoginFlow = () => {
+      clearSuccessRedirect();
       stopOtpTimer();
       currentCountdown = OTP_SECONDS;
       pendingOtpContext = null;
@@ -308,6 +349,8 @@
       if (profileSuccessPhone) {
         profileSuccessPhone.textContent = currentPhoneDisplay;
       }
+      loginModal.classList.remove('login-modal--success', 'login-modal--assessment');
+      successTick?.classList.remove('is-animate');
       setLoginError('');
       setButtonLoading(sendButton, false);
       setButtonLoading(verifyButton, false);
@@ -366,6 +409,67 @@
       return role === 'admin' ? 'admin-portal.html' : 'user-portal.html';
     };
 
+    const finalizePostLoginDestination = (destinationOverride) => {
+      const target =
+        destinationOverride ||
+        pendingDestination ||
+        postLoginDestination ||
+        destinationForRole(currentRole);
+      postLoginDestination = null;
+      pendingDestination = null;
+      try {
+        sessionStorage.removeItem('infiniumPendingDestination');
+      } catch (_) {
+        /* ignore */
+      }
+      setLoginState(false);
+      if (target) {
+        window.location.href = target;
+      }
+    };
+
+    const showAssessmentStep = () => {
+      clearSuccessRedirect();
+      if (!assessmentStep) {
+        finalizePostLoginDestination();
+        return;
+      }
+      loginModal.classList.remove('login-modal--success');
+      loginModal.classList.add('login-modal--assessment');
+      showLoginStep('assessment');
+    };
+
+    const showSuccessState = (payload) => {
+      clearSuccessRedirect();
+      const displayName =
+        (payload.name && payload.name.trim()) ||
+        payload.email ||
+        payload.phone ||
+        'Infinium Member';
+      if (successNameTarget) {
+        successNameTarget.textContent = displayName;
+      }
+      loginModal.classList.add('login-modal--success');
+      showLoginStep('success');
+      requestAnimationFrame(() => {
+        successTick?.classList.add('is-animate');
+      });
+      successRedirectTimer = window.setTimeout(() => {
+        showAssessmentStep();
+      }, 900);
+    };
+
+    assessmentButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const choice = button.dataset.assessmentChoice;
+        if (choice === 'hair') {
+          finalizePostLoginDestination('hair-test.html');
+        } else if (choice === 'skin') {
+          finalizePostLoginDestination('hair-test.html?test=skin');
+        }
+      });
+    });
+
     const handleLoginSuccess = (context = {}) => {
       const payload = createSessionPayload({
         ...context,
@@ -376,15 +480,12 @@
       } catch (_) {
         /* ignore */
       }
-      setLoginState(false);
-      const targetDestination = pendingDestination || destinationForRole(payload.role);
-      pendingDestination = null;
-      try {
-        sessionStorage.removeItem('infiniumPendingDestination');
-      } catch (_) {
-        /* ignore */
+      postLoginDestination = pendingDestination || destinationForRole(payload.role);
+      if (payload.role === 'admin') {
+        finalizePostLoginDestination(postLoginDestination);
+        return;
       }
-      window.location.href = targetDestination;
+      showSuccessState(payload);
     };
 
     let googlePopup = null;
@@ -417,15 +518,25 @@
       });
     });
 
+    const requestLoginClose = () => {
+      if (
+        loginModal.classList.contains('login-modal--success') ||
+        loginModal.classList.contains('login-modal--assessment')
+      ) {
+        return;
+      }
+      setLoginState(false);
+    };
+
     closeButtons.forEach((btn) => {
-      btn.addEventListener('click', () => setLoginState(false));
+      btn.addEventListener('click', requestLoginClose);
     });
 
-    overlay?.addEventListener('click', () => setLoginState(false));
+    overlay?.addEventListener('click', requestLoginClose);
 
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && loginModal.classList.contains('is-open')) {
-        setLoginState(false);
+        requestLoginClose();
       }
     });
 
@@ -726,6 +837,135 @@
         setModalState(false);
       }
     });
+  }
+
+  const treatmentSliders = document.querySelectorAll('[data-treatment-slider]');
+  if (treatmentSliders.length) {
+    treatmentSliders.forEach((slider) => {
+      const track = slider.querySelector('[data-treatment-track]');
+      if (!track) return;
+
+      const computeScrollAmount = () => {
+        const card = track.querySelector('.treatment-card');
+        const style = window.getComputedStyle(track);
+        const gapValue = parseFloat(style.columnGap || style.gap || '16') || 16;
+        return (card?.offsetWidth || track.clientWidth * 0.8) + gapValue;
+      };
+
+      const buttons = slider.querySelectorAll('[data-slider-button]');
+      buttons.forEach((button) => {
+        const direction = button.dataset.sliderButton === 'next' ? 1 : -1;
+        button.addEventListener('click', () => {
+          track.scrollBy({
+            left: direction * computeScrollAmount(),
+            behavior: 'smooth',
+          });
+        });
+      });
+    });
+  }
+
+  const beforeAfterSlider = document.querySelector('[data-before-after-slider]');
+  if (beforeAfterSlider) {
+    const track = beforeAfterSlider.querySelector('[data-before-after-track]');
+    if (track) {
+      const createBeforeAfterCard = (item, index) => {
+        const card = document.createElement('article');
+        card.className = 'before-after__card';
+        const title = item?.title || `Infinium Result ${index + 1}`;
+        const alt = item?.alt || title;
+
+        card.innerHTML = `
+          <figure class="before-after__figure">
+            <div class="before-after__media">
+              <img src="${item.image}" alt="${alt}" loading="lazy" />
+              <span class="before-after__badge">Result</span>
+            </div>
+            <figcaption class="before-after__caption">
+              <p class="before-after__caption-title">${title}</p>
+              ${item?.description ? `<p class="before-after__caption-text">${item.description}</p>` : ''}
+            </figcaption>
+          </figure>
+        `;
+
+        return card;
+      };
+
+      const populateBeforeAfterTrack = (items = []) => {
+        if (!items.length) return;
+        const fragment = document.createDocumentFragment();
+        items.forEach((item, index) => {
+          if (!item?.image) return;
+          fragment.appendChild(createBeforeAfterCard(item, index));
+        });
+        if (!fragment.childNodes.length) return;
+        track.innerHTML = '';
+        track.appendChild(fragment);
+      };
+
+      const hydrateBeforeAfterGallery = async () => {
+        if (!window.fetch) return;
+        try {
+          const response = await fetch('/api/before-after', {
+            headers: { Accept: 'application/json' },
+          });
+
+          if (!response.ok) {
+            throw new Error(`before-after request failed: ${response.status}`);
+          }
+
+          const payload = await response.json();
+          const items = Array.isArray(payload?.items) ? payload.items.filter((entry) => entry && entry.image) : [];
+          if (items.length) {
+            populateBeforeAfterTrack(items);
+          }
+        } catch (error) {
+          console.error('Unable to load before-after gallery', error);
+        }
+      };
+
+      hydrateBeforeAfterGallery();
+
+      const computeScrollAmount = () => {
+        const card = track.querySelector('.before-after__card');
+        const style = window.getComputedStyle(track);
+        const gapValue = parseFloat(style.columnGap || style.gap || '16') || 16;
+        return (card?.offsetWidth || track.clientWidth * 0.8) + gapValue;
+      };
+
+      beforeAfterSlider.querySelectorAll('[data-before-after-button]').forEach((button) => {
+        const direction = button.dataset.beforeAfterButton === 'next' ? 1 : -1;
+        button.addEventListener('click', () => {
+          track.scrollBy({
+            left: direction * computeScrollAmount(),
+            behavior: 'smooth',
+          });
+        });
+      });
+    }
+  }
+
+  const essentialsSlider = document.querySelector('[data-essentials-slider]');
+  if (essentialsSlider) {
+    const track = essentialsSlider.querySelector('[data-essentials-track]');
+    if (track) {
+      const computeScrollAmount = () => {
+        const card = track.querySelector('.product-card');
+        const style = window.getComputedStyle(track);
+        const gapValue = parseFloat(style.columnGap || style.gap || '16') || 16;
+        return (card?.offsetWidth || track.clientWidth * 0.8) + gapValue;
+      };
+
+      essentialsSlider.querySelectorAll('[data-essentials-button]').forEach((button) => {
+        const direction = button.dataset.essentialsButton === 'next' ? 1 : -1;
+        button.addEventListener('click', () => {
+          track.scrollBy({
+            left: direction * computeScrollAmount(),
+            behavior: 'smooth',
+          });
+        });
+      });
+    }
   }
 
   const combosRoot = document.querySelector('.combos-body');
