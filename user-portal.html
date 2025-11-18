@@ -205,22 +205,22 @@
         </div>
         <div class="root-summary">
           <h3>Will Infinium work for me?</h3>
-          <p>
+          <p data-root-summary>
             Absolutely, results depend on your hair loss stage and age.<br />As per your test, you will take
-            <strong>5 months</strong> to see visible results.
+            <strong><span data-root-months>5 months</span></strong> to see visible results.
           </p>
-          <div class="root-timeline">
-            <article>
-              <h4>Month 1-2</h4>
-              <p>Treat internal root causes behind your hair fall.</p>
+          <div class="root-timeline" data-root-timeline>
+            <article data-root-timeline-step="0">
+              <h4 data-root-timeline-label>Month 1-2</h4>
+              <p data-root-timeline-text>Treat internal root causes behind your hair fall.</p>
             </article>
-            <article>
-              <h4>Month 3-4</h4>
-              <p>Reduce hair fall and improve follicle health.</p>
+            <article data-root-timeline-step="1">
+              <h4 data-root-timeline-label>Month 3-4</h4>
+              <p data-root-timeline-text>Reduce hair fall and improve follicle health.</p>
             </article>
-            <article>
-              <h4>Month 5-6</h4>
-              <p>Grow new and healthy set of baby hair.</p>
+            <article data-root-timeline-step="2">
+              <h4 data-root-timeline-label>Month 5-6</h4>
+              <p data-root-timeline-text>Grow new and healthy set of baby hair.</p>
             </article>
           </div>
         </div>
@@ -309,6 +309,31 @@
             <h3>Your assessments &amp; results</h3>
           </div>
         </div>
+        <div class="portal-results__layout">
+          <article class="result-highlight" data-results-highlight>
+            <div class="result-highlight__score">
+              <div class="result-highlight__progress" data-result-progress>
+                <span data-result-score>82%</span>
+                <small>Improvement</small>
+              </div>
+            </div>
+            <div class="result-highlight__body">
+              <p class="portal-section__eyebrow">Latest test</p>
+              <h4 data-result-title>Comprehensive Hair Health Test</h4>
+              <p data-result-summary>
+                Density improved by <strong>18%</strong> in the last 60 days. Keep following your evening routine for
+                accelerated regrowth.
+              </p>
+              <div class="result-highlight__meta">
+                <span data-result-updated>Updated Today · 10:15 AM</span>
+                <button type="button" class="portal-pill portal-pill--ghost" data-result-view-latest>
+                  View detailed result
+                </button>
+              </div>
+            </div>
+          </article>
+          <aside class="result-filters" data-results-filters></aside>
+        </div>
         <div class="portal-results" data-results-list></div>
       </section>
     </main>
@@ -327,6 +352,9 @@
         const medsContainer = document.querySelector('[data-portal-meds]');
         const touchpointsContainer = document.querySelector('[data-portal-touchpoints]');
         const nextTouchpointEl = document.querySelector('[data-portal-next]');
+        const rootSummaryEl = document.querySelector('[data-root-summary]');
+        const rootMonthsEl = document.querySelector('[data-root-months]');
+        const rootTimelineEl = document.querySelector('[data-root-timeline]');
         const profileForm = document.querySelector('[data-profile-form]');
         const profileStatusEl = document.querySelector('[data-profile-status]');
         const profileAvatarInput = document.querySelector('[data-profile-avatar-input]');
@@ -342,6 +370,14 @@
         const cartErrorEl = document.querySelector('[data-cart-error]');
         const cartCountEls = document.querySelectorAll('[data-portal-cart-count]');
         const cartTotalBadgeEls = document.querySelectorAll('[data-portal-cart-total]');
+        const resultsHighlight = document.querySelector('[data-results-highlight]');
+        const resultScoreValue = document.querySelector('[data-result-score]');
+        const resultProgress = document.querySelector('[data-result-progress]');
+        const resultTitleEl = document.querySelector('[data-result-title]');
+        const resultSummaryEl = document.querySelector('[data-result-summary]');
+        const resultUpdatedEl = document.querySelector('[data-result-updated]');
+        const resultViewLatestBtn = document.querySelector('[data-result-view-latest]');
+        const resultsFiltersEl = document.querySelector('[data-results-filters]');
 
         const defaults = {
           profile: {
@@ -366,16 +402,29 @@
           results: [
             {
               id: 'hair-test',
+              type: 'Hair Health',
               title: 'Comprehensive Hair Health Test',
               status: 'Completed',
-              updatedAt: 'Today, 10:15 AM',
+              score: 82,
+              improvement: '18% density gain',
+              summary:
+                'Density improved by 18% in the last 60 days. Keep following your evening routine for accelerated regrowth.',
+              focus: ['Density', 'Shedding'],
+              updatedAt: '2025-02-18T10:15:00+05:30',
+              updatedLabel: 'Today · 10:15 AM',
               link: 'result.html#hair-test',
             },
             {
               id: 'skin-analysis',
+              type: 'Skin + Scalp',
               title: 'Skin & Scalp Scan',
               status: 'Doctor reviewing',
-              updatedAt: 'Yesterday, 6:20 PM',
+              score: 68,
+              improvement: 'Pending dermatologist review',
+              summary: 'Photographs uploaded. Our dermatologist is reviewing the scalp hydration markers.',
+              focus: ['Hydration', 'Sebum'],
+              updatedAt: '2025-02-17T18:20:00+05:30',
+              updatedLabel: 'Yesterday · 6:20 PM',
               link: 'result.html#skin',
             },
           ],
@@ -413,6 +462,18 @@
         const PROFILE_STORAGE_KEY = 'infiniumUserProfile';
         const CART_STORAGE_KEY = 'infiniumUserCart';
         const RESULTS_STORAGE_KEY = 'infiniumUserResults';
+        const REPORT_STORAGE_KEY = 'infiniumHairTestReport';
+        let activeResultFilter = 'all';
+
+        const escapeHtml = (value = '') => {
+          if (typeof value !== 'string') {
+            return '';
+          }
+          const replacements = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+          return value.replace(/[&<>\"']/g, (char) => replacements[char] || char);
+        };
+
+        const latestHairReport = loadFromStorage(REPORT_STORAGE_KEY, null);
 
         const updateText = (el, text) => {
           if (el && text) {
@@ -512,28 +573,158 @@
         const persistResults = () => saveToStorage(RESULTS_STORAGE_KEY, userResults);
         const persistCart = () => saveToStorage(CART_STORAGE_KEY, cartItems);
 
-        const renderResults = (entries) => {
+        const sortResultsByDate = (entries) =>
+          [...(entries || [])].sort(
+            (a, b) => new Date(b?.updatedAt || 0).getTime() - new Date(a?.updatedAt || 0).getTime()
+          );
+
+        const getSortedResults = () => {
+          if (Array.isArray(userResults) && userResults.length) {
+            return sortResultsByDate(userResults);
+          }
+          return sortResultsByDate(defaults.results);
+        };
+
+        const getFilteredResults = () => {
+          const list = getSortedResults();
+          if (activeResultFilter === 'all') return list;
+          const normalized = activeResultFilter.toLowerCase();
+          return list.filter((entry) => (entry.type || '').toLowerCase() === normalized);
+        };
+
+        const renderResultsList = () => {
           if (!resultsList) return;
-          const list = entries && entries.length ? entries : defaults.results;
+          const list = getFilteredResults();
+          if (!list.length) {
+            resultsList.innerHTML =
+              '<p class="portal-empty">No assessments yet. Complete your hair test to unlock personalised reports.</p>';
+            return;
+          }
           resultsList.innerHTML = list
-            .map(
-              (entry) => `<article class="portal-result" data-result-id="${entry.id}">
-                <div>
-                  <p class="portal-result__status">${entry.status || 'Pending'}</p>
-                  <h4>${entry.title || 'Assessment'}</h4>
-                  <p class="portal-result__meta">${entry.updatedAt ? `Updated ${entry.updatedAt}` : ''}</p>
+            .map((entry) => {
+              const safeId = escapeHtml(entry.id || '');
+              const status = escapeHtml(entry.status || entry.type || 'Pending');
+              const title = escapeHtml(entry.title || 'Assessment');
+              const meta =
+                escapeHtml(entry.updatedLabel || entry.updatedAt || '') +
+                ' • ' +
+                escapeHtml(entry.type || 'Hair Program');
+              const summary = entry.summary ? `<p class="portal-result__summary">${escapeHtml(entry.summary)}</p>` : '';
+              const tags =
+                entry.focus && entry.focus.length
+                  ? `<div class="portal-result__tags">${entry.focus
+                      .map((tag) => `<span>${escapeHtml(tag)}</span>`)
+                      .join('')}</div>`
+                  : '';
+              const score =
+                typeof entry.score === 'number'
+                  ? `<span class="portal-result__score">${escapeHtml(entry.score.toString())}<small>%</small></span>`
+                  : '';
+              const resultLink = escapeHtml((entry.link || 'result.html').toString());
+              return `<article class="portal-result" data-result-id="${safeId}">
+                <div class="portal-result__content">
+                  <p class="portal-result__status">${status}</p>
+                  <h4>${title}</h4>
+                  <p class="portal-result__meta">${meta}</p>
+                  ${summary}
+                  ${tags}
                 </div>
                 <div class="portal-result__actions">
-                  <button type="button" data-result-action="view" data-result-link="${entry.link || 'result.html'}">
-                    View
-                  </button>
-                  <button type="button" data-result-action="download" data-result-id="${entry.id}">
-                    Download
-                  </button>
+                  ${score}
+                  <button type="button" data-result-action="view" data-result-link="${resultLink}">View</button>
+                  <button type="button" data-result-action="download" data-result-id="${safeId}">Download</button>
                 </div>
-              </article>`
-            )
+              </article>`;
+            })
             .join('');
+        };
+
+        const renderResultsHighlight = () => {
+          if (!resultsHighlight) return;
+          const [latest] = getSortedResults();
+          if (!latest) {
+            resultsHighlight.innerHTML =
+              '<p class="portal-empty">No assessments available yet. Your first summary will appear here.</p>';
+            return;
+          }
+          const detailedReport =
+            latestHairReport && latestHairReport.resultEntry?.id === latest.id ? latestHairReport : null;
+          const displayScore = detailedReport?.metrics?.score ?? latest.score ?? 0;
+          if (resultScoreValue) {
+            resultScoreValue.textContent = displayScore ? `${displayScore}%` : '--';
+          }
+          if (resultProgress) {
+            const bounded = Math.max(0, Math.min(displayScore || 0, 100));
+            resultProgress.style.setProperty('--result-progress', `${bounded}%`);
+          }
+          if (resultTitleEl) {
+            resultTitleEl.textContent = detailedReport?.metrics?.stageTitle || latest.title || 'Recent Assessment';
+          }
+          if (resultSummaryEl) {
+            resultSummaryEl.textContent = detailedReport?.metrics?.summary || latest.summary || '';
+          }
+          if (resultUpdatedEl) {
+            resultUpdatedEl.textContent =
+              detailedReport?.resultEntry?.updatedLabel || latest.updatedLabel || latest.updatedAt || '';
+          }
+          if (resultViewLatestBtn) {
+            resultViewLatestBtn.onclick = () => {
+              const target = detailedReport?.resultEntry?.link || latest.link || 'result.html';
+              window.open(target, '_blank', 'noopener');
+            };
+          }
+        };
+
+        const renderResultFilters = () => {
+          if (!resultsFiltersEl) return;
+          const sorted = getSortedResults();
+          const uniqueTypes = Array.from(new Set(sorted.map((entry) => entry.type).filter(Boolean)));
+          const totalsByType = sorted.reduce((acc, entry) => {
+            const key = (entry.type || '').toLowerCase();
+            if (!key) return acc;
+            acc[key] = (acc[key] || 0) + 1;
+            return acc;
+          }, {});
+          const pills = ['All', ...uniqueTypes];
+          resultsFiltersEl.innerHTML = `<div class="result-filter-list">
+            ${pills
+              .map((label) => {
+                const value = label.toLowerCase();
+                const normalized = value === 'all' ? 'all' : value;
+                const active = normalized === activeResultFilter ? 'is-active' : '';
+                const count = normalized === 'all' ? sorted.length : totalsByType[normalized] || 0;
+                const countLabel = `${count} test${count === 1 ? '' : 's'}`;
+                return `<button type="button" class="${active}" data-result-filter="${normalized}">
+                  ${escapeHtml(label)}
+                  <span>${escapeHtml(countLabel)}</span>
+                </button>`;
+              })
+              .join('')}
+          </div>`;
+        };
+
+        const renderResultsUI = () => {
+          renderResultsHighlight();
+          renderResultFilters();
+          renderResultsList();
+        };
+
+        const applyPlanInsights = (report) => {
+          if (!report?.metrics) return;
+          if (rootMonthsEl) {
+            rootMonthsEl.textContent = `${report.metrics.planMonths || 5} months`;
+          }
+          if (rootTimelineEl && Array.isArray(report.timeline)) {
+            const items = Array.from(rootTimelineEl.querySelectorAll('[data-root-timeline-step]'));
+            report.timeline.forEach((entry, index) => {
+              const target = items[index];
+              if (!target) return;
+              const labelEl = target.querySelector('[data-root-timeline-label]');
+              const textEl = target.querySelector('[data-root-timeline-text]');
+              if (labelEl && entry.label) labelEl.textContent = entry.label;
+              if (textEl && entry.text) textEl.textContent = entry.text;
+            });
+          }
         };
 
         const computeCartTotals = () => {
@@ -662,7 +853,8 @@
         renderFocusAreas(defaults.assessment.focusAreas);
         renderMedications(defaults.medications);
         renderTouchpoints(defaults.touchpoints);
-        renderResults(userResults);
+        renderResultsUI();
+        applyPlanInsights(latestHairReport);
         renderCartItems();
         updateCartState();
 
@@ -748,6 +940,14 @@
           }
         });
 
+        resultsFiltersEl?.addEventListener('click', (event) => {
+          const button = event.target.closest('[data-result-filter]');
+          if (!button) return;
+          const value = button.dataset.resultFilter || 'all';
+          activeResultFilter = value;
+          renderResultsUI();
+        });
+
         cartList?.addEventListener('click', (event) => {
           const button = event.target.closest('[data-cart-action]');
           if (!button) return;
@@ -773,12 +973,19 @@
           cartCheckoutBtn.textContent = isLoading ? 'Starting Razorpay…' : 'Pay & Checkout';
         };
 
-        const collectCheckoutCustomer = () => ({
-          name: storedProfile.name || defaults.profile.name,
-          contact: storedProfile.phone || storedContext.phone,
-          email: storedProfile.email || storedContext.email,
-          stage: storedProfile.stage || storedContext.stage || defaults.profile.stage,
-        });
+        const collectCheckoutCustomer = () => {
+          const latestAnswers = latestHairReport?.answers || {};
+          return {
+            name: storedProfile.name || latestAnswers.name || defaults.profile.name,
+            contact: storedProfile.phone || storedContext.phone || '',
+            email: storedProfile.email || storedContext.email || '',
+            stage:
+              storedProfile.stage ||
+              storedContext.stage ||
+              latestHairReport?.metrics?.stageLabel ||
+              defaults.profile.stage,
+          };
+        };
 
         const handleCheckout = async () => {
           if (!cartItems.length) return;
@@ -800,7 +1007,7 @@
             if (!response.ok || !payload?.paymentUrl) {
               throw new Error(payload?.message || 'Unable to start checkout. Please try again.');
             }
-            window.open(payload.paymentUrl, '_blank', 'noopener');
+            window.location.href = payload.paymentUrl;
           } catch (error) {
             if (cartErrorEl) cartErrorEl.textContent = error.message;
           } finally {
@@ -838,7 +1045,7 @@
             if (Array.isArray(data?.results)) {
               userResults = data.results;
               persistResults();
-              renderResults(userResults);
+              renderResultsUI();
             }
             if (Array.isArray(data?.cartItems)) {
               cartItems = data.cartItems.map((item) => ({

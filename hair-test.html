@@ -77,7 +77,7 @@
       <section class="test-card is-active-panel" data-step-panel="0">
         <p class="test-eyebrow">Before we start, can we get your name?</p>
         <label class="test-field">
-          <input type="text" placeholder="Your Name" aria-label="Your name" />
+          <input id="hairTestName" data-test-name type="text" placeholder="Your Name" aria-label="Your name" />
           <span class="test-field__line"></span>
         </label>
         <button class="test-button" type="button" data-test-next>
@@ -94,7 +94,14 @@
       <section class="test-card" data-step-panel="1">
         <p class="test-eyebrow">How old are you?</p>
         <label class="test-field">
-          <input type="number" placeholder="How old are you?" aria-label="How old are you?" />
+          <input
+            id="hairTestAge"
+            data-test-age
+            type="number"
+            placeholder="How old are you?"
+            aria-label="How old are you?"
+            min="16"
+          />
           <span class="test-field__line"></span>
         </label>
         <button class="test-button" type="button" data-test-next>
@@ -106,8 +113,12 @@
       <section class="test-card" data-step-panel="2">
         <p class="test-eyebrow">Gender</p>
         <div class="test-options">
-          <button class="test-option" type="button" data-test-next data-test-value="male">Male</button>
-          <button class="test-option" type="button" data-test-next data-test-value="female">Female</button>
+          <button class="test-option" type="button" data-test-next data-test-field="gender" data-test-value="male">
+            Male
+          </button>
+          <button class="test-option" type="button" data-test-next data-test-field="gender" data-test-value="female">
+            Female
+          </button>
         </div>
       </section>
 
@@ -115,7 +126,7 @@
         <p class="test-eyebrow">Which image best describes your hair loss?</p>
         <div class="test-hair-stage">
           <label class="hair-stage-card">
-            <input type="radio" name="hair-stage" />
+            <input type="radio" name="hair-stage" value="stage-1" />
             <div class="hair-stage-card__body">
               <span class="hair-stage-card__label">Stage-1</span>
               <div class="hair-stage-card__figures">
@@ -125,7 +136,7 @@
             </div>
           </label>
           <label class="hair-stage-card">
-            <input type="radio" name="hair-stage" />
+            <input type="radio" name="hair-stage" value="stage-2" />
             <div class="hair-stage-card__body">
               <span class="hair-stage-card__label">Stage-2</span>
               <div class="hair-stage-card__figures">
@@ -135,7 +146,7 @@
             </div>
           </label>
           <label class="hair-stage-card">
-            <input type="radio" name="hair-stage" />
+            <input type="radio" name="hair-stage" value="stage-3" />
             <div class="hair-stage-card__body">
               <span class="hair-stage-card__label">Stage-3</span>
               <div class="hair-stage-card__figures">
@@ -145,7 +156,7 @@
             </div>
           </label>
           <label class="hair-stage-card">
-            <input type="radio" name="hair-stage" />
+            <input type="radio" name="hair-stage" value="stage-4" />
             <div class="hair-stage-card__body">
               <span class="hair-stage-card__label">Stage-4</span>
               <div class="hair-stage-card__figures">
@@ -155,7 +166,7 @@
             </div>
           </label>
           <label class="hair-stage-card">
-            <input type="radio" name="hair-stage" />
+            <input type="radio" name="hair-stage" value="stage-5" />
             <div class="hair-stage-card__body">
               <span class="hair-stage-card__label">Stage-5</span>
               <div class="hair-stage-card__figures">
@@ -165,7 +176,7 @@
             </div>
           </label>
           <label class="hair-stage-card">
-            <input type="radio" name="hair-stage" />
+            <input type="radio" name="hair-stage" value="stage-6" />
             <div class="hair-stage-card__body">
               <span class="hair-stage-card__label">Stage-6</span>
               <div class="hair-stage-card__figures">
@@ -175,7 +186,7 @@
             </div>
           </label>
           <label class="hair-stage-card">
-            <input type="radio" name="hair-stage" />
+            <input type="radio" name="hair-stage" value="stage-coin" />
             <div class="hair-stage-card__body">
               <span class="hair-stage-card__label">Coin Size Patch</span>
               <div class="hair-stage-card__figures">
@@ -185,7 +196,7 @@
             </div>
           </label>
           <label class="hair-stage-card">
-            <input type="radio" name="hair-stage" />
+            <input type="radio" name="hair-stage" value="stage-heavy" />
             <div class="hair-stage-card__body">
               <span class="hair-stage-card__label">Heavy Hair Fall</span>
               <div class="hair-stage-card__figures">
@@ -205,7 +216,7 @@
         <p class="test-eyebrow">Where are you noticing hair loss?</p>
         <div class="test-choice-grid">
           <label class="choice-card">
-            <input type="radio" name="hair-loss-area" />
+            <input type="radio" name="hair-loss-area" value="front" />
             <div class="choice-card__body">
               <span class="choice-card__label">Front only</span>
               <div class="choice-card__figure">
@@ -214,7 +225,7 @@
             </div>
           </label>
           <label class="choice-card">
-            <input type="radio" name="hair-loss-area" />
+            <input type="radio" name="hair-loss-area" value="crown" />
             <div class="choice-card__body">
               <span class="choice-card__label">At the top of the head only</span>
               <div class="choice-card__figure">
@@ -223,7 +234,7 @@
             </div>
           </label>
           <label class="choice-card">
-            <input type="radio" name="hair-loss-area" />
+            <input type="radio" name="hair-loss-area" value="both" />
             <div class="choice-card__body">
               <span class="choice-card__label">Both front and top of the head</span>
               <div class="choice-card__figure">
@@ -242,19 +253,19 @@
         <p class="test-eyebrow">Do you have a family history of hair loss?</p>
         <div class="test-radio-list">
           <label class="radio-list__item">
-            <input type="radio" name="family-history" />
+            <input type="radio" name="family-history" value="mother" />
             <span>Mother or anyone from mother's side of the family</span>
           </label>
           <label class="radio-list__item">
-            <input type="radio" name="family-history" />
+            <input type="radio" name="family-history" value="father" />
             <span>Father or anyone from father's side of the family</span>
           </label>
           <label class="radio-list__item">
-            <input type="radio" name="family-history" />
+            <input type="radio" name="family-history" value="both" />
             <span>Both</span>
           </label>
           <label class="radio-list__item">
-            <input type="radio" name="family-history" />
+            <input type="radio" name="family-history" value="none" />
             <span>None</span>
           </label>
         </div>
@@ -268,19 +279,19 @@
         <p class="test-eyebrow">Do you have dandruff?</p>
         <div class="test-radio-list">
           <label class="radio-list__item">
-            <input type="radio" name="dandruff" />
+            <input type="radio" name="dandruff" value="none" />
             <span>No</span>
           </label>
           <label class="radio-list__item">
-            <input type="radio" name="dandruff" />
+            <input type="radio" name="dandruff" value="mild" />
             <span>Mild dandruff (small white flakes)</span>
           </label>
           <label class="radio-list__item">
-            <input type="radio" name="dandruff" />
+            <input type="radio" name="dandruff" value="heavy" />
             <span>Heavy dandruff (sticky dandruff found in nails on scratching or visible on clothes)</span>
           </label>
           <label class="radio-list__item radio-list__item--stacked">
-            <input type="radio" name="dandruff" />
+            <input type="radio" name="dandruff" value="psoriasis" />
             <span>
               <strong>Diagnosed with Psoriasis / Seborrheic Dermatitis</strong>
               <small>A skin condition that causes red, dry patches on your scalp.</small>
@@ -297,15 +308,15 @@
         <p class="test-eyebrow">Do you have Gas, Acidity or Bloating?</p>
         <div class="test-radio-list">
           <label class="radio-list__item">
-            <input type="radio" name="digestion-issues" />
+            <input type="radio" name="digestion-issues" value="no" />
             <span>No</span>
           </label>
           <label class="radio-list__item">
-            <input type="radio" name="digestion-issues" />
+            <input type="radio" name="digestion-issues" value="sometimes" />
             <span>Sometimes (1-2 times a week or when I eat out)</span>
           </label>
           <label class="radio-list__item">
-            <input type="radio" name="digestion-issues" />
+            <input type="radio" name="digestion-issues" value="often" />
             <span>Often (3+ times a week)</span>
           </label>
         </div>
@@ -319,15 +330,15 @@
         <p class="test-eyebrow">Do you have Blood Pressure problem?</p>
         <div class="test-radio-list">
           <label class="radio-list__item">
-            <input type="radio" name="bp-issue" />
+            <input type="radio" name="bp-issue" value="none" />
             <span>None</span>
           </label>
           <label class="radio-list__item">
-            <input type="radio" name="bp-issue" />
+            <input type="radio" name="bp-issue" value="high" />
             <span>Yes, high BP issue</span>
           </label>
           <label class="radio-list__item">
-            <input type="radio" name="bp-issue" />
+            <input type="radio" name="bp-issue" value="low" />
             <span>Yes, low BP issue</span>
           </label>
         </div>
