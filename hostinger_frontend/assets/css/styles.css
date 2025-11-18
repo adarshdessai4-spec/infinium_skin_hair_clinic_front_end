@@ -1890,6 +1890,12 @@ img {
   cursor: pointer;
 }
 
+.login-modal--success .login-modal__close,
+.login-modal--assessment .login-modal__close {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .login-modal__content h2 {
   margin: 0;
   font-size: 1.4rem;
@@ -1989,6 +1995,30 @@ img {
   margin: 0;
   font-size: 0.9rem;
   color: var(--text-muted);
+}
+
+.login-step--assessment {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.login-assessment__copy {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.login-assessment__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.login-assessment__actions .portal-pill {
+  width: 100%;
+  justify-content: center;
 }
 
 .login-socials {

@@ -118,8 +118,11 @@ const initHairTestFlow = () => {
   };
 
   const existingProfile = loadJSON(STORAGE_KEYS.profile, {});
+  const params = new URLSearchParams(window.location.search);
+  const requestedAssessmentType = params.get('test') === 'skin' ? 'skin' : 'hair';
 
   const answers = {
+    testType: requestedAssessmentType,
     name: existingProfile.name || '',
     age: existingProfile.age || '',
     gender: existingProfile.gender || '',
@@ -133,6 +136,18 @@ const initHairTestFlow = () => {
     photoProvided: false,
     photoName: '',
   };
+
+  if (requestedAssessmentType === 'skin') {
+    document.title = 'Infinium Hair & Skin Care Clinic | Skin Test';
+    const tagline = document.querySelector('.test-brand p');
+    if (tagline) {
+      tagline.textContent = 'This skin test is co-created with experts';
+    }
+    const badge = document.querySelector('.test-nav .test-logo');
+    if (badge) {
+      badge.textContent = 'Infinium Skin Health Test';
+    }
+  }
 
   const choiceMap = {
     'hair-stage': { key: 'stage', labelKey: 'stageLabel' },
@@ -190,6 +205,13 @@ const initHairTestFlow = () => {
 
   const buildRootCauses = (severity) => {
     const causes = [];
+    if (answers.testType === 'skin') {
+      causes.push({
+        icon: '💧',
+        title: 'Skin Barrier',
+        detail: 'Barrier dryness and excess sebum are stressing follicles. Calming rinse restores balance.',
+      });
+    }
     if (answers.familyHistory && answers.familyHistory !== 'none') {
       causes.push({
         icon: '🧬',
@@ -267,7 +289,10 @@ const initHairTestFlow = () => {
     const stageInfo = stageCatalog[answers.stage] || stageCatalog['stage-2'];
     const severity = stageInfo.severity;
     const genderLabel = answers.gender === 'female' ? 'Female' : 'Male';
-    const stageTitle = `${stageInfo.label} of ${genderLabel} Pattern Hair Fall`;
+    const stageTitle =
+      answers.testType === 'skin'
+        ? `${genderLabel} Skin & Scalp Program`
+        : `${stageInfo.label} of ${genderLabel} Pattern Hair Fall`;
     let score = 96 - severity * 7;
     if (answers.familyHistory && answers.familyHistory !== 'none') {
       score -= answers.familyHistory === 'both' ? 9 : 6;
@@ -294,16 +319,23 @@ const initHairTestFlow = () => {
     const areaText = areaCopy[answers.hairLossArea] || 'across your scalp';
     const rootCauses = buildRootCauses(severity);
     const focusTags = rootCauses.map((cause) => cause.title).slice(0, 3);
-    const summary = `${answers.name || 'Your profile'} indicates ${stageInfo.label} hair fall ${areaText}. ${
-      rootCauses[0]?.detail || ''
-    } Expect healthier regrowth within ${planMonths} months with the Infinium regimen.`;
+    const areaText =
+      answers.testType === 'skin' ? 'across your scalp' : areaCopy[answers.hairLossArea] || 'across your scalp';
+    const summary =
+      answers.testType === 'skin'
+        ? `${answers.name || 'Your profile'} indicates scalp barrier sensitivity ${areaText}. ${
+            rootCauses[0]?.detail || ''
+          } Expect calmer skin within ${planMonths} months with the Infinium regimen.`
+        : `${answers.name || 'Your profile'} indicates ${stageInfo.label} hair fall ${areaText}. ${
+            rootCauses[0]?.detail || ''
+          } Expect healthier regrowth within ${planMonths} months with the Infinium regimen.`;
     const improvement = clamp(42 - severity * 4, 14, 32);
     const recommendedProducts = buildRecommendedProducts(severity);
     const createdAt = new Date();
     const entry = {
       id: `hair-test-${Date.now()}`,
-      type: 'Hair Health',
-      title: `${stageInfo.label} Hair Program`,
+      type: answers.testType === 'skin' ? 'Skin Health' : 'Hair Health',
+      title: answers.testType === 'skin' ? 'Skin Health Program' : `${stageInfo.label} Hair Program`,
       status: 'Completed',
       score,
       summary,

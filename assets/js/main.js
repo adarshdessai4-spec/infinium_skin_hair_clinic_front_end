@@ -211,7 +211,10 @@
     }
     const successNameTarget = loginModal.querySelector('[data-login-success-name]');
     const successTick = loginModal.querySelector('[data-login-success-tick]');
+    const assessmentStep = loginModal.querySelector('[data-login-step="assessment"]');
+    const assessmentButtons = loginModal.querySelectorAll('[data-assessment-choice]');
     let successRedirectTimer = null;
+    let postLoginDestination = null;
     const clearSuccessRedirect = () => {
       if (successRedirectTimer) {
         clearTimeout(successRedirectTimer);
@@ -346,7 +349,7 @@
       if (profileSuccessPhone) {
         profileSuccessPhone.textContent = currentPhoneDisplay;
       }
-      loginModal.classList.remove('login-modal--success');
+      loginModal.classList.remove('login-modal--success', 'login-modal--assessment');
       successTick?.classList.remove('is-animate');
       setLoginError('');
       setButtonLoading(sendButton, false);
@@ -406,7 +409,37 @@
       return role === 'admin' ? 'admin-portal.html' : 'user-portal.html';
     };
 
-    const showSuccessRedirectState = (payload, destination) => {
+    const finalizePostLoginDestination = (destinationOverride) => {
+      const target =
+        destinationOverride ||
+        pendingDestination ||
+        postLoginDestination ||
+        destinationForRole(currentRole);
+      postLoginDestination = null;
+      pendingDestination = null;
+      try {
+        sessionStorage.removeItem('infiniumPendingDestination');
+      } catch (_) {
+        /* ignore */
+      }
+      setLoginState(false);
+      if (target) {
+        window.location.href = target;
+      }
+    };
+
+    const showAssessmentStep = () => {
+      clearSuccessRedirect();
+      if (!assessmentStep) {
+        finalizePostLoginDestination();
+        return;
+      }
+      loginModal.classList.remove('login-modal--success');
+      loginModal.classList.add('login-modal--assessment');
+      showLoginStep('assessment');
+    };
+
+    const showSuccessState = (payload) => {
       clearSuccessRedirect();
       const displayName =
         (payload.name && payload.name.trim()) ||
@@ -422,9 +455,20 @@
         successTick?.classList.add('is-animate');
       });
       successRedirectTimer = window.setTimeout(() => {
-        window.location.href = destination;
-      }, 1500);
+        showAssessmentStep();
+      }, 900);
     };
+
+    assessmentButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const choice = button.dataset.assessmentChoice;
+        if (choice === 'hair') {
+          finalizePostLoginDestination('hair-test.html');
+        } else if (choice === 'skin') {
+          finalizePostLoginDestination('hair-test.html?test=skin');
+        }
+      });
+    });
 
     const handleLoginSuccess = (context = {}) => {
       const payload = createSessionPayload({
@@ -436,14 +480,12 @@
       } catch (_) {
         /* ignore */
       }
-      const targetDestination = pendingDestination || destinationForRole(payload.role);
-      pendingDestination = null;
-      try {
-        sessionStorage.removeItem('infiniumPendingDestination');
-      } catch (_) {
-        /* ignore */
+      postLoginDestination = pendingDestination || destinationForRole(payload.role);
+      if (payload.role === 'admin') {
+        finalizePostLoginDestination(postLoginDestination);
+        return;
       }
-      showSuccessRedirectState(payload, targetDestination);
+      showSuccessState(payload);
     };
 
     let googlePopup = null;
@@ -477,7 +519,10 @@
     });
 
     const requestLoginClose = () => {
-      if (loginModal.classList.contains('login-modal--success')) {
+      if (
+        loginModal.classList.contains('login-modal--success') ||
+        loginModal.classList.contains('login-modal--assessment')
+      ) {
         return;
       }
       setLoginState(false);

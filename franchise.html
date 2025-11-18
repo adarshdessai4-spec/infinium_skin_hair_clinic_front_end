@@ -226,21 +226,34 @@
             </div>
           </div>
           <p class="login-modal__label">Tell us your name</p>
-          <label class="login-modal__input" for="loginName">
-            <input
-              id="loginName"
-              type="text"
-              placeholder="Enter full name"
-              autocomplete="name"
-            />
-          </label>
-          <p class="login-modal__help">We personalise your plan with this name.</p>
-          <button type="button" class="login-modal__cta" data-login-action="complete">Continue</button>
-        </div>
-
-        <p class="login-modal__error" data-login-error role="alert"></p>
+        <label class="login-modal__input" for="loginName">
+          <input
+            id="loginName"
+            type="text"
+            placeholder="Enter full name"
+            autocomplete="name"
+          />
+        </label>
+        <p class="login-modal__help">We personalise your plan with this name.</p>
+        <button type="button" class="login-modal__cta" data-login-action="complete">Continue</button>
       </div>
+
+      <div class="login-step login-step--assessment" data-login-step="assessment">
+        <h3>Choose your assessment</h3>
+        <p class="login-assessment__copy">
+          Complete a quick test to unlock your personalised Infinium plan.
+        </p>
+        <div class="login-assessment__actions">
+          <button type="button" class="portal-pill portal-pill--accent" data-assessment-choice="hair">
+            Start Hair Test
+          </button>
+          <button type="button" class="portal-pill" data-assessment-choice="skin">Start Skin Test</button>
+        </div>
+      </div>
+
+      <p class="login-modal__error" data-login-error role="alert"></p>
     </div>
+  </div>
 
     <main class="franchise-main">
       <section class="franchise-hero">

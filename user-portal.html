@@ -175,6 +175,17 @@
         </div>
       </section>
 
+      <section class="portal-section portal-assessment-banner" data-assessment-reminder hidden>
+        <h3>Start your assessment</h3>
+        <p>Take a quick hair or skin test to unlock your personalised Infinium plan.</p>
+        <div class="portal-assessment-banner__actions">
+          <button type="button" class="portal-pill portal-pill--accent" data-assessment-start="hair">
+            Start Hair Test
+          </button>
+          <button type="button" class="portal-pill" data-assessment-start="skin">Start Skin Test</button>
+        </div>
+      </section>
+
       <section class="portal-section portal-root">
         <div class="portal-section__head">
           <div>
@@ -355,6 +366,8 @@
         const rootSummaryEl = document.querySelector('[data-root-summary]');
         const rootMonthsEl = document.querySelector('[data-root-months]');
         const rootTimelineEl = document.querySelector('[data-root-timeline]');
+        const assessmentReminder = document.querySelector('[data-assessment-reminder]');
+        const assessmentReminderButtons = document.querySelectorAll('[data-assessment-start]');
         const profileForm = document.querySelector('[data-profile-form]');
         const profileStatusEl = document.querySelector('[data-profile-status]');
         const profileAvatarInput = document.querySelector('[data-profile-avatar-input]');
@@ -388,7 +401,7 @@
             avatar: 'assets/images/hero-couple.jpg',
           },
           assessment: {
-            score: 82,
+            score: null,
             focusAreas: ['Genetics', 'Lifestyle', 'Stress', 'Nutrition'],
           },
           medications: [
@@ -399,64 +412,8 @@
             { label: 'Coach Check-in', value: 'Tue, 24 Sept · 5:30 PM' },
             { label: 'Refill Reminder', value: 'Next week' },
           ],
-          results: [
-            {
-              id: 'hair-test',
-              type: 'Hair Health',
-              title: 'Comprehensive Hair Health Test',
-              status: 'Completed',
-              score: 82,
-              improvement: '18% density gain',
-              summary:
-                'Density improved by 18% in the last 60 days. Keep following your evening routine for accelerated regrowth.',
-              focus: ['Density', 'Shedding'],
-              updatedAt: '2025-02-18T10:15:00+05:30',
-              updatedLabel: 'Today · 10:15 AM',
-              link: 'result.html#hair-test',
-            },
-            {
-              id: 'skin-analysis',
-              type: 'Skin + Scalp',
-              title: 'Skin & Scalp Scan',
-              status: 'Doctor reviewing',
-              score: 68,
-              improvement: 'Pending dermatologist review',
-              summary: 'Photographs uploaded. Our dermatologist is reviewing the scalp hydration markers.',
-              focus: ['Hydration', 'Sebum'],
-              updatedAt: '2025-02-17T18:20:00+05:30',
-              updatedLabel: 'Yesterday · 6:20 PM',
-              link: 'result.html#skin',
-            },
-          ],
-          cart: [
-            {
-              id: 'hair-ras',
-              name: 'Hair Ras Tonic',
-              dosage: 'Morning after meals',
-              qty: 1,
-              price: 1899,
-              tag: 'Doctor prescribed',
-              image: 'assets/images/product-herbs.jpg',
-            },
-            {
-              id: 'defence-shampoo',
-              name: 'Defence Shampoo',
-              dosage: 'Alternate days',
-              qty: 1,
-              price: 999,
-              tag: 'Clinic exclusive',
-              image: 'assets/images/product-shampoo.jpg',
-            },
-            {
-              id: 'calm-ras',
-              name: 'Calm Ras Elixir',
-              dosage: 'Night routine',
-              qty: 1,
-              price: 1499,
-              tag: 'Stress balance',
-              image: 'assets/images/threefold-supplement.jpg',
-            },
-          ],
+          results: [],
+          cart: [],
         };
 
         const PROFILE_STORAGE_KEY = 'infiniumUserProfile';
@@ -597,7 +554,7 @@
           const list = getFilteredResults();
           if (!list.length) {
             resultsList.innerHTML =
-              '<p class="portal-empty">No assessments yet. Complete your hair test to unlock personalised reports.</p>';
+              '<p class="portal-empty">No assessments yet. Complete your Hair or Skin Test to unlock personalised reports.</p>';
             return;
           }
           resultsList.innerHTML = list
@@ -710,7 +667,32 @@
         };
 
         const applyPlanInsights = (report) => {
-          if (!report?.metrics) return;
+          if (!rootSummaryEl) {
+            return;
+          }
+          if (!report?.metrics) {
+            assessmentReminder?.removeAttribute('hidden');
+            rootSummaryEl.textContent =
+              'Complete a Hair or Skin Test to unlock your personalised Infinium plan.';
+            if (rootMonthsEl) {
+              rootMonthsEl.textContent = '—';
+            }
+            if (rootTimelineEl) {
+              const items = Array.from(rootTimelineEl.querySelectorAll('[data-root-timeline-step]'));
+              items.forEach((item) => {
+                const labelEl = item.querySelector('[data-root-timeline-label]');
+                const textEl = item.querySelector('[data-root-timeline-text]');
+                if (labelEl) labelEl.textContent = 'Pending';
+                if (textEl) textEl.textContent = 'Take your assessment to reveal your journey.';
+              });
+            }
+            return;
+          }
+
+          assessmentReminder?.setAttribute('hidden', 'hidden');
+          rootSummaryEl.textContent =
+            report.metrics.summary ||
+            'Keep up with your regimen to stay on track for visible transformations.';
           if (rootMonthsEl) {
             rootMonthsEl.textContent = `${report.metrics.planMonths || 5} months`;
           }
@@ -908,6 +890,14 @@
         profileAvatarInput?.addEventListener('change', (event) => {
           const file = event.target.files?.[0];
           handleAvatarUpload(file);
+        });
+
+        assessmentReminderButtons?.forEach((button) => {
+          button.addEventListener('click', () => {
+            const type = button.dataset.assessmentStart;
+            const target = type === 'skin' ? 'hair-test.html?test=skin' : 'hair-test.html';
+            window.location.href = target;
+          });
         });
 
         profileForm?.addEventListener('submit', (event) => {

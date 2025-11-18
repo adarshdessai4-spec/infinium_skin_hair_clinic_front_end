@@ -2180,6 +2180,30 @@ img {
   color: var(--text-muted);
 }
 
+.login-step--assessment {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.login-assessment__copy {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.login-assessment__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.login-assessment__actions .portal-pill {
+  width: 100%;
+  justify-content: center;
+}
+
 .login-step--success {
   text-align: center;
   padding-top: 0.5rem;
@@ -2233,7 +2257,8 @@ img {
   color: var(--text-muted);
 }
 
-.login-modal--success .login-modal__close {
+.login-modal--success .login-modal__close,
+.login-modal--assessment .login-modal__close {
   opacity: 0;
   pointer-events: none;
 }
@@ -2890,6 +2915,23 @@ img {
 .portal-section__head h3 {
   margin: 0.25rem 0 0;
   font-size: 1.4rem;
+}
+
+.portal-assessment-banner {
+  text-align: center;
+  background: linear-gradient(135deg, #f6fbff, #fff7f4);
+}
+
+.portal-assessment-banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.portal-assessment-banner__actions .portal-pill {
+  min-width: 190px;
+  justify-content: center;
 }
 
 .portal-launcher {
