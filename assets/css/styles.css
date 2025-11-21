@@ -726,6 +726,20 @@ img {
   color: inherit;
 }
 
+.menu-overlay__group--contact {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding-top: 1.25rem;
+}
+
+.menu-overlay__cta {
+  margin-top: 1rem;
+}
+
+.menu-overlay__cta .nav-cta {
+  width: 100%;
+  justify-content: center;
+}
+
 .menu-overlay__apps {
   display: flex;
   flex-wrap: wrap;
@@ -738,12 +752,6 @@ img {
   padding: 0.6rem 1.2rem;
   font-weight: 600;
   font-size: 0.85rem;
-}
-
-@media (max-width: 768px) {
-  .menu-overlay__group--contact {
-    display: none;
-  }
 }
 
 .hero-content {
