@@ -719,7 +719,7 @@ const initHairTestFlow = () => {
           currentStep = loadingIndex;
           updateUI();
           setTimeout(() => {
-            window.location.href = 'result.html';
+            window.location.href = 'user-portal.html#resultsSection';
           }, 2000);
         }
       });

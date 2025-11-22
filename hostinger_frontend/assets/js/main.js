@@ -8,6 +8,7 @@
 
   let pendingDestination = null;
   let openLoginModal = null;
+  const SESSION_FALLBACK_MS = 1000 * 60 * 60 * 24 * 30;
   try {
     const storedRedirect = sessionStorage.getItem('infiniumPendingDestination');
     if (storedRedirect) {
@@ -18,20 +19,53 @@
     /* storage disabled */
   }
 
+  const computeExpiryMs = (context = {}) => {
+    const now = Date.now();
+    const tryDate = (value) => {
+      if (!value) return null;
+      const ts = new Date(value).getTime();
+      return Number.isNaN(ts) ? null : ts;
+    };
+
+    const explicitExpiry = tryDate(context.expiresAt);
+    if (explicitExpiry) return explicitExpiry;
+
+    const tokenExpiry = tryDate(context.tokens?.expiresAt);
+    if (tokenExpiry) return tokenExpiry;
+
+    if (context.tokens?.expiresIn) {
+      const ttlMs = Number(context.tokens.expiresIn) * 1000;
+      if (!Number.isNaN(ttlMs) && ttlMs > 0) {
+        return now + ttlMs;
+      }
+    }
+
+    const loginTime = tryDate(context.loggedInAt);
+    if (loginTime) {
+      return loginTime + SESSION_FALLBACK_MS;
+    }
+
+    return now + SESSION_FALLBACK_MS;
+  };
+
   const getStoredUserContext = () => {
     try {
       const raw = localStorage.getItem('infiniumUserContext');
       if (!raw) return null;
-      return JSON.parse(raw);
+      const parsed = JSON.parse(raw);
+      const expiresMs = computeExpiryMs(parsed);
+      if (expiresMs && expiresMs <= Date.now()) {
+        localStorage.removeItem('infiniumUserContext');
+        return null;
+      }
+      parsed.expiresAt = new Date(expiresMs).toISOString();
+      return parsed;
     } catch (_) {
       return null;
     }
   };
 
-  const isUserLoggedIn = () => {
-    const context = getStoredUserContext();
-    return Boolean(context?.loggedInAt);
-  };
+  const isUserLoggedIn = () => Boolean(getStoredUserContext());
 
   const deriveNameFromEmail = (email) => {
     if (!email || typeof email !== 'string') return '';
@@ -261,15 +295,32 @@
       }
     };
     syncShortcutVisibility();
-    const createSessionPayload = (context = {}) => ({
-      role: context.role || currentRole,
-      name: context.name || context.email || context.phone || 'Infinium Member',
-      email: context.email,
-      phone: context.phone,
-      avatar: context.avatar,
-      provider: context.provider || 'otp',
-      loggedInAt: new Date().toISOString(),
-    });
+    const createSessionPayload = (context = {}) => {
+      const loggedInAt = new Date().toISOString();
+      const expiresMs = computeExpiryMs({ ...context, loggedInAt });
+      const expiresAt = new Date(expiresMs).toISOString();
+
+      return {
+        role: context.role || currentRole,
+        name: context.name || context.email || context.phone || 'Infinium Member',
+        email: context.email,
+        phone: context.phone,
+        avatar: context.avatar,
+        provider: context.provider || 'otp',
+        loggedInAt,
+        expiresAt,
+        idToken: context.tokens?.idToken || context.idToken,
+        accessToken: context.tokens?.accessToken || context.accessToken,
+        tokens: context.tokens
+          ? {
+              accessToken: context.tokens.accessToken,
+              idToken: context.tokens.idToken,
+              expiresIn: context.tokens.expiresIn,
+              expiresAt,
+            }
+          : undefined,
+      };
+    };
 
     const requestOtpApi = async (path, payload) => {
       const url = OTP_API_BASE ? `${OTP_API_BASE}${path}` : path;
@@ -439,6 +490,17 @@
       showLoginStep('assessment');
     };
 
+    const openAssessmentSelector = () => {
+      setLoginError('');
+      const context = getStoredUserContext();
+      if (successNameTarget && context?.name) {
+        successNameTarget.textContent = context.name;
+      }
+      setLoginState(true);
+      loginModal.classList.add('login-modal--success');
+      showAssessmentStep();
+    };
+
     const showSuccessState = (payload) => {
       clearSuccessRedirect();
       const displayName =
@@ -446,6 +508,10 @@
         payload.email ||
         payload.phone ||
         'Infinium Member';
+      const successCopy = successStep?.querySelector('.login-success-final__copy p');
+      if (successCopy) {
+        successCopy.textContent = 'Login successful. Choose your test to continue.';
+      }
       if (successNameTarget) {
         successNameTarget.textContent = displayName;
       }
@@ -566,6 +632,9 @@
         email: data.user?.email,
         avatar: data.user?.picture,
         provider: 'google',
+        tokens: data.tokens,
+        idToken: data.tokens?.idToken,
+        accessToken: data.tokens?.accessToken,
       });
     };
 
@@ -748,6 +817,12 @@
     if (loginPromptReason && !isUserLoggedIn()) {
       setLoginState(true);
       setLoginError('Please log in to continue to your test.');
+    }
+
+    const shouldForceAssessment =
+      loginPromptReason && /hair-test|skin-test|assessment/i.test(loginPromptReason);
+    if (shouldForceAssessment && isUserLoggedIn()) {
+      openAssessmentSelector();
     }
   }
 

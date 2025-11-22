@@ -11,6 +11,62 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/css/styles.css" />
+    <script>
+      (function () {
+        const SESSION_FALLBACK_MS = 1000 * 60 * 60 * 24 * 30;
+        const computeExpiryMs = (context = {}) => {
+          const now = Date.now();
+          const tryDate = (value) => {
+            if (!value) return null;
+            const ts = new Date(value).getTime();
+            return Number.isNaN(ts) ? null : ts;
+          };
+          const explicitExpiry = tryDate(context.expiresAt);
+          if (explicitExpiry) return explicitExpiry;
+          const tokenExpiry = tryDate(context.tokens?.expiresAt);
+          if (tokenExpiry) return tokenExpiry;
+          if (context.tokens?.expiresIn) {
+            const ttlMs = Number(context.tokens.expiresIn) * 1000;
+            if (!Number.isNaN(ttlMs) && ttlMs > 0) {
+              return now + ttlMs;
+            }
+          }
+          const loginTime = tryDate(context.loggedInAt);
+          if (loginTime) {
+            return loginTime + SESSION_FALLBACK_MS;
+          }
+          return now + SESSION_FALLBACK_MS;
+        };
+
+        try {
+          const rawContext = localStorage.getItem('infiniumUserContext');
+          if (!rawContext) {
+            throw new Error('missing-session');
+          }
+          const context = JSON.parse(rawContext);
+          if (!context?.loggedInAt) {
+            throw new Error('missing-session');
+          }
+          const expiresAt = computeExpiryMs(context);
+          if (expiresAt <= Date.now()) {
+            localStorage.removeItem('infiniumUserContext');
+            throw new Error('missing-session');
+          }
+          const reportRaw = localStorage.getItem('infiniumHairTestReport');
+          if (!reportRaw) {
+            throw new Error('missing-report');
+          }
+        } catch (error) {
+          try {
+            sessionStorage.setItem('infiniumPendingDestination', 'user-portal.html#resultsSection');
+          } catch (_) {
+            /* ignore */
+          }
+          const reason = 'assessment';
+          window.location.replace(`index.html?loginRequired=${reason}`);
+        }
+      })();
+    </script>
   </head>
   <body class="portal-body portal-body--user">
     <header class="portal-topbar">
