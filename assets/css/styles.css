@@ -565,7 +565,7 @@ img {
   height: 100vh;
   background: linear-gradient(150deg, #d6dce6 0%, #f5f7fb 65%);
   padding: clamp(1.5rem, 6vw, 4rem);
-  padding-top: calc(var(--nav-height) + clamp(1rem, 4vw, 2.5rem));
+  padding-top: calc(var(--nav-height) + clamp(0.5rem, 3vw, 1.5rem));
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -604,7 +604,8 @@ img {
 }
 
 .menu-overlay__brand {
-  margin-bottom: 0.25rem;
+  margin: 0 0 0.35rem;
+  text-align: center;
 }
 
 .menu-overlay__logo {
@@ -615,10 +616,6 @@ img {
 
 .menu-overlay__group--divisions {
   padding-top: 0.5rem;
-}
-
-.menu-overlay__list--brand-tabs {
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .menu-overlay__group {
@@ -649,16 +646,18 @@ img {
   list-style: none;
   padding: 0;
   margin: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 .menu-overlay__list + .menu-overlay__list {
   margin-top: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 .menu-overlay__list li {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.menu-overlay__group--divisions .menu-overlay__list:first-of-type {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .menu-overlay__list--single {
@@ -4433,7 +4432,7 @@ img {
 @media (max-width: 1024px) {
   .menu-overlay {
     padding: clamp(1rem, 5vw, 2.5rem);
-    padding-top: calc(var(--nav-height) + clamp(0.85rem, 3vw, 1.5rem));
+    padding-top: calc(var(--nav-height) + clamp(0.5rem, 3vw, 1rem));
     min-height: 100vh;
   }
 
@@ -4450,7 +4449,7 @@ img {
 @media (max-width: 640px) {
   .menu-overlay {
     padding: 1.25rem;
-    padding-top: calc(var(--nav-height) + 1rem);
+    padding-top: calc(var(--nav-height) + 0.6rem);
     min-height: 100vh;
     height: 100vh;
   }
