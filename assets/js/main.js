@@ -114,6 +114,16 @@
   const closeButton = document.querySelector('.menu-overlay__close');
 
   if (overlay && menuButton && closeButton) {
+    const closeMenuIfOpen = () => {
+      if (overlay.classList.contains('is-open')) {
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('menu-open');
+        setBodyScrollLock(false, 'menu');
+        menuButton.setAttribute('aria-expanded', 'false');
+      }
+    };
+
     const toggleMenu = (forceState) => {
       const isOpen = overlay.classList.contains('is-open');
       const shouldOpen = typeof forceState === 'boolean' ? forceState : !isOpen;
@@ -128,6 +138,8 @@
         closeButton.focus();
       } else {
         menuButton.focus();
+        // Return user to the top of the page when closing the menu.
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     };
 
@@ -145,6 +157,13 @@
       if (event.key === 'Escape') {
         toggleMenu(false);
       }
+    });
+
+    // Close menu before triggering login or navigating to hair test
+    document.querySelectorAll('[data-login-trigger], a[href*="hair-test.html"]').forEach((el) => {
+      el.addEventListener('click', () => {
+        closeMenuIfOpen();
+      });
     });
   }
 
@@ -211,6 +230,96 @@
         event.preventDefault();
         navigateToFranchisePortal();
       }
+    });
+
+    // Close menu when any menu link is clicked (including Take Test / Login links inside)
+    overlay.querySelectorAll('a, button').forEach((el) => {
+      el.addEventListener('click', () => {
+        closeMenuIfOpen();
+      });
+    });
+  }
+
+  // Hero slider (auto-fade)
+  const heroSlider = document.querySelector('[data-hero-slider]');
+  const reviewSlider = document.querySelector('[data-review-slider]');
+  if (heroSlider) {
+    const slides = Array.from(heroSlider.querySelectorAll('[data-hero-slide]'));
+    let heroIndex = 0;
+    let heroTimer = null;
+
+    const activateHeroSlide = (next) => {
+      heroIndex = next;
+      slides.forEach((slide, idx) => {
+        slide.classList.toggle('is-active', idx === heroIndex);
+      });
+    };
+
+    const startHeroAutoplay = () => {
+      if (slides.length <= 1) return;
+      clearInterval(heroTimer);
+      heroTimer = window.setInterval(() => {
+        const next = (heroIndex + 1) % slides.length;
+        activateHeroSlide(next);
+      }, 5200);
+    };
+
+    activateHeroSlide(heroIndex);
+    startHeroAutoplay();
+
+    ['mouseenter', 'pointerenter'].forEach((evt) => {
+      heroSlider.addEventListener(evt, () => {
+        if (heroTimer) {
+          clearInterval(heroTimer);
+          heroTimer = null;
+        }
+      });
+    });
+
+    ['mouseleave', 'pointerleave'].forEach((evt) => {
+      heroSlider.addEventListener(evt, () => {
+        startHeroAutoplay();
+      });
+    });
+  }
+
+  if (reviewSlider) {
+    const reviewSlides = Array.from(reviewSlider.querySelectorAll('[data-review-slide]'));
+    let reviewIndex = 0;
+    let reviewTimer = null;
+
+    const activateReview = (next) => {
+      reviewIndex = next;
+      reviewSlides.forEach((slide, idx) => {
+        slide.classList.toggle('is-active', idx === reviewIndex);
+      });
+    };
+
+    const startReviewAutoplay = () => {
+      if (reviewSlides.length <= 1) return;
+      clearInterval(reviewTimer);
+      reviewTimer = window.setInterval(() => {
+        const next = (reviewIndex + 1) % reviewSlides.length;
+        activateReview(next);
+      }, 4200);
+    };
+
+    activateReview(reviewIndex);
+    startReviewAutoplay();
+
+    ['mouseenter', 'pointerenter'].forEach((evt) => {
+      reviewSlider.addEventListener(evt, () => {
+        if (reviewTimer) {
+          clearInterval(reviewTimer);
+          reviewTimer = null;
+        }
+      });
+    });
+
+    ['mouseleave', 'pointerleave'].forEach((evt) => {
+      reviewSlider.addEventListener(evt, () => {
+        startReviewAutoplay();
+      });
     });
   }
 
@@ -600,7 +709,10 @@
       if (open) {
         phoneInput.focus();
       } else {
-        lastLoginTrigger?.focus();
+        // Avoid leaving a focus ring on the trigger when closing; blur it instead.
+        if (lastLoginTrigger) {
+          lastLoginTrigger.blur();
+        }
       }
     };
 
