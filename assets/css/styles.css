@@ -478,10 +478,10 @@ img {
 .whatsapp-fab {
   position: fixed;
   right: clamp(0.85rem, 3vw, 1.5rem);
-  bottom: clamp(4.5rem, 9vw, 5.8rem);
-  width: 64px;
-  height: 64px;
-  z-index: 300;
+  bottom: clamp(3.5rem, 8vw, 4.5rem); /* clear desktop nav/footer */
+  width: 60px;
+  height: 60px;
+  z-index: 900;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -521,10 +521,10 @@ img {
 
   .whatsapp-fab {
     right: clamp(0.75rem, 4vw, 1.25rem);
-    bottom: calc(165px + env(safe-area-inset-bottom, 0) + 1rem);
-    width: 60px;
-    height: 60px;
-    z-index: 320;
+    bottom: calc(110px + env(safe-area-inset-bottom, 0) + 0.9rem); /* clear bottom nav + safe area */
+    width: 56px;
+    height: 56px;
+    z-index: 1100;
     display: flex;
     align-items: center;
     justify-content: center;
