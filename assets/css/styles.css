@@ -367,10 +367,6 @@ img {
   height: 22px;
 }
 
-.whatsapp-fab span {
-  display: none;
-}
-
 @media (max-width: 640px) {
   body.has-mobile-tab {
     padding-bottom: 72px;
@@ -434,14 +430,12 @@ img {
   opacity: 0;
   pointer-events: none;
   z-index: 40;
-  visibility: hidden;
 }
 
 .menu-overlay.is-open {
   transform: translateY(0);
   opacity: 1;
   pointer-events: auto;
-  visibility: visible;
 }
 
 .menu-overlay__close {
@@ -657,7 +651,6 @@ img {
 
 .hero-visual {
   justify-self: end;
-  position: relative;
 }
 
 .image-wrap {
@@ -701,22 +694,14 @@ img {
 }
 
 .review-card {
+  position: absolute;
+  right: clamp(1rem, 6vw, 6rem);
+  bottom: 1rem;
   background: var(--card-bg);
   padding: 1rem 1.3rem;
   border-radius: 20px;
   box-shadow: var(--shadow);
   width: 210px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.hero-review {
-  position: absolute;
-  right: clamp(0.75rem, 4vw, 2rem);
-  bottom: clamp(1.2rem, 5vw, 2.4rem);
-  width: clamp(170px, 45vw, 220px);
 }
 
 .review-card img {
@@ -3515,22 +3500,11 @@ img {
     order: -1;
     justify-self: center;
     width: min(420px, 90vw);
-    position: relative;
   }
 
   .review-card {
-    position: relative;
     width: 100%;
     margin: 2rem auto 0;
-  }
-
-  .hero-review {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    right: auto;
-    bottom: clamp(0.75rem, 5vw, 1.5rem);
-    width: min(220px, 78vw);
   }
 
   .press-logos {
@@ -3650,21 +3624,20 @@ img {
   }
 
   .nav__inner {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: stretch;
     gap: 0.75rem;
   }
 
   .logo {
-    width: auto;
+    width: 100%;
     text-align: left;
   }
 
   .nav-right {
-    width: auto;
+    width: 100%;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: flex-end;
     gap: 0.6rem;
     align-items: center;
