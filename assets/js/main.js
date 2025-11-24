@@ -10,6 +10,7 @@
   let openLoginModal = null;
   const SESSION_FALLBACK_MS = 1000 * 60 * 60 * 24 * 30;
   let scrollLockY = 0;
+  const scrollLockOwners = new Set();
   try {
     const storedRedirect = sessionStorage.getItem('infiniumPendingDestination');
     if (storedRedirect) {
@@ -68,16 +69,24 @@
 
   const isUserLoggedIn = () => Boolean(getStoredUserContext());
 
-  const setBodyScrollLock = (lock) => {
+  const setBodyScrollLock = (lock, owner = 'global') => {
     if (lock) {
-      scrollLockY = window.scrollY || window.pageYOffset || 0;
-      document.body.dataset.scrollLockY = scrollLockY;
-      document.body.style.top = `-${scrollLockY}px`;
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
-      document.body.classList.add('modal-open');
+      if (!scrollLockOwners.size) {
+        scrollLockY = window.scrollY || window.pageYOffset || 0;
+        document.body.dataset.scrollLockY = scrollLockY;
+        document.body.style.top = `-${scrollLockY}px`;
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+        document.body.classList.add('modal-open');
+      }
+      scrollLockOwners.add(owner);
       return;
     }
+
+    if (!scrollLockOwners.has(owner)) return;
+    scrollLockOwners.delete(owner);
+    if (scrollLockOwners.size) return;
+
     const restoreY = Number(document.body.dataset.scrollLockY || '0');
     document.body.style.top = '';
     document.body.style.position = '';
@@ -112,6 +121,7 @@
       overlay.classList.toggle('is-open', shouldOpen);
       overlay.setAttribute('aria-hidden', (!shouldOpen).toString());
       document.body.classList.toggle('menu-open', shouldOpen);
+      setBodyScrollLock(shouldOpen, 'menu');
       menuButton.setAttribute('aria-expanded', shouldOpen.toString());
 
       if (shouldOpen) {
@@ -586,7 +596,7 @@
       resetLoginFlow();
       loginModal.classList.toggle('is-open', open);
       loginModal.setAttribute('aria-hidden', (!open).toString());
-      setBodyScrollLock(open);
+      setBodyScrollLock(open, 'login');
       if (open) {
         phoneInput.focus();
       } else {
@@ -908,7 +918,7 @@
     const setModalState = (open) => {
       eligibilityModal.classList.toggle('is-open', open);
       eligibilityModal.setAttribute('aria-hidden', (!open).toString());
-      setBodyScrollLock(open);
+      setBodyScrollLock(open, 'eligibility');
       if (open) {
         eligibilityModal.querySelector('.eligibility-modal__close').focus();
       } else {
