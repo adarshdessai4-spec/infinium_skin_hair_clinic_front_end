@@ -9,6 +9,7 @@
   let pendingDestination = null;
   let openLoginModal = null;
   const SESSION_FALLBACK_MS = 1000 * 60 * 60 * 24 * 30;
+  let scrollLockY = 0;
   try {
     const storedRedirect = sessionStorage.getItem('infiniumPendingDestination');
     if (storedRedirect) {
@@ -66,6 +67,25 @@
   };
 
   const isUserLoggedIn = () => Boolean(getStoredUserContext());
+
+  const setBodyScrollLock = (lock) => {
+    if (lock) {
+      scrollLockY = window.scrollY || window.pageYOffset || 0;
+      document.body.dataset.scrollLockY = scrollLockY;
+      document.body.style.top = `-${scrollLockY}px`;
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.classList.add('modal-open');
+      return;
+    }
+    const restoreY = Number(document.body.dataset.scrollLockY || '0');
+    document.body.style.top = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
+    document.body.classList.remove('modal-open');
+    window.scrollTo(0, restoreY);
+    delete document.body.dataset.scrollLockY;
+  };
 
   const deriveNameFromEmail = (email) => {
     if (!email || typeof email !== 'string') return '';
@@ -566,7 +586,7 @@
       resetLoginFlow();
       loginModal.classList.toggle('is-open', open);
       loginModal.setAttribute('aria-hidden', (!open).toString());
-      document.body.classList.toggle('modal-open', open);
+      setBodyScrollLock(open);
       if (open) {
         phoneInput.focus();
       } else {
@@ -888,7 +908,7 @@
     const setModalState = (open) => {
       eligibilityModal.classList.toggle('is-open', open);
       eligibilityModal.setAttribute('aria-hidden', (!open).toString());
-      document.body.classList.toggle('modal-open', open);
+      setBodyScrollLock(open);
       if (open) {
         eligibilityModal.querySelector('.eligibility-modal__close').focus();
       } else {

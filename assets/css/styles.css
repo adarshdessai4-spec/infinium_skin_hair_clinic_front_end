@@ -557,12 +557,15 @@ img {
 
 .menu-overlay {
   position: fixed;
-  top: var(--nav-height);
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  min-height: 100vh;
+  height: 100vh;
   background: linear-gradient(150deg, #d6dce6 0%, #f5f7fb 65%);
   padding: clamp(1.5rem, 6vw, 4rem);
+  padding-top: calc(var(--nav-height) + clamp(1rem, 4vw, 2.5rem));
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -4430,6 +4433,8 @@ img {
 @media (max-width: 1024px) {
   .menu-overlay {
     padding: clamp(1rem, 5vw, 2.5rem);
+    padding-top: calc(var(--nav-height) + clamp(0.85rem, 3vw, 1.5rem));
+    min-height: 100vh;
   }
 
   .menu-overlay__panel {
@@ -4445,6 +4450,9 @@ img {
 @media (max-width: 640px) {
   .menu-overlay {
     padding: 1.25rem;
+    padding-top: calc(var(--nav-height) + 1rem);
+    min-height: 100vh;
+    height: 100vh;
   }
 
   .menu-overlay__panel {
@@ -7109,6 +7117,77 @@ img {
   .logo img {
     height: clamp(58px, 20vw, 74px) !important;
     width: auto !important;
+  }
+}
+
+/* --- Enforce mobile-only layout (phones) --- */
+@media (max-width: 768px) {
+  .brand-tabs,
+  .nav-search {
+    display: none !important;
+  }
+
+  .nav__inner {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0.65rem 1rem !important;
+    gap: 0.5rem !important;
+  }
+
+  .logo {
+    max-width: 180px;
+    width: 100%;
+  }
+
+  .nav-right {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+  }
+
+  .nav-cta--login {
+    display: inline-flex !important;
+    padding: 0.55rem 1rem !important;
+    font-size: 0.85rem !important;
+  }
+
+  .nav-icon.nav-icon--menu {
+    display: inline-flex !important;
+    width: 38px;
+    height: 38px;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .hero-visual {
+    order: -1;
+    justify-self: center;
+    width: min(420px, 94vw);
+  }
+
+  .hero-visual .image-wrap {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .hero-review {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin: 0.75rem auto 0;
+  }
+
+  .section {
+    padding: 3rem 0;
   }
 }
 
