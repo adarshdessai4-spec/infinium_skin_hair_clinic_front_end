@@ -7170,6 +7170,7 @@ img {
     order: -1;
     justify-self: center;
     width: min(420px, 94vw);
+    position: relative;
   }
 
   .hero-visual .image-wrap {
@@ -7179,10 +7180,12 @@ img {
   }
 
   .hero-review {
-    position: relative;
-    right: auto;
-    bottom: auto;
-    margin: 0.75rem auto 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: clamp(0.6rem, 6vw, 1.4rem);
+    margin: 0;
+    width: min(220px, 72vw);
   }
 
   .section {
