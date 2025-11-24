@@ -7191,6 +7191,21 @@ img {
   .section {
     padding: 3rem 0;
   }
+
+  /* When menu is closed, force the standard mobile header back into view */
+  body:not(.menu-open) .nav__inner {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+
+  body:not(.menu-open) .nav-right {
+    display: flex !important;
+  }
+
+  body:not(.menu-open) .nav-icon.nav-icon--menu {
+    display: inline-flex !important;
+  }
 }
 
 /* --- Micro mobile tuning (iPhone widths: SE/mini through latest) --- */
