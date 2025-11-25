@@ -165,6 +165,14 @@
         closeMenuIfOpen();
       });
     });
+
+    // Close menu when any link/button inside overlay is used (except the close button itself)
+    overlay.querySelectorAll('a, button').forEach((el) => {
+      el.addEventListener('click', () => {
+        if (el === closeButton) return;
+        closeMenuIfOpen();
+      });
+    });
   }
 
   const navDropdown = document.querySelector('.nav-dropdown');

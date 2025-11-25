@@ -219,7 +219,7 @@
       <span class="login-modal__divider" aria-hidden="true"></span>
 
       <div class="login-step is-active" data-login-step="number">
-        <div class="login-role" role="tablist">
+        <div class="login-role" role="tablist" hidden>
           <button type="button" class="login-role__btn is-active" data-login-role="user">
             User
           </button>
@@ -239,10 +239,10 @@
         <button type="button" class="login-modal__cta" data-login-action="send">
           Send OTP
         </button>
-        <button type="button" class="login-modal__cta login-modal__cta--ghost" data-admin-test-login hidden>
+        <button type="button" class="login-modal__cta login-modal__cta--ghost" data-admin-test-login hidden aria-hidden="true" tabindex="-1">
           Direct Admin Login (Test)
         </button>
-        <button type="button" class="login-modal__cta login-modal__cta--ghost" data-user-test-login hidden>
+        <button type="button" class="login-modal__cta login-modal__cta--ghost" data-user-test-login hidden aria-hidden="true" tabindex="-1">
           Direct User Login (Test)
         </button>
         <div class="login-socials">
@@ -352,13 +352,13 @@
         <div class="hero-visual">
           <div class="hero-slider" data-hero-slider>
             <div class="hero-slide is-active" data-hero-slide>
-              <img src="assets/images/hero-slides/hero-couple.jpg" alt="Happy couple with great hair" />
+              <img src="assets/images/hero-slides/hero-couple.jpg" alt="Happy couple with great hair" decoding="async" />
             </div>
             <div class="hero-slide" data-hero-slide>
-              <img src="assets/images/hero-slides/hero-couple1.jpg" alt="Confident person with healthy hair" />
+              <img src="assets/images/hero-slides/hero-couple1.jpg" alt="Confident person with healthy hair" loading="lazy" decoding="async" />
             </div>
             <div class="hero-slide" data-hero-slide>
-              <img src="assets/images/hero-slides/story-transformation.jpg" alt="Hair treatment results" />
+              <img src="assets/images/hero-slides/story-transformation.jpg" alt="Hair treatment results" loading="lazy" decoding="async" />
             </div>
           </div>
           <div class="hero-review review-slider" data-review-slider>
