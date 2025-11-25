@@ -169,7 +169,7 @@
     // Close menu when any link/button inside overlay is used (except the close button itself)
     overlay.querySelectorAll('a, button').forEach((el) => {
       el.addEventListener('click', () => {
-        if (el === closeButton) return;
+        if (el === closeButton || el === menuButton) return;
         closeMenuIfOpen();
       });
     });
@@ -360,8 +360,6 @@
     const verifyButton = loginModal.querySelector('[data-login-action="verify"]');
     const googleButton = loginModal.querySelector('.login-social--google');
     const roleButtons = loginModal.querySelectorAll('[data-login-role]');
-    const adminShortcutButton = loginModal.querySelector('[data-admin-test-login]');
-    const userShortcutButton = loginModal.querySelector('[data-user-test-login]');
     const profileNameInput = loginModal.querySelector('#loginName');
     const profileCompleteButton = loginModal.querySelector('[data-login-action="complete"]');
     const profileSuccessPhone = loginModal.querySelector('[data-login-success-phone]');
@@ -432,16 +430,6 @@
     let currentPhoneDisplay = '+91 XXXXXXXX';
     let currentPhoneDigits = '';
     let currentRole = 'user';
-    const syncShortcutVisibility = () => {
-      const isAdmin = currentRole === 'admin';
-      if (adminShortcutButton) {
-        adminShortcutButton.hidden = !isAdmin;
-      }
-      if (userShortcutButton) {
-        userShortcutButton.hidden = isAdmin;
-      }
-    };
-    syncShortcutVisibility();
     const createSessionPayload = (context = {}) => {
       const loggedInAt = new Date().toISOString();
       const expiresMs = computeExpiryMs({ ...context, loggedInAt });
@@ -761,7 +749,6 @@
         roleButtons.forEach((b) => b.classList.remove('is-active'));
         btn.classList.add('is-active');
         currentRole = btn.dataset.loginRole || 'user';
-        syncShortcutVisibility();
       });
     });
 
@@ -789,24 +776,6 @@
     };
 
     window.addEventListener('message', handleGoogleMessage);
-
-    adminShortcutButton?.addEventListener('click', () => {
-      setLoginError('');
-      handleLoginSuccess({
-        role: 'admin',
-        name: 'Admin Preview',
-        provider: 'direct',
-      });
-    });
-
-    userShortcutButton?.addEventListener('click', () => {
-      setLoginError('');
-      handleLoginSuccess({
-        role: 'user',
-        name: 'Infinium Member',
-        provider: 'direct',
-      });
-    });
 
     if (sendButton && phoneInput) {
       const normalizePhoneInput = () => {
