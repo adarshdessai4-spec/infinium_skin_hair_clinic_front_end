@@ -2326,6 +2326,10 @@ img {
   display: flex;
 }
 
+.login-role {
+  display: none !important;
+}
+
 .login-modal__close {
   position: absolute;
   top: 0.85rem;

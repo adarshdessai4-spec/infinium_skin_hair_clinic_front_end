@@ -911,8 +911,14 @@
         try {
           setLoginError('');
           toggleGoogleLoading(true);
-          const url = OTP_API_BASE ? `${OTP_API_BASE}/api/auth/google/url` : '/api/auth/google/url';
-          const response = await fetch(url);
+          const apiBase = OTP_API_BASE || '';
+          const isHttps = window.location.protocol === 'https:';
+          if (isHttps && apiBase.startsWith('http://')) {
+            throw new Error('Google login blocked: backend is HTTP. Please use the HTTPS backend URL.');
+          }
+
+          const url = apiBase ? `${apiBase}/api/auth/google/url` : '/api/auth/google/url';
+          const response = await fetch(url, { credentials: 'include' });
           const contentType = response.headers.get('content-type') || '';
           const data = contentType.includes('application/json') ? await response.json() : {};
           if (!response.ok || !data?.url) {

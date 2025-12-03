@@ -316,7 +316,6 @@ const initHairTestFlow = () => {
     }
     score = clamp(Math.round(score), 38, 94);
     const planMonths = severity >= 5 ? 7 : severity >= 3 ? 6 : 5;
-    const areaText = areaCopy[answers.hairLossArea] || 'across your scalp';
     const rootCauses = buildRootCauses(severity);
     const focusTags = rootCauses.map((cause) => cause.title).slice(0, 3);
     const areaText =
